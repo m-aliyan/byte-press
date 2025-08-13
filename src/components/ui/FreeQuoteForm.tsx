@@ -11,6 +11,14 @@ interface FormData {
   communicationPreferences: boolean;
 }
 
+interface FieldTouched {
+  fullName: boolean;
+  email: boolean;
+  phoneNumber: boolean;
+  serviceType: boolean;
+  communicationPreferences: boolean;
+}
+
 export default function FreeQuoteForm() {
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
@@ -19,6 +27,16 @@ export default function FreeQuoteForm() {
     serviceType: '',
     communicationPreferences: false,
   });
+
+  const [touched, setTouched] = useState<FieldTouched>({
+    fullName: false,
+    email: false,
+    phoneNumber: false,
+    serviceType: false,
+    communicationPreferences: false,
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -30,15 +48,39 @@ export default function FreeQuoteForm() {
     }));
   };
 
+  const handleBlur = (fieldName: keyof FieldTouched) => {
+    setTouched(prev => ({
+      ...prev,
+      [fieldName]: true,
+    }));
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitted(true);
     console.log('Form submitted with data:', formData);
     // Here you can add API call or other form submission logic
   };
 
+  const shouldShowError = (fieldName: keyof FieldTouched) => {
+    const fieldTouched = touched[fieldName];
+    const fieldValue = formData[fieldName];
+    const isRequired = fieldName === 'fullName' || fieldName === 'email' || fieldName === 'serviceType';
+    
+    // Show error if field is required and empty, AND either:
+    // 1. Form has been submitted, OR
+    // 2. Field has been touched (blurred)
+    return isRequired && !fieldValue && (isSubmitted || fieldTouched);
+  };
+
+  const getInputClassName = (fieldName: keyof FieldTouched) => {
+    const baseClass = 'form-input';
+    return shouldShowError(fieldName) ? `${baseClass} error` : baseClass;
+  };
+
   return (
     <div className="free-quote-form-container">
-      <form onSubmit={handleSubmit} className="free-quote-form">
+      <form onSubmit={handleSubmit} className={`free-quote-form ${isSubmitted ? 'form-submitted' : ''}`}>
         <h2 className="form-title">Get Your Free Quote</h2>
         
         <div className="form-group">
@@ -51,10 +93,14 @@ export default function FreeQuoteForm() {
             name="fullName"
             value={formData.fullName}
             onChange={handleInputChange}
+            onBlur={() => handleBlur('fullName')}
             required
-            className="form-input"
+            className={getInputClassName('fullName')}
             placeholder="Enter your full name"
           />
+          {shouldShowError('fullName') && (
+            <div className="error-message">Full name is required</div>
+          )}
         </div>
 
         <div className="form-group">
@@ -67,10 +113,14 @@ export default function FreeQuoteForm() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
+            onBlur={() => handleBlur('email')}
             required
-            className="form-input"
+            className={getInputClassName('email')}
             placeholder="Enter your email address"
           />
+          {shouldShowError('email') && (
+            <div className="error-message">Valid email is required</div>
+          )}
         </div>
 
         <div className="form-group">
@@ -83,7 +133,8 @@ export default function FreeQuoteForm() {
             name="phoneNumber"
             value={formData.phoneNumber}
             onChange={handleInputChange}
-            className="form-input"
+            onBlur={() => handleBlur('phoneNumber')}
+            className={getInputClassName('phoneNumber')}
             placeholder="Enter your phone number"
           />
         </div>
@@ -98,10 +149,14 @@ export default function FreeQuoteForm() {
             name="serviceType"
             value={formData.serviceType}
             onChange={handleInputChange}
+            onBlur={() => handleBlur('serviceType')}
             required
-            className="form-input"
+            className={getInputClassName('serviceType')}
             placeholder="Enter your query here."
           />
+          {shouldShowError('serviceType') && (
+            <div className="error-message">Service type is required</div>
+          )}
         </div>
 
         <div className="form-group checkbox-group">
@@ -111,10 +166,11 @@ export default function FreeQuoteForm() {
               name="communicationPreferences"
               checked={formData.communicationPreferences}
               onChange={handleInputChange}
+              onBlur={() => handleBlur('communicationPreferences')}
               className="checkbox-input"
             />
             <span className="checkbox-text">
-              Please <strong>CHECK THE BOX</strong> to COMMUNICATE VIA SMS OR EMAIL (Privacy Policy & Terms)
+              Please <strong>check the box</strong> to communicate via sms or email (privacy policy & terms)
             </span>
           </label>
         </div>
