@@ -93,3 +93,172 @@ body {
 .animate-expand-line {
   animation: expand-line 2s ease-out forwards;
 }
+
+/* Custom animations for stats section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover effects for stats cards */
+.stats-card {
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Pause animations on hover */
+*:hover {
+  animation-play-state: paused;
+}
+
+/* Circular fill effect for testimonials */
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 0% 0%, #2563eb 0%, #1d4ed8 100%);
+  border-radius: 50%;
+  transform: scale(0);
+  transform-origin: 0% 0%;
+  transition: transform 0.7s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.testimonial-card:hover::before {
+  transform: scale(1);
+}
+
+/* Ensure content is above the background */
+.testimonial-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Text color transitions for stats cards */
+.testimonial-card .text-gray-900,
+.testimonial-card .text-gray-600 {
+  transition: color 0.7s ease-in-out;
+}
+
+.testimonial-card:hover .text-gray-900 {
+  color: white;
+}
+
+.testimonial-card:hover .text-gray-600 {
+  color: #e0e7ff; /* Light blue-white for better readability */
+}
+
+/* Flip Card Styles */
+.flip-card {
+  perspective: 1000px;
+  height: 280px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 0.75rem;
+}
+
+.flip-card-front {
+  background-color: white;
+  color: #2563eb;
+}
+
+.flip-card-back {
+  background-color: #2563eb;
+  color: white;
+  transform: rotateY(180deg);
+}
