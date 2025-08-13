@@ -1,4 +1,82 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import TestimonialsSlider from '@/components/TestimonialsSlider';
+
 export default function TestimonialsPage() {
+  const [counts, setCounts] = useState({
+    authors: 0,
+    books: 0,
+    bestsellers: 0,
+    reviews: 0
+  });
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
+
+  useEffect(() => {
+    // Header animation trigger
+    const timer = setTimeout(() => {
+      setHeaderVisible(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    const targetCounts = {
+      authors: 500,
+      books: 750,
+      bestsellers: 50,
+      reviews: 98
+    };
+
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+
+      setCounts({
+        authors: Math.floor(targetCounts.authors * progress),
+        books: Math.floor(targetCounts.books * progress),
+        bestsellers: Math.floor(targetCounts.bestsellers * progress),
+        reviews: Math.floor(targetCounts.reviews * progress)
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setCounts(targetCounts);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isVisible]);
+
   const testimonials = [
     {
       id: 1,
@@ -63,115 +141,204 @@ export default function TestimonialsPage() {
   ];
 
   const stats = [
-    { label: "Happy Authors", value: "500+", icon: "👨‍💻" },
-    { label: "Books Published", value: "750+", icon: "📚" },
-    { label: "Bestsellers", value: "50+", icon: "🏆" },
-    { label: "5-Star Reviews", value: "98%", icon: "⭐" }
+    { label: "Happy Authors", value: counts.authors, icon: "👨‍💻", suffix: "+" },
+    { label: "Books Published", value: counts.books, icon: "📚", suffix: "+" },
+    { label: "Bestsellers", value: counts.bestsellers, icon: "🏆", suffix: "+" },
+    { label: "5-Star Reviews", value: counts.reviews, icon: "⭐", suffix: "%" }
   ];
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            What Our Authors Say
+          <h1 className={`text-5xl font-bold text-gray-900 mb-2 transition-all duration-1000 ease-out ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            Why Clients Love Working with Us
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what authors who've worked with BytePress have to say about their experience and success.
+          {/* Animated Underline */}
+          <div className={`h-2 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto max-w-4xl transition-all duration-1000 ease-out ${
+            headerVisible ? 'w-full opacity-100' : 'w-0 opacity-0'
+          }`}></div>
+          
+          <h2 className={`text-3xl font-semibold text-gray-700 mb-4 mt-8 transition-all duration-1000 ease-out delay-300 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            Client Testimonials
+          </h2>
+          
+          <p className={`text-xl text-gray-600 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-500 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            Our clients trust us with their dreams and we turn them into a solid reality. Hear it from our clients:
           </p>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg">
-              <div className="text-4xl mb-2">{stat.icon}</div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
-            </div>
-          ))}
+                 {/* Stats Section */}
+         <div id="stats-section" className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+           {stats.map((stat, index) => (
+             <div 
+               key={index} 
+               className={`testimonial-card bg-white rounded-xl p-6 text-center shadow-lg transition-all duration-500 ease-out transform ${
+                 isVisible 
+                   ? 'opacity-100 translate-y-0 scale-100' 
+                   : 'opacity-0 translate-y-8 scale-95'
+               }`}
+               style={{ 
+                 transitionDelay: `${index * 200}ms`,
+                 animation: isVisible ? 'fadeInUp 0.8s ease-out forwards' : 'none'
+               }}
+             >
+               <div className="text-4xl mb-2">{stat.icon}</div>
+               <div className="text-3xl font-bold text-gray-900 mb-1 transition-all duration-500">
+                 {stat.value}{stat.suffix}
+               </div>
+               <div className="text-sm text-gray-600">{stat.label}</div>
+             </div>
+           ))}
+         </div>
+
+        {/* Testimonials Slider */}
+        <div className="mb-16">
+          <TestimonialsSlider testimonials={testimonials} />
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              {/* Rating */}
-              <div className="flex text-yellow-400 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-
-              {/* Content */}
-              <blockquote className="text-gray-700 mb-6 italic">
-                "{testimonial.content}"
-              </blockquote>
-
-              {/* Book Info */}
-              <div className="bg-blue-50 rounded-lg p-3 mb-4">
-                <div className="text-sm font-medium text-blue-900">{testimonial.book}</div>
-                <div className="text-xs text-blue-700">{testimonial.sales}</div>
-              </div>
-
-              {/* Author Info */}
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                  {testimonial.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  <div className="text-xs text-gray-500">{testimonial.company}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Featured Success Story */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Featured Success Story
+        {/* Reasons to Choose Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              <span className="text-blue-600">Reason to choose</span>{' '}
+              <span className="text-gray-800">Book Publishing Point</span>
             </h2>
-            <p className="text-lg text-gray-600">
-              From Manuscript to Bestseller in 6 Months
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                "The Midnight Garden" by Sarah Johnson
-              </h3>
-              <p className="text-gray-700 mb-6">
-                Sarah came to us with a rough fantasy manuscript and a dream of becoming a published author. Our team worked closely with her to develop the story, polish the writing, and create a stunning cover design.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">#1</div>
-                  <div className="text-sm text-gray-600">Amazon Bestseller</div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* 0% Sales Royalty */}
+            <div className="flip-card group">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="text-blue-600 text-6xl mb-6 flex justify-center">
+                    💰
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-600 text-center">0% Sales Royalty</h3>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">50K+</div>
-                  <div className="text-sm text-gray-600">Copies Sold</div>
+                {/* Back Side */}
+                <div className="flip-card-back bg-blue-600 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <p className="text-white text-sm leading-relaxed text-center">
+                    At Book Publishing Point, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
+                  </p>
                 </div>
               </div>
-              <a href="/portfolio" className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                View Full Portfolio
-              </a>
             </div>
-            
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-8 text-center">
-              <div className="text-6xl mb-4">📚</div>
-              <div className="text-2xl font-bold text-gray-900 mb-2">Bestseller Status</div>
-              <div className="text-gray-600">Achieved in just 6 months</div>
+
+            {/* 100% Complete Ownership */}
+            <div className="flip-card group">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="text-blue-600 text-6xl mb-6 flex justify-center">
+                    🏆
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-600 text-center">100% Complete Ownership</h3>
+                </div>
+                {/* Back Side */}
+                <div className="flip-card-back bg-blue-600 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <p className="text-white text-sm leading-relaxed text-center">
+                    We believe in complete transparency and ownership, which is why our clients retain 100% ownership of their books. This means that our clients can make all decisions regarding their book's content, distribution, and marketing.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* On-Time Delivery */}
+            <div className="flip-card group">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="text-blue-600 text-6xl mb-6 flex justify-center">
+                    ⏰
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-600 text-center">On-Time Delivery</h3>
+                </div>
+                {/* Back Side */}
+                <div className="flip-card-back bg-blue-600 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <p className="text-white text-sm leading-relaxed text-center">
+                    We understand the importance of on-time delivery and always work hard to ensure that our clients receive their projects on or before the deadline. We have a dedicated team that works efficiently and effectively to meet our clients' needs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Personalized Services */}
+            <div className="flip-card group">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="text-blue-600 text-6xl mb-6 flex justify-center">
+                    🎯
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-600 text-center">Personalized Services</h3>
+                </div>
+                {/* Back Side */}
+                <div className="flip-card-back bg-blue-600 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <p className="text-white text-sm leading-relaxed text-center">
+                    At Book Publishing Point, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+                                   {/* Featured Success Story */}
+         <div className="bg-blue-100 rounded-2xl shadow-xl p-6 mb-16">
+           <div className="text-center mb-6">
+             <h2 className="text-3xl font-bold text-gray-900 mb-4">
+               Featured <span className="text-blue-600">Success Story</span>
+             </h2>
+             <p className="text-lg text-gray-600">
+               From Manuscript to Bestseller in 6 Months
+             </p>
+           </div>
+           
+           <div className="flex flex-col md:flex-row gap-6 items-center">
+             <div className="flex-1">
+               <h3 className="text-2xl font-bold text-gray-900 mb-2 animate-fadeInUp">
+                 "The Midnight Garden" by Sarah Johnson
+               </h3>
+               <p className="text-gray-700 mb-3 animate-fadeInUp animation-delay-200">
+                 Sarah came to us with a rough fantasy manuscript and a dream of becoming a published author. Our team worked closely with her to develop the story, polish the writing, and create a stunning cover design.
+               </p>
+                              <div className="grid grid-cols-2 gap-4 mb-3">
+                  <div className="text-center animate-fadeInUp animation-delay-400">
+                    <div className="text-2xl font-bold text-blue-600">#1</div>
+                    <div className="text-sm text-gray-600">Amazon Bestseller</div>
+                  </div>
+                  <div className="text-center animate-fadeInUp animation-delay-500">
+                    <div className="text-2xl font-bold text-blue-600">50K+</div>
+                    <div className="text-sm text-gray-600">Copies Sold</div>
+                  </div>
+                </div>
+               <div className="flex justify-center">
+                 <a href="/portfolio" className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg animate-fadeInUp animation-delay-600">
+                   View Full Portfolio
+                 </a>
+               </div>
+             </div>
+             
+             <div className="flex justify-center">
+               <img 
+                 src="/books_stack.png" 
+                 alt="Books Stack" 
+                 className="w-150 h-80 object-contain rounded-2xl shadow-lg"
+               />
+             </div>
+           </div>
+         </div>
 
         {/* Call to Action */}
         <div className="text-center">
