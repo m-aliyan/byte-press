@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import FreeQuoteForm from '@/components/ui/FreeQuoteForm';
+import TestimonialsChain from '@/components/TestimonialsChain';
 import './page.css';
 
 export default function Home() {
@@ -384,7 +385,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-[#f8fafc] to-[#e2e8f0]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Get your project off the ground today.
+                            Get your project off the ground today
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="get-started-btn">
@@ -513,6 +514,172 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Book Marketing Services Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+            {/* Left Column - Content */}
+            <div className="text-left">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                <span className="text-indigo-900">Book Marketing Services</span> That Put Your Title in Motion
+              </h2>
+              
+              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl">
+                <p>
+                  Marketing your book doesn't need to be guesswork. Whether you're launching a novel or a Marketing For Beginners Book, we build real visibility through targeted self published book marketing that drives results.
+                </p>
+                <p>
+                  From Amazon optimization to social media and outreach, we get your book seen by the right readers — fast. No fluff, just strategy that moves copies and grows your author brand.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline"
+                  aria-label="Start book marketing project"
+                >
+                  <span className="text-white">START PROJECT</span>
+                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            {/* Right Column - Empty (Clean Space) */}
+            <div className="hidden lg:block">
+              {/* Intentionally left empty - clean right space */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Children's Book Stories Section */}
+      <section className="py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+            {/* Left Column - Empty (Reserved for future image) */}
+            <div className="hidden md:block">
+              {/* Intentionally left empty - reserved for future image */}
+            </div>
+            
+            {/* Right Column - Content (Left-aligned) */}
+            <div className="text-left md:text-left order-2 md:order-2">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                Create timeless <span className="text-indigo-900">children's stories</span> with Book Publishing Point
+              </h2>
+              
+              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl">
+                <p>
+                  Are you an aspiring children's book author? At Book Publishing Point, we understand the importance of captivating young readers with memorable stories. Our Children's Book Service offers the guidance and support you need to bring your book to life. With our experienced team, we'll help you develop a unique and engaging plot, characters, and storyline across various age groups. Our comprehensive service covers editing, proofreading, formatting, illustrating, and designing to ensure a polished and professional book.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline"
+                  aria-label="Start children's book project"
+                >
+                  <span className="text-white">START PROJECT</span>
+                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call-to-Action Section */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Unlock the secrets to successful{' '}
+              <span className="text-indigo-900">Self-publishing</span>
+            </h2>
+            
+            <div className="text-gray-600 text-lg md:text-xl mb-8 space-y-2">
+              <p>Call Us to begin your project today!</p>
+              <p>Made 300+ Authors/Writers Dreams Come True.</p>
+            </div>
+            
+            <div className="flex justify-center">
+              <a 
+                href="/contact" 
+                className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-300 no-underline"
+                aria-label="Get started now"
+              >
+                <span>Get started now</span>
+                <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Publishing Integration Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center flex flex-col items-center">
+                          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+                Where <span className="text-indigo-900">Book Publishing</span>, <span className="text-indigo-900">Writing</span>, <span className="text-indigo-900">Editing</span>, and <span className="text-indigo-900">Design</span> Actually Work Together
+              </h2>
+            
+            <div className="text-base sm:text-lg text-gray-700 max-w-prose mt-6 space-y-4">
+              <p>
+                From concept to bookshelf, we align strategy, storytelling, and production so your book looks great and sells better.
+              </p>
+              <p>
+                Our integrated team handles writing, editing, layout, and distribution to deliver a polished, market-ready title.
+              </p>
+            </div>
+            
+            {/* Space for Books Picture */}
+            <div className="mt-12 mb-12 h-48"></div>
+            
+            <div className="mt-6">
+              <a 
+                href="/contact" 
+                className="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300 no-underline"
+                aria-label="Get started now"
+              >
+                <span>Get started now</span>
+                <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Authors Trust CTA Section */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-gray-900">
+            Why Authors Trust <span className="text-indigo-900">Book Publishing Point</span> to Get It Done Right
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-4xl mx-auto">
+            No fluff, no drag. At Book Publishing Point, we work with writers who are serious about getting published — whether it's their first shot or their fifth. Our team handles the production while you stay focused on the story. Fast communication, sharp execution, and real results. That's what we bring to the table.
+          </p>
+          <div className="mt-8">
+            <a href="#contact" aria-label="Get started now"
+               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-indigo-900 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              GET STARTED NOW <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Chain Section */}
+      <TestimonialsChain />
 
       {/* Services Preview */}
       <section className="py-20 bg-white">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import FreeQuoteForm from '@/components/ui/FreeQuoteForm';
+import TestimonialsChain from '@/components/TestimonialsChain';
 import './page.css';
 
 export default function Home() {
@@ -351,6 +352,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsChain />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">

@@ -1,67 +1,6 @@
-export default function TestimonialsPage() {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Bestselling Author",
-      company: "Independent Publisher",
-      content: "BytePress transformed my rough manuscript into a polished bestseller. Their editing team's attention to detail and marketing support helped me reach #1 on Amazon. I couldn't have done it without them!",
-      rating: 5,
-      book: "The Midnight Garden",
-      sales: "50K+ copies sold"
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      role: "Business Consultant",
-      company: "Growth Strategies Inc.",
-      content: "Working with BytePress was a game-changer for my business book. Their professional writing team captured my expertise perfectly, and the cover design is absolutely stunning. Highly recommended!",
-      rating: 5,
-      book: "Business Growth Strategies",
-      sales: "25K+ copies sold"
-    },
-    {
-      id: 3,
-      name: "Dr. Emily Rodriguez",
-      role: "Psychologist & Author",
-      company: "Mindful Living Institute",
-      content: "The team at BytePress understood my vision for a self-help book that could truly help people. Their editing expertise and marketing strategies exceeded my expectations. My book is now helping thousands!",
-      rating: 5,
-      book: "The Art of Mindfulness",
-      sales: "35K+ copies sold"
-    },
-    {
-      id: 4,
-      name: "James Thompson",
-      role: "Chef & Food Blogger",
-      company: "Culinary Adventures",
-      content: "BytePress helped me create a cookbook that's more than just recipes - it's a cultural journey. Their design team created a beautiful book that perfectly captures the essence of my cooking philosophy.",
-      rating: 5,
-      book: "Culinary Adventures",
-      sales: "20K+ copies sold"
-    },
-    {
-      id: 5,
-      name: "Lisa Park",
-      role: "Tech Entrepreneur",
-      company: "Innovation Labs",
-      content: "As a first-time author, I was nervous about the publishing process. BytePress guided me through every step with patience and expertise. My book is now a go-to resource in the tech industry.",
-      rating: 5,
-      book: "Tech Revolution 2024",
-      sales: "30K+ copies sold"
-    },
-    {
-      id: 6,
-      name: "David & Maria Williams",
-      role: "Children's Book Authors",
-      company: "Adventure Stories Co.",
-      content: "Creating a children's book series was our dream, and BytePress made it a reality. Their understanding of children's literature and beautiful illustrations helped us create books that kids and parents love.",
-      rating: 5,
-      book: "Children's Adventure Series",
-      sales: "100K+ copies sold"
-    }
-  ];
+import TestimonialsChain from '@/components/TestimonialsChain';
 
+export default function TestimonialsPage() {
   const stats = [
     { label: "Happy Authors", value: "500+", icon: "👨‍💻" },
     { label: "Books Published", value: "750+", icon: "📚" },
@@ -92,44 +31,8 @@ export default function TestimonialsPage() {
           ))}
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              {/* Rating */}
-              <div className="flex text-yellow-400 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-
-              {/* Content */}
-              <blockquote className="text-gray-700 mb-6 italic">
-                "{testimonial.content}"
-              </blockquote>
-
-              {/* Book Info */}
-              <div className="bg-blue-50 rounded-lg p-3 mb-4">
-                <div className="text-sm font-medium text-blue-900">{testimonial.book}</div>
-                <div className="text-xs text-blue-700">{testimonial.sales}</div>
-              </div>
-
-              {/* Author Info */}
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
-                  {testimonial.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  <div className="text-xs text-gray-500">{testimonial.company}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Testimonials Chain Component */}
+        <TestimonialsChain />
 
         {/* Featured Success Story */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">

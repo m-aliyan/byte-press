@@ -366,6 +366,22 @@
   }
 }
 
+/* Marquee Animations for Testimonials */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+/* Pause animation on hover */
+.overflow-hidden:hover .flex {
+  animation-play-state: paused;
+}
+
 /* Accessibility: Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .service-card,
@@ -388,6 +404,11 @@
   .service-card:hover .service-link svg,
   .service-card:focus-within .service-link svg {
     transform: none;
+  }
+
+  /* Disable marquee animations for reduced motion */
+  .flex[style*="animation"] {
+    animation: none !important;
   }
 }
 
