@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import GetStartedForm from './ui/GetStartedForm';
 
 type Testimonial = {
   name: string;
@@ -67,7 +68,7 @@ const StarRating = ({ rating }: { rating: number }) => (
     {[...Array(5)].map((_, i) => (
       <svg
         key={i}
-        className={`w-4 h-4 ${i < rating ? 'text-blue-800' : 'text-gray-300'}`}
+        className={`w-4 h-4 ${i < rating ? 'text-[#0B3C74]' : 'text-gray-300'}`}
         fill="currentColor"
         viewBox="0 0 20 20"
       >
@@ -106,14 +107,14 @@ export default function TestimonialsChain() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="bg-gray-50 py-16" aria-labelledby="testimonials-heading">
+    <section className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] py-16" aria-labelledby="testimonials-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="testimonials-heading" className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-16">
-          What our client's <span className="text-indigo-900">say</span>
+        <h2 id="testimonials-heading" className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16">
+          What our client's <span className="text-[#0B3C74]">say</span>
         </h2>
 
         {/* Train Effect Layout */}
-        <div className="train-container">
+        <div className="train-container mb-8">
           <div
             className={`train-track ${isPaused ? 'paused' : ''}`}
             onMouseEnter={() => setIsPaused(true)}
@@ -162,7 +163,7 @@ export default function TestimonialsChain() {
           /* The hover styles remain */
           .train-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(20, 0, 121, 0.15);
+            box-shadow: 0 8px 24px rgba(11, 60, 116, 0.15);
           }
 
         `}</style>
@@ -173,10 +174,10 @@ export default function TestimonialsChain() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-              <span className="text-black">Reason to choose</span>{' '}
+              <span className="text-[#111827]">Reason to choose</span>{' '}
               <span className="text-[#0B3C74]">Book Publishing Point</span>
             </h2>
-            <p className="text-lg text-black max-w-3xl mx-auto">
+            <p className="text-lg text-[#111827] max-w-3xl mx-auto">
               Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
             </p>
           </div>
@@ -188,7 +189,7 @@ export default function TestimonialsChain() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-black mb-2">0% Sales Royalty</h3>
+              <h3 className="text-xl font-semibold text-[#111827] mb-2">0% Sales Royalty</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
                 At Book Publishing Point, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
               </p>
@@ -200,7 +201,7 @@ export default function TestimonialsChain() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-black mb-2">100% Complete Ownership</h3>
+              <h3 className="text-xl font-semibold text-[#111827] mb-2">100% Complete Ownership</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
                 We believe in complete transparency and ownership, which is why our clients retain 100% ownership of their books. This means that our clients can make all decisions regarding their book's content, distribution, and marketing.
               </p>
@@ -212,7 +213,7 @@ export default function TestimonialsChain() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-black mb-2">On-Time Delivery</h3>
+              <h3 className="text-xl font-semibold text-[#111827] mb-2">On-Time Delivery</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
                 We understand the importance of on-time delivery and always work hard to ensure that our clients receive their projects on or before the deadline. We have a dedicated team that works efficiently and effectively to meet our clients' needs.
               </p>
@@ -224,10 +225,54 @@ export default function TestimonialsChain() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-black mb-2">Personalized Services</h3>
+              <h3 className="text-xl font-semibold text-[#111827] mb-2">Personalized Services</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
                 At Book Publishing Point, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Get your book written and published in Less than a month! Section */}
+      <section className="py-20 relative overflow-hidden hero-section">
+
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#0B3C74]"></div>
+                <span className="text-xs tracking-[0.3em] text-gray-600 uppercase font-light">Fast Publishing</span>
+              </div>
+              
+              <h2 className="text-3xl lg:text-4xl font-light leading-tight">
+                <span className="font-thin text-gray-600">Get your book written and published in</span>
+                <br />
+                <span className="font-bold bg-gradient-to-r from-[#0B3C74] to-blue-600 bg-clip-text text-transparent">
+                  Less than a month!
+                </span>
+              </h2>
+              
+              <p className="text-base text-gray-600 leading-relaxed max-w-lg font-light">
+                Challenge us. We want to work with you to create the really cool stuff. Call Us at +1 323 982 3156
+              </p>
+              
+              <div className="flex gap-4 pt-4">
+                <button className="group relative overflow-hidden bg-[#0B3C74] text-white px-6 py-3 font-medium text-sm tracking-wider uppercase transition-all duration-500 hover:text-white">
+                  <span className="relative z-10">Talk to our expert</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                </button>
+                <button className="group relative overflow-hidden border border-[#0B3C74] text-[#0B3C74] px-6 py-3 font-medium text-sm tracking-wider uppercase transition-all duration-500 hover:text-white">
+                  <span className="relative z-10">CHAT NOW</span>
+                  <div className="absolute inset-0 bg-[#0B3C74] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Side - GetStartedForm */}
+            <div className="flex justify-center lg:justify-end">
+              <GetStartedForm />
             </div>
           </div>
         </div>
