@@ -1,0 +1,345 @@
+/* FAQ Page Styles */
+
+/* Main container */
+.faq-main {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Header section */
+.faq-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.faq-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.faq-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 48rem;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.faq-accordion-item {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-accordion-item:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.faq-accordion-button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.5rem 2rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.faq-accordion-button:hover {
+  background-color: #f8fafc;
+}
+
+.faq-accordion-button.active {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.faq-accordion-question {
+  flex: 1;
+  margin-right: 1rem;
+  line-height: 1.5;
+}
+
+.faq-accordion-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: #6b7280;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.faq-accordion-button.active .faq-accordion-icon {
+  color: #2563eb;
+  background-color: #dbeafe;
+  transform: rotate(0deg);
+}
+
+.faq-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-accordion-content.active {
+  max-height: 500px;
+}
+
+.faq-accordion-answer {
+  padding: 0 2rem 1.5rem 2rem;
+  color: #4b5563;
+  line-height: 1.625;
+  font-size: 1rem;
+}
+
+/* Contact Cards Section */
+.faq-contact-cards-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.faq-contact-cards-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.faq-contact-cards-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.faq-contact-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.faq-contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.faq-contact-card-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  transition: all 0.3s ease;
+}
+
+.faq-contact-card-icon.phone {
+  background-color: #dcfce7;
+}
+
+.faq-contact-card-icon.email {
+  background-color: #dbeafe;
+}
+
+.faq-contact-card-icon.chat {
+  background-color: #f3e8ff;
+}
+
+.faq-contact-card-svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.faq-contact-card-icon.phone .faq-contact-card-svg {
+  color: #16a34a;
+}
+
+.faq-contact-card-icon.email .faq-contact-card-svg {
+  color: #2563eb;
+}
+
+.faq-contact-card-icon.chat .faq-contact-card-svg {
+  color: #9333ea;
+}
+
+.faq-contact-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.faq-contact-card-main {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.faq-contact-card-detail {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Additional Help Section */
+.faq-help-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.faq-help-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.faq-help-icon-container {
+  width: 4rem;
+  height: 4rem;
+  background-color: #dbeafe;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.faq-help-icon {
+  width: 2rem;
+  height: 2rem;
+  color: #2563eb;
+}
+
+.faq-help-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.faq-help-description {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.faq-help-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.faq-primary-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.faq-primary-button:hover {
+  background-color: #1d4ed8;
+}
+
+.faq-secondary-button {
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.faq-secondary-button:hover {
+  background-color: #f9fafb;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .faq-help-buttons {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .faq-accordion-button {
+    font-size: 1.25rem;
+  }
+  
+  .faq-accordion-answer {
+    font-size: 1.125rem;
+  }
+  
+  .faq-accordion-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.75rem;
+  }
+  
+  .faq-title {
+    font-size: 3rem;
+  }
+  
+  .faq-contact-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
