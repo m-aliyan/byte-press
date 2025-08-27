@@ -1,3 +1,5 @@
+import Footer from '@/components/Footer';
+
 export default function PricingPage() {
   const packages = [
     {
@@ -10,7 +12,12 @@ export default function PricingPage() {
         "Formatting for self-publishing",
         "Basic cover design template",
         "Publishing checklist",
-        "Email support"
+        "Email support",
+        "Basic author bio template",
+        "Formatting guidelines",
+        "Publishing platform guidance",
+        "Basic marketing tips",
+        "Copyright information"
       ],
       popular: false,
       color: "blue"
@@ -28,7 +35,10 @@ export default function PricingPage() {
         "ISBN registration assistance",
         "Basic marketing strategy",
         "Priority support",
-        "2 rounds of revisions"
+        "2 rounds of revisions",
+        "Author bio and back cover copy",
+        "Book metadata optimization",
+        "E-book formatting (EPUB & PDF)"
       ],
       popular: true,
       color: "purple"
@@ -102,17 +112,17 @@ export default function PricingPage() {
     }
   ];
 
-  return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Transparent Pricing
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Choose the perfect package for your book project. All prices are transparent with no hidden fees. Need something custom? Let's discuss your specific requirements.
-          </p>
-        </div>
+           return (
+        <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="container mx-auto px-4 pt-24 pb-16">
+            <div className="text-center mb-24">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">
+                Transparent Pricing
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Choose the perfect package for your book project. All prices are transparent with no hidden fees. Need something custom? Let's discuss your specific requirements.
+              </p>
+            </div>
 
         {/* Main Packages */}
         <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
@@ -120,7 +130,7 @@ export default function PricingPage() {
             <div
               key={index}
               className={`relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
-                pkg.popular ? 'ring-2 ring-purple-500 scale-105' : ''
+                pkg.popular ? 'ring-2 ring-purple-500' : ''
               }`}
             >
               {pkg.popular && (
@@ -280,25 +290,27 @@ export default function PricingPage() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl text-white p-8 max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-20">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Ready to Start Your Book Project?
-            </h3>
-            <p className="text-xl text-blue-100 mb-6">
+            </h2>
+            <p className="text-lg text-gray-600 mb-6">
               Schedule a free consultation to discuss your project and get a personalized quote based on your specific needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-100 transition-colors">
+              <a href="/contact" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors">
                 Get Free Quote
               </a>
-              <a href="/faqs" className="border border-white text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-white hover:text-blue-600 transition-colors">
+              <a href="/faqs" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors">
                 View FAQs
               </a>
             </div>
           </div>
         </div>
       </div>
+      
+      <Footer />
     </main>
   )
 }

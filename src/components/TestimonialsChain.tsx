@@ -16,7 +16,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Prof. Robert Stewart",
     role: "Professional, responsive, and genuinely invested",
-    quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Book Publishing Point. Every detail was handled with care, and the final product exceeded my expectations.",
+    quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Bytes Press. Every detail was handled with care, and the final product exceeded my expectations.",
     rating: 5,
     date: "June 21, 2024",
     reviewCount: 6
@@ -32,7 +32,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Cortez Ellis",
     role: "A company that actually follows through",
-    quote: "Most promises in publishing fall flat. Not here. The team at Book Publishing Point didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
+    quote: "Most promises in publishing fall flat. Not here. The team at Bytes Press didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
     rating: 5,
     date: "May 13, 2024",
     reviewCount: 2
@@ -169,13 +169,13 @@ export default function TestimonialsChain() {
         `}</style>
       </div>
       
-      {/* Reason to choose Book Publishing Point Section */}
+      {/* Reason to choose Bytes Press Section */}
       <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
               <span className="text-[#111827]">Reason to choose</span>{' '}
-              <span className="text-[#0B3C74]">Book Publishing Point</span>
+              <span className="text-[#0B3C74]">Bytes Press</span>
             </h2>
             <p className="text-lg text-[#111827] max-w-3xl mx-auto">
               Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
@@ -191,7 +191,7 @@ export default function TestimonialsChain() {
               </div>
               <h3 className="text-xl font-semibold text-[#111827] mb-2">0% Sales Royalty</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
-                At Book Publishing Point, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
+                At Bytes Press, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
               </p>
             </div>
 
@@ -227,7 +227,7 @@ export default function TestimonialsChain() {
               </div>
               <h3 className="text-xl font-semibold text-[#111827] mb-2">Personalized Services</h3>
               <p className="text-[#0B3C74] text-sm leading-relaxed">
-                At Book Publishing Point, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
+                At Bytes Press, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
               </p>
             </div>
           </div>
@@ -259,14 +259,18 @@ export default function TestimonialsChain() {
               </p>
               
               <div className="flex gap-4 pt-4">
-                <button className="group relative overflow-hidden bg-[#0B3C74] text-white px-6 py-3 font-medium text-sm tracking-wider uppercase transition-all duration-500 hover:text-white">
-                  <span className="relative z-10">Talk to our expert</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                </button>
-                <button className="group relative overflow-hidden border border-[#0B3C74] text-[#0B3C74] px-6 py-3 font-medium text-sm tracking-wider uppercase transition-all duration-500 hover:text-white">
-                  <span className="relative z-10">CHAT NOW</span>
-                  <div className="absolute inset-0 bg-[#0B3C74] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                </button>
+                <a href="/contact" className="fancy">
+                  <span className="top-key"></span>
+                  <span className="text">Talk to our expert</span>
+                  <span className="bottom-key-1"></span>
+                  <span className="bottom-key-2"></span>
+                </a>
+                <a href="/contact" className="fancy">
+                  <span className="top-key"></span>
+                  <span className="text">CHAT NOW</span>
+                  <span className="bottom-key-1"></span>
+                  <span className="bottom-key-2"></span>
+                </a>
               </div>
             </div>
 

@@ -1,9 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import FreeQuoteForm from '@/components/ui/FreeQuoteForm';
+import { useState, useEffect } from 'react';
+import Header from '@/components/Header';
 import TestimonialsChain from '@/components/TestimonialsChain';
+import Footer from '@/components/Footer';
 import './page.css';
+
+// Extend Window interface for the observer
+declare global {
+  interface Window {
+    heroObserver?: IntersectionObserver;
+  }
+}
 
 export default function Home() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
@@ -12,49 +20,226 @@ export default function Home() {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
+  // Intersection Observer for fade-in animations
+  useEffect(() => {
+    // Function to set up observer with a small delay to ensure DOM is ready
+    const setupObserver = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add animation classes when entering viewport
+              if (entry.target.getAttribute('data-section') === 'hero') {
+                // Animate all elements in the hero section using accordion classes
+                const fadeUpElements = entry.target.querySelectorAll('.hero-fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.hero-fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.accordion-fade-left');
+                
+                console.log('Hero section entering viewport:');
+                console.log('fadeUpElements found:', fadeUpElements.length);
+                console.log('fadeScaleElements found:', fadeScaleElements.length);
+                console.log('fadeLeftElements found:', fadeLeftElements.length);
+                
+                // Ensure re-play by removing then re-adding with reflow
+                fadeUpElements.forEach(el => {
+                  el.classList.remove('animate');
+                  // force reflow
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  (el as HTMLElement).offsetHeight;
+                  el.classList.add('animate');
+                });
+                fadeScaleElements.forEach(el => {
+                  el.classList.remove('animate');
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  (el as HTMLElement).offsetHeight;
+                  el.classList.add('animate');
+                });
+                fadeLeftElements.forEach(el => {
+                  console.log('Replaying hero form animation');
+                  el.classList.remove('animate');
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  (el as HTMLElement).offsetHeight;
+                  el.classList.add('animate');
+                });
+              } else if (entry.target.classList.contains('accordion-section')) {
+                // Animate all elements in the accordion section
+                const fadeUpElements = entry.target.querySelectorAll('.accordion-fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.accordion-fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.accordion-fade-left');
+                
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+              } else if (entry.target.id === 'global-publishing') {
+                // Animate all elements in the global publishing section
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+              } else if (entry.target.id === 'book-marketing') {
+                // Animate all elements in the book marketing section
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+                revealImgElements.forEach(el => el.classList.add('animate'));
+              } else if (entry.target.id === 'children-stories') {
+                // Animate all elements in the children's stories section
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+                revealImgElements.forEach(el => el.classList.add('animate'));
+              } else if (entry.target.id === 'cta-section') {
+                // Animate all elements in the CTA section
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+                revealImgElements.forEach(el => el.classList.add('animate'));
+              }
+            } else {
+              // Remove animation classes when leaving viewport
+              if (entry.target.getAttribute('data-section') === 'hero') {
+                // Remove animation classes from all elements in the hero section
+                const fadeUpElements = entry.target.querySelectorAll('.hero-fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.hero-fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.accordion-fade-left');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => {
+                  console.log('Removing animate class from hero fadeLeft element:', el);
+                  el.classList.remove('animate');
+                });
+              } else if (entry.target.classList.contains('accordion-section')) {
+                // Remove animation classes from all elements
+                const fadeUpElements = entry.target.querySelectorAll('.accordion-fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.accordion-fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.accordion-fade-left');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => el.classList.remove('animate'));
+              } else if (entry.target.id === 'global-publishing') {
+                // Remove animation classes from all elements
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => el.classList.remove('animate'));
+              } else if (entry.target.id === 'book-marketing') {
+                // Remove animation classes from all elements
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => el.classList.remove('animate'));
+                revealImgElements.forEach(el => el.classList.remove('animate'));
+              } else if (entry.target.id === 'children-stories') {
+                // Remove animation classes from all elements
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => el.classList.remove('animate'));
+                revealImgElements.forEach(el => el.classList.remove('animate'));
+              } else if (entry.target.id === 'cta-section') {
+                // Remove animation classes from all elements
+                const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+                
+                fadeUpElements.forEach(el => el.classList.remove('animate'));
+                fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                fadeLeftElements.forEach(el => el.classList.remove('animate'));
+                revealImgElements.forEach(el => el.classList.remove('animate'));
+              }
+            }
+          });
+        },
+        {
+          threshold: 0.25, // Trigger when 25% of the element is visible
+          rootMargin: '0px 0px -50px 0px' // Start animation slightly before element comes into view
+        }
+      );
+
+      // Observe all sections
+      const heroSection = document.querySelector('[data-section="hero"]');
+      const accordionSection = document.querySelector('.accordion-section');
+      const globalPublishingSection = document.getElementById('global-publishing');
+      const bookMarketingSection = document.getElementById('book-marketing');
+      const childrenStoriesSection = document.getElementById('children-stories');
+      const ctaSection = document.getElementById('cta-section');
+      
+      if (heroSection) {
+        observer.observe(heroSection);
+        console.log('Hero section observer set up successfully');
+      } else {
+        console.log('Hero section not found, retrying...');
+      }
+      if (accordionSection) {
+        observer.observe(accordionSection);
+      }
+      if (globalPublishingSection) {
+        observer.observe(globalPublishingSection);
+      }
+      if (bookMarketingSection) {
+        observer.observe(bookMarketingSection);
+      }
+      if (childrenStoriesSection) {
+        observer.observe(childrenStoriesSection);
+      }
+      if (ctaSection) {
+        observer.observe(ctaSection);
+      }
+
+      return observer;
+    };
+
+    // Set up observer with a small delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      const observer = setupObserver();
+      
+      // Store observer reference for cleanup
+      window.heroObserver = observer;
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (window.heroObserver) {
+        window.heroObserver.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Content */}
-            <div className="hero-content text-center lg:text-left">
-              {/* Eyebrow */}
-              <p className="hero-eyebrow">
-                Book Publishing Point
-              </p>
-              
-              {/* Main H1 */}
-              <h1 className="hero-title">
-                The Book Publishing Company<br />
-                That Moves Your Story<br />
-                Forward
-              </h1>
-              
-              {/* Paragraph body */}
-              <p className="hero-description">
-                At Book Publishing Point, we don't just print pages. We help launch careers. From self publishing services to sharp book marketing, we're the publishing company that puts your goals at the center. Fiction, nonfiction, memoirs, or academic work — if it matters to you, it matters here.
-              </p>
-              
-              {/* Buttons with better spacing */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
-                <a href="/contact" className="btn btn-primary">
-                  Start Your Book Project
-                </a>
-                <a href="/services" className="btn btn-secondary">
-                  View Our Services
-                </a>
-              </div>
-            </div>
-            
-            {/* Free Quote Form */}
-            <div className="flex justify-center lg:justify-end">
-              <FreeQuoteForm />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Header />
 
       {/* Self Publishing Services Section */}
       <section className="services-section">
@@ -88,9 +273,42 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Column - Empty (reserved for future images) */}
+            {/* Right Column - Images with Chain Carousel Animation */}
             <div className="lg:col-span-2 hidden lg:block">
-              {/* Intentionally left empty - reserved for future content */}
+              <div className="flex justify-center items-center h-full relative overflow-hidden">
+                <div className="flex items-center justify-center space-x-8 relative mt-20">
+                  <img
+                    src="/images/bookpublishingpoint_images/5.png"
+                    alt="Self Publishing Service 1"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-1"
+                  />
+                  <img
+                    src="/images/bookpublishingpoint_images/6.png"
+                    alt="Self Publishing Service 2"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-2"
+                  />
+                  <img
+                    src="/images/bookpublishingpoint_images/7.png"
+                    alt="Self Publishing Service 3"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-3"
+                  />
+                  <img
+                    src="/images/bookpublishingpoint_images/2.png"
+                    alt="Self Publishing Service 4"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-4"
+                  />
+                  <img
+                    src="/images/bookpublishingpoint_images/3.png"
+                    alt="Self Publishing Service 5"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-5"
+                  />
+                  <img
+                    src="/images/bookpublishingpoint_images/4.png"
+                    alt="Self Publishing Service 6"
+                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-6"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -102,18 +320,26 @@ export default function Home() {
           <div className="grid lg:grid-cols-5 gap-8 items-start">
             {/* Left Column - Empty (reserved for future images) */}
             <div className="lg:col-span-2 hidden lg:block">
-              {/* Intentionally left empty - reserved for future content */}
+              <div className="flex justify-center items-start h-full pt-24">
+                <img 
+                  src="/images/dots.png" 
+                  alt="Decorative Dots" 
+                  className="max-w-full h-auto object-contain accordion-fade-left"
+                  style={{ maxHeight: '400px' }}
+                  id="accordion-image"
+                />
+              </div>
             </div>
             
             {/* Right Column - Accordion Content */}
             <div className="lg:col-span-3">
-              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3 accordion-fade-up">
                 What Sets This{' '}
                 <span className="text-[#0B3C74]">Book Publishing</span><br />
                 <span className="text-[#0B3C74]">Company</span> Apart
               </h2>
               
-              <div className="space-y-1">
+              <div className="space-y-1 accordion-fade-up" style={{ transitionDelay: '120ms' }}>
                 {/* Accordion Item 1 */}
                 <div className="accordion-item">
                   <button 
@@ -240,6 +466,19 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              
+              {/* CTA Button */}
+              <div className="mt-8 accordion-fade-scale" style={{ transitionDelay: '200ms' }}>
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] text-white px-6 py-3 rounded-lg font-semibold text-sm uppercase tracking-wide transition-colors duration-300 no-underline scrolling-text-btn"
+                >
+                  <span className="text-white text" data-text="START PROJECT">START PROJECT</span>
+                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -253,7 +492,7 @@ export default function Home() {
               Self Publishing Services That Actually Get the Job Done
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Book Publishing Point is a results-driven book publishing company built for authors who want more than promises. We offer a complete, professional book publishing solution — writing, editing, design, publishing — all under one roof, all done right.
+              Bytes Press is a results-driven book publishing company built for authors who want more than promises. We offer a complete, professional book publishing solution — writing, editing, design, publishing — all under one roof, all done right.
             </p>
           </div>
           
@@ -403,7 +642,7 @@ export default function Home() {
               A Self Publishing Process That Keeps You in Control
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              At Book Publishing Point, we've mapped out a smooth, transparent process designed for authors who want more than just printing. As a trusted self publishing company, we provide a professional book publishing solution that keeps you in the loop from first draft to final launch, without the confusion.
+              At Bytes Press, we've mapped out a smooth, transparent process designed for authors who want more than just printing. As a trusted self publishing company, we provide a professional book publishing solution that keeps you in the loop from first draft to final launch, without the confusion.
             </p>
           </div>
 
@@ -483,17 +722,24 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Reserved for Images (Blank Placeholder) */}
             <div className="hidden lg:block">
-              {/* Intentionally left empty - reserved for future images */}
+              <div className="flex justify-center items-center h-full">
+                <img 
+                  src="/images/global.png" 
+                  alt="Global Book Publishing" 
+                  className="max-w-full h-auto object-contain fade-left"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
             </div>
             
             {/* Right Column - Text Content */}
             <div className="pt-16 flex flex-col items-start justify-center">
-              <h2 className="hero-title mb-6 mt-0">
+              <h2 className="hero-title mb-6 mt-0 fade-up">
                 <span className="text-[#0B3C74]">A Global Book Publishing</span>
                 <span className="text-gray-900"> Company</span>
               </h2>
               
-              <div className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4 max-w-3xl">
+              <div className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4 max-w-3xl fade-up" style={{ transitionDelay: '120ms' }}>
                 <p>
                   We help you go beyond borders. As a leading global book publishing brand, we take your work from draft to distribution across Amazon, online retailers, and digital libraries worldwide.
                 </p>
@@ -502,7 +748,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline">
                   <span className="text-white">START PROJECT</span>
                   <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -516,16 +762,16 @@ export default function Home() {
       </section>
 
       {/* Book Marketing Services Section */}
-      <section className="py-20 bg-white">
+      <section id="book-marketing" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             {/* Left Column - Content */}
             <div className="text-left">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
                 <span className="text-indigo-900">Book Marketing Services</span> That Put Your Title in Motion
               </h2>
               
-              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl">
+              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl fade-up" style={{ transitionDelay: '120ms' }}>
                 <p>
                   Marketing your book doesn't need to be guesswork. Whether you're launching a novel or a Marketing For Beginners Book, we build real visibility through targeted self published book marketing that drives results.
                 </p>
@@ -534,7 +780,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <a 
                   href="/contact" 
                   className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline"
@@ -548,36 +794,50 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Column - Empty (Clean Space) */}
+            {/* Right Column - Image */}
             <div className="hidden lg:block">
-              {/* Intentionally left empty - clean right space */}
+              <div className="flex justify-center items-center h-full reveal-img">
+                <img 
+                  src="/images/bookpublishingpoint_images/1.png" 
+                  alt="Book Marketing Services" 
+                  className="max-w-full h-auto object-contain fade-left"
+                  style={{ maxHeight: '600px' }}
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Children's Book Stories Section */}
-      <section className="py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+      <section id="children-stories" className="py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
             {/* Left Column - Empty (Reserved for future image) */}
             <div className="hidden md:block">
-              {/* Intentionally left empty - reserved for future image */}
+              <div className="flex justify-center items-center h-full reveal-img">
+                <img 
+                  src="/images/create.png" 
+                  alt="Children's Book Stories" 
+                  className="max-w-full h-auto object-contain fade-left"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
             </div>
             
             {/* Right Column - Content (Left-aligned) */}
             <div className="text-left md:text-left order-2 md:order-2">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Create timeless <span className="text-indigo-900">children's stories</span> with Book Publishing Point
+              <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
+                Create timeless <span className="text-indigo-900">children's stories</span> with Bytes Press
               </h2>
               
-              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl">
+              <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4 max-w-2xl fade-up" style={{ transitionDelay: '120ms' }}>
                 <p>
-                  Are you an aspiring children's book author? At Book Publishing Point, we understand the importance of captivating young readers with memorable stories. Our Children's Book Service offers the guidance and support you need to bring your book to life. With our experienced team, we'll help you develop a unique and engaging plot, characters, and storyline across various age groups. Our comprehensive service covers editing, proofreading, formatting, illustrating, and designing to ensure a polished and professional book.
+                  Are you an aspiring children's book author? At Bytes Press, we understand the importance of captivating young readers with memorable stories. Our Children's Book Service offers the guidance and support you need to bring your book to life. With our experienced team, we'll help you develop a unique and engaging plot, characters, and storyline across various age groups. Our comprehensive service covers editing, proofreading, formatting, illustrating, and designing to ensure a polished and professional book.
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <a 
                   href="/contact" 
                   className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline"
@@ -595,30 +855,56 @@ export default function Home() {
       </section>
 
       {/* Call-to-Action Section */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section id="cta-section" className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Unlock the secrets to successful{' '}
-              <span className="text-indigo-900">Self-publishing</span>
-            </h2>
-            
-            <div className="text-gray-600 text-lg md:text-xl mb-8 space-y-2">
-              <p>Call Us to begin your project today!</p>
-              <p>Made 300+ Authors/Writers Dreams Come True.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            {/* Left Column - Image */}
+            <div className="hidden lg:block">
+              <div className="flex justify-start items-center h-full -ml-16 reveal-img">
+                <img
+                  src="/images/cta-left.webp"
+                  alt="Self-publishing Success"
+                  className="max-w-full h-auto object-contain fade-left"
+                  style={{ maxHeight: '350px' }}
+                />
+              </div>
             </div>
             
-            <div className="flex justify-center">
-              <a 
-                href="/contact" 
-                className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-300 no-underline"
-                aria-label="Get started now"
-              >
-                <span>Get started now</span>
-                <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+            {/* Center Column - Content */}
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 fade-up">
+                <span className="whitespace-nowrap">Unlock the secrets to</span> <span className="text-indigo-900 whitespace-nowrap">successful Self-publishing</span>
+              </h2>
+              
+              <div className="text-gray-600 text-lg md:text-xl mb-8 space-y-2 fade-up" style={{ transitionDelay: '120ms' }}>
+                <p>Call Us to begin your project today!</p>
+                <p>Made 300+ Authors/Writers Dreams Come True.</p>
+              </div>
+              
+              <div className="flex justify-center fade-scale" style={{ transitionDelay: '200ms' }}>
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center gap-3 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-300 no-underline"
+                  aria-label="Get started now"
+                >
+                  <span>Get started now</span>
+                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="hidden lg:block">
+              <div className="flex justify-end items-center h-full -mr-8 reveal-img">
+                <img 
+                  src="/images/cta-right.webp" 
+                  alt="Self-publishing Success" 
+                  className="max-w-full h-auto object-contain fade-left"
+                  style={{ maxHeight: '400px' }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -660,14 +946,15 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Why Authors Trust CTA Section */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-gray-900">
-            Why Authors Trust <span className="text-indigo-900">Book Publishing Point</span> to Get It Done Right
+            Why Authors Trust <span className="text-indigo-900">Bytes Press</span> to Get It Done Right
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-4xl mx-auto">
-            No fluff, no drag. At Book Publishing Point, we work with writers who are serious about getting published — whether it's their first shot or their fifth. Our team handles the production while you stay focused on the story. Fast communication, sharp execution, and real results. That's what we bring to the table.
+            No fluff, no drag. At Bytes Press, we work with writers who are serious about getting published — whether it's their first shot or their fifth. Our team handles the production while you stay focused on the story. Fast communication, sharp execution, and real results. That's what we bring to the table.
           </p>
           <div className="mt-8">
             <a href="#contact" aria-label="Get started now"
@@ -707,25 +994,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Publish Your Book?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join hundreds of successful authors who've transformed their ideas into bestselling books with BytePress.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-100 transition-colors">
-              Get Started Today
-            </a>
-            <a href="/portfolio" className="border border-white text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-white hover:text-blue-600 transition-colors">
-              View Our Work
-            </a>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </main>
   )
 }
