@@ -21,7 +21,8 @@ export default function ServicesPage() {
             </div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Book Writing</h3>
             <p className="text-gray-600 mb-6">
-              Professional ghostwriting and manuscript development services for authors and publishers.
+              Professional ghostwriting and manuscript development service
+              es for authors and publishers.
             </p>
             <a href="/services/writing" className="text-blue-600 font-medium hover:text-blue-700">
               Learn more →
