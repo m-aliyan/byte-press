@@ -236,6 +236,33 @@
   background: #0A2E5C;
 }
 
+/* Services Dropdown Focus Styles */
+.services-dropdown-item:focus,
+.services-dropdown-item:focus-visible {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* Services Dropdown Active/Click Styles */
+.services-dropdown-item:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: #dbeafe !important;
+  color: #2563eb !important;
+  transform: scale(0.98);
+  filter: blur(0.5px);
+}
+
+/* Services Dropdown Hover Effect */
+.services-dropdown-item:hover {
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {

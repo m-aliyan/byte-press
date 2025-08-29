@@ -371,7 +371,7 @@ export default function FAQsPage() {
                     </svg>
                   </div>
                   <h3 className="faq-contact-card-title">Phone Support</h3>
-                  <p className="faq-contact-card-main">+1 (555) 123-4567</p>
+                  <p className="faq-contact-card-main">833 323 0371</p>
                   <p className="faq-contact-card-detail">Mon-Fri, 9AM-6PM EST</p>
                 </div>
 
@@ -382,7 +382,7 @@ export default function FAQsPage() {
                     </svg>
                   </div>
                   <h3 className="faq-contact-card-title">Email Support</h3>
-                  <p className="faq-contact-card-main">hello@bytepress.com</p>
+                  <p className="faq-contact-card-main">info@bytepress.com</p>
                   <p className="faq-contact-card-detail">24/7 response time</p>
                 </div>
 
@@ -392,9 +392,9 @@ export default function FAQsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
-                  <h3 className="faq-contact-card-title">Live Chat</h3>
-                  <p className="faq-contact-card-main">Available on website</p>
-                  <p className="faq-contact-card-detail">Instant responses</p>
+                  <h3 className="faq-contact-card-title">Whatsapp</h3>
+                  <p className="faq-contact-card-main">(940) 765-6781</p>
+                  <p className="faq-contact-card-detail">Dm us for quiries</p>
                 </div>
               </div>
             </div>
