@@ -1,0 +1,62 @@
+/* Book Publishing Services Page Styles */
+
+/* Page Container */
+.book-publishing-services-page {
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  /* Content Area */
+  .page-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Floating Animation for Astronaut */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .page-content {
+      padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .page-content {
+      padding: 0.5rem;
+    }
+  }
+  
+  /* Animation Classes for Section 2 */
+  .reveal-img {
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  
+  /* Smooth transitions for all animated elements */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Ensure animations are smooth on all devices */
+  @media (prefers-reduced-motion: no-preference) {
+    .transition-all {
+      transition-duration: 1000ms;
+    }
+  }
+  
