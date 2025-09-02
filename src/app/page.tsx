@@ -112,6 +112,11 @@ export default function Home() {
                 fadeScaleElements.forEach(el => el.classList.add('animate'));
                 fadeLeftElements.forEach(el => el.classList.add('animate'));
                 revealImgElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.classList.contains('book-publishing-integration')) {
+                 // Animate all elements in the book publishing integration section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
               }
             } else {
               // Remove animation classes when leaving viewport
@@ -178,6 +183,11 @@ export default function Home() {
                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
                 fadeLeftElements.forEach(el => el.classList.remove('animate'));
                 revealImgElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.classList.contains('book-publishing-integration')) {
+                 // Remove animation classes from all elements
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
               }
             }
           });
@@ -195,6 +205,7 @@ export default function Home() {
       const bookMarketingSection = document.getElementById('book-marketing');
       const childrenStoriesSection = document.getElementById('children-stories');
       const ctaSection = document.getElementById('cta-section');
+       const bookPublishingIntegrationSection = document.querySelector('.book-publishing-integration');
       
       if (heroSection) {
         observer.observe(heroSection);
@@ -216,6 +227,9 @@ export default function Home() {
       }
       if (ctaSection) {
         observer.observe(ctaSection);
+      }
+       if (bookPublishingIntegrationSection) {
+         observer.observe(bookPublishingIntegrationSection);
       }
 
       return observer;
@@ -273,41 +287,138 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Column - Images with Chain Carousel Animation */}
+                         {/* Right Column - Images with Train Animation */}
             <div className="lg:col-span-2 hidden lg:block">
-              <div className="flex justify-center items-center h-full relative overflow-hidden">
-                <div className="flex items-center justify-center space-x-8 relative mt-20">
+               <div className="flex justify-center items-center h-full relative overflow-hidden mt-20">
+                                 <div className="train-container">
+                   <div className="train-track">
+                     {/* First set of images */}
                   <img
                     src="/images/bookpublishingpoint_images/5.png"
                     alt="Self Publishing Service 1"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/6.png"
                     alt="Self Publishing Service 2"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/7.png"
                     alt="Self Publishing Service 3"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/2.png"
                     alt="Self Publishing Service 4"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/3.png"
                     alt="Self Publishing Service 5"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/4.png"
                     alt="Self Publishing Service 6"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     {/* Second set for seamless loop */}
+                     <img
+                       src="/images/bookpublishingpoint_images/5.png"
+                       alt="Self Publishing Service 1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/6.png"
+                       alt="Self Publishing Service 2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/7.png"
+                       alt="Self Publishing Service 3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/2.png"
+                       alt="Self Publishing Service 4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/3.png"
+                       alt="Self Publishing Service 5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/4.png"
+                       alt="Self Publishing Service 6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     {/* Third set for extra smoothness */}
+                     <img
+                       src="/images/bookpublishingpoint_images/5.png"
+                       alt="Self Publishing Service 1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/6.png"
+                       alt="Self Publishing Service 2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/7.png"
+                       alt="Self Publishing Service 3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/2.png"
+                       alt="Self Publishing Service 4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/3.png"
+                       alt="Self Publishing Service 5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/4.png"
+                       alt="Self Publishing Service 6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                 </div>
+                </div>
+                                 <style jsx>{`
+                   .train-container {
+                     width: 100%;
+                     overflow: hidden;
+                     position: relative;
+                     background: transparent;
+                   }
+
+                   .train-track {
+                     display: flex;
+                     gap: 0;
+                     animation: trainMove 20s linear infinite;
+                     width: fit-content;
+                     will-change: transform;
+                     transform: translateX(0);
+                     backface-visibility: hidden;
+                     perspective: 1000px;
+                   }
+
+                   @keyframes trainMove {
+                     0% {
+                       transform: translateX(0);
+                     }
+                     100% {
+                       transform: translateX(-50%);
+                     }
+                   }
+
+                   .train-track:hover {
+                     animation-play-state: paused;
+                   }
+                 `}</style>
               </div>
             </div>
           </div>
@@ -920,7 +1031,7 @@ export default function Home() {
       </section>
 
       {/* Book Publishing Integration Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+       <section className="book-publishing-integration py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center flex flex-col items-center">
                           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
@@ -937,7 +1048,139 @@ export default function Home() {
             </div>
             
             {/* Space for Books Picture */}
-            <div className="mt-12 mb-12 h-48"></div>
+              <div className="mt-12 mb-12">
+                <div className="flex justify-center items-center relative overflow-hidden">
+                  <div className="train-container">
+                                         <div className="train-track">
+                       {/* First set of images */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       {/* Second set for seamless loop */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       {/* Third set for extra smoothness */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                     </div>
+                  </div>
+                                     <style jsx>{`
+                     .train-container {
+                       width: 100%;
+                       overflow: hidden;
+                       position: relative;
+                       background: transparent;
+                     }
+
+                                           .train-track {
+                        display: flex;
+                        gap: 0;
+                        animation: trainMove 18s linear infinite;
+                        width: fit-content;
+                        will-change: transform;
+                        transform: translateX(0);
+                        backface-visibility: hidden;
+                        perspective: 1000px;
+                      }
+
+                      @keyframes trainMove {
+                        0% {
+                          transform: translateX(0);
+                        }
+                        100% {
+                          transform: translateX(-50%);
+                        }
+                      }
+
+                     .train-track:hover {
+                       animation-play-state: paused;
+                     }
+                   `}</style>
+                </div>
+              </div>
             
             <div className="mt-6">
               <a 
