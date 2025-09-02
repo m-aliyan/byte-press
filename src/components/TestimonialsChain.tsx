@@ -79,25 +79,31 @@ const StarRating = ({ rating }: { rating: number }) => (
 );
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-  <div className="train-card w-72 h-96 bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex-none flex flex-col justify-between hover:scale-105 hover:bg-blue-50 transition-all">
-    {/* Top section with stars and date */}
-    <div className="flex items-center justify-between mb-3">
-      <StarRating rating={testimonial.rating} />
-      <div className="text-sm text-gray-500">{testimonial.date}</div>
-    </div>
+  <div className="train-card w-72 h-96 bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex-none flex flex-col justify-between hover:scale-105 transition-all relative overflow-hidden group">
+    {/* Blue fill effect on hover */}
+    <div className="absolute inset-0 bg-[#0B3C74] transform scale-0 group-hover:scale-100 transition-transform duration-300 origin-top-left rounded-xl"></div>
+    
+    {/* Content with relative positioning to stay above the blue fill */}
+    <div className="relative z-10 flex flex-col justify-between h-full">
+      {/* Top section with stars and date */}
+      <div className="flex items-center justify-between mb-3">
+        <StarRating rating={testimonial.rating} />
+        <div className="text-sm text-gray-500 group-hover:text-white transition-colors duration-300">{testimonial.date}</div>
+      </div>
 
-    {/* Author name and review count */}
-    <div className="mb-3">
-      <div className="font-semibold text-gray-900 text-lg">{testimonial.name}</div>
-      <div className="text-sm text-gray-400">{testimonial.reviewCount} Review{testimonial.reviewCount !== 1 ? 's' : ''}</div>
-    </div>
+      {/* Author name and review count */}
+      <div className="mb-3">
+        <div className="font-semibold text-gray-900 text-lg group-hover:text-white transition-colors duration-300">{testimonial.name}</div>
+        <div className="text-sm text-gray-400 group-hover:text-white transition-colors duration-300">{testimonial.reviewCount} Review{testimonial.reviewCount !== 1 ? 's' : ''}</div>
+      </div>
 
-    {/* Role/headline */}
-    <h4 className="font-bold text-gray-900 text-base mb-3">{testimonial.role}</h4>
+      {/* Role/headline */}
+      <h4 className="font-bold text-gray-900 text-base mb-3 group-hover:text-white transition-colors duration-300">{testimonial.role}</h4>
 
-    {/* Quote */}
-    <div className="text-gray-700 leading-relaxed text-sm">
-      {testimonial.quote}
+      {/* Quote */}
+      <div className="text-gray-700 leading-relaxed text-sm group-hover:text-white transition-colors duration-300">
+        {testimonial.quote}
+      </div>
     </div>
   </div>
 );
@@ -183,53 +189,53 @@ export default function TestimonialsChain() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#111827] mb-2">0% Sales Royalty</h3>
-              <p className="text-[#0B3C74] text-sm leading-relaxed">
-                At Bytes Press, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
-              </p>
-            </div>
+                         <div className="text-center p-6 bg-gray-50 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+               <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
+                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                 </svg>
+               </div>
+               <h3 className="text-xl font-semibold text-[#111827] mb-2">0% Sales Royalty</h3>
+               <p className="text-[#0B3C74] text-sm leading-relaxed">
+                 At Bytes Press, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
+               </p>
+             </div>
 
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#111827] mb-2">100% Complete Ownership</h3>
-              <p className="text-[#0B3C74] text-sm leading-relaxed">
-                We believe in complete transparency and ownership, which is why our clients retain 100% ownership of their books. This means that our clients can make all decisions regarding their book's content, distribution, and marketing.
-              </p>
-            </div>
+                         <div className="text-center p-6 bg-gray-50 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+               <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
+                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+               </div>
+               <h3 className="text-xl font-semibold text-[#111827] mb-2">100% Complete Ownership</h3>
+               <p className="text-[#0B3C74] text-sm leading-relaxed">
+                 We believe in complete transparency and ownership, which is why our clients retain 100% ownership of their books. This means that our clients can make all decisions regarding their book's content, distribution, and marketing.
+               </p>
+             </div>
 
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#111827] mb-2">On-Time Delivery</h3>
-              <p className="text-[#0B3C74] text-sm leading-relaxed">
-                We understand the importance of on-time delivery and always work hard to ensure that our clients receive their projects on or before the deadline. We have a dedicated team that works efficiently and effectively to meet our clients' needs.
-              </p>
-            </div>
+                         <div className="text-center p-6 bg-gray-50 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+               <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
+                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+               </div>
+               <h3 className="text-xl font-semibold text-[#111827] mb-2">On-Time Delivery</h3>
+               <p className="text-[#0B3C74] text-sm leading-relaxed">
+                 We understand the importance of on-time delivery and always work hard to ensure that our clients receive their projects on or before the deadline. We have a dedicated team that works efficiently and effectively to meet our clients' needs.
+               </p>
+             </div>
 
-            <div className="text-center p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-[#111827] mb-2">Personalized Services</h3>
-              <p className="text-[#0B3C74] text-sm leading-relaxed">
-                At Bytes Press, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
-              </p>
-            </div>
+                         <div className="text-center p-6 bg-gray-50 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+               <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
+                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                 </svg>
+               </div>
+               <h3 className="text-xl font-semibold text-[#111827] mb-2">Personalized Services</h3>
+               <p className="text-[#0B3C74] text-sm leading-relaxed">
+                 At Bytes Press, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
+               </p>
+             </div>
           </div>
         </div>
       </section>
@@ -255,7 +261,7 @@ export default function TestimonialsChain() {
               </h2>
               
               <p className="text-base text-gray-600 leading-relaxed max-w-lg font-light">
-                Challenge us. We want to work with you to create the really cool stuff. Call Us at +1 323 982 3156
+                Challenge us. We want to work with you to create the really cool stuff. Call Us at 833 323 0371
               </p>
               
               <div className="flex gap-4 pt-4">

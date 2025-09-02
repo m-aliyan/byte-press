@@ -651,6 +651,15 @@ body {
   color: #e0e7ff; /* Light blue-white for better readability */
 }
 
+/* Icon color transitions for stats cards */
+.testimonial-card .text-blue-600 {
+  transition: color 0.7s ease-in-out;
+}
+
+.testimonial-card:hover .text-blue-600 {
+  color: white;
+}
+
 /* Flip Card Styles */
 .flip-card {
   perspective: 1000px;

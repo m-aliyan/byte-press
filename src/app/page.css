@@ -270,6 +270,27 @@
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
+/* Design Image in Accordion Section */
+.design-image-container {
+  position: absolute;
+  top: 0;
+  right: -6rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.design-image {
+  max-width: 600px;
+  height: auto;
+  opacity: 0.3;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: opacity 0.3s ease;
+}
+
+.design-image:hover {
+  opacity: 0.4;
+}
+
 .accordion-item {
   border: 1px solid #9ca3af !important;
   border-radius: 0.5rem;
@@ -336,6 +357,13 @@
 .accordion-text {
   color: #0B3C74;
   font-size: 0.875rem;
+}
+
+/* Make accordion content container relative for absolute positioning */
+.accordion-section .lg\:col-span-3 {
+  position: relative;
+  padding-right: 8rem;
+  overflow: visible;
 }
 
 /* Animations */
@@ -677,6 +705,19 @@
     height: 350px;
     min-height: 350px;
   }
+  
+  .design-image-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  .design-image {
+    max-width: 500px;
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 640px) {
@@ -707,5 +748,18 @@
   .hero-section {
     padding: 0;
     height: 80vh;
+  }
+  
+  .design-image-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  .design-image {
+    max-width: 400px;
+    opacity: 0.4;
   }
 }

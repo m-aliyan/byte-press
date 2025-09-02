@@ -44,6 +44,10 @@ export default function Navigation() {
     }, 150); // Small delay to prevent flickering
   };
 
+  const handleServiceItemClick = () => {
+    setIsServicesOpen(false);
+  };
+
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -100,7 +104,8 @@ export default function Navigation() {
                     <Link
                       key={service.name}
                       href={service.href}
-                      className="px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm"
+                      className="px-4 py-3 text-gray-700 text-sm services-dropdown-item focus:outline-none focus:ring-0 focus:border-0 hover:bg-gray-50 active:bg-blue-50 active:text-blue-600 transition-all duration-200"
+                      onClick={handleServiceItemClick}
                     >
                       {service.name}
                     </Link>

@@ -339,6 +339,15 @@ export default function Home() {
                 <span className="text-[#0B3C74]">Company</span> Apart
               </h2>
               
+              {/* Decorative Design Image */}
+              <div className="design-image-container">
+                <img 
+                  src="/design.png" 
+                  alt="Design Decoration" 
+                  className="design-image"
+                />
+              </div>
+              
               <div className="space-y-1 accordion-fade-up" style={{ transitionDelay: '120ms' }}>
                 {/* Accordion Item 1 */}
                 <div className="accordion-item">
@@ -498,7 +507,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Book Publishing Service */}
-            <div className="service-card-scrollable group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
+            <div className="service-card-scrollable testimonial-card group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
               <div className="service-card-header">
                 <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -528,7 +537,7 @@ export default function Home() {
             </div>
 
             {/* Ghostwriting Service */}
-            <div className="service-card-scrollable group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
+            <div className="service-card-scrollable testimonial-card group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
               <div className="service-card-header">
                 <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -558,7 +567,7 @@ export default function Home() {
             </div>
 
             {/* Book Formatting Service */}
-            <div className="service-card-scrollable group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
+            <div className="service-card-scrollable testimonial-card group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
               <div className="service-card-header">
                 <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -588,7 +597,7 @@ export default function Home() {
             </div>
 
             {/* Editing & Proofreading Service */}
-            <div className="service-card-scrollable group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
+            <div className="service-card-scrollable testimonial-card group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
               <div className="service-card-header">
                 <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Slider360 from '@/components/360Slider';
+import Footer from '@/components/Footer';
 
 export default function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -12,29 +13,36 @@ export default function PortfolioPage() {
   const projectsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleElements(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      {
-        threshold: 0.01,
-        rootMargin: '0px 0px -100px 0px'
-      }
-    );
+     useEffect(() => {
+     const observer = new IntersectionObserver(
+       (entries) => {
+         entries.forEach((entry) => {
+           if (entry.isIntersecting) {
+             setVisibleElements(prev => new Set(prev).add(entry.target.id));
+           } else {
+             // Reset animation when element leaves viewport
+             setVisibleElements(prev => {
+               const newSet = new Set(prev);
+               newSet.delete(entry.target.id);
+               return newSet;
+             });
+           }
+         });
+       },
+       {
+         threshold: 0.01,
+         rootMargin: '0px 0px -100px 0px'
+       }
+     );
 
-    // Observe all sections
-    if (headerRef.current) observer.observe(headerRef.current);
-    if (categoriesRef.current) observer.observe(categoriesRef.current);
-    if (projectsRef.current) observer.observe(projectsRef.current);
-    if (ctaRef.current) observer.observe(ctaRef.current);
+     // Observe all sections
+     if (headerRef.current) observer.observe(headerRef.current);
+     if (categoriesRef.current) observer.observe(categoriesRef.current);
+     if (projectsRef.current) observer.observe(projectsRef.current);
+     if (ctaRef.current) observer.observe(ctaRef.current);
 
-    return () => observer.disconnect();
-  }, []);
+     return () => observer.disconnect();
+   }, []);
 
   const projects = [
     { id: 1, title: "The Dragon's Quest", category: "Fiction", image: "/books/1.png", rating: 4.8, stats: "2.5k reads" },
@@ -98,7 +106,7 @@ export default function PortfolioPage() {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <main className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950">
       {/* 360 Slider Hero Section */}
       <Slider360 />
       
@@ -110,24 +118,36 @@ export default function PortfolioPage() {
           <div className="absolute top-40 left-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className="text-center mb-16 relative z-10">
-          <h1 className="text-6xl font-bold text-white mb-6 animate-fade-in-up">
-            Our Book Portfolio
-          </h1>
-          
-          {/* Animated Underline */}
-          <div className="relative inline-block mb-8">
-            <div className="w-32 h-1 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 rounded-full mx-auto animate-pulse"></div>
-            {/* Animated Glow */}
-            <div className="absolute inset-0 w-32 h-1 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 rounded-full blur-lg opacity-50 animate-pulse"></div>
-            {/* Expanding Line */}
-            <div className="absolute inset-0 w-0 h-1 bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400 rounded-full mx-auto transition-all duration-1000 ease-out animate-expand-line"></div>
-          </div>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-            Discover the diverse range of books we've helped bring to life. Each project represents our commitment to quality and excellence in the publishing world.
-          </p>
-        </div>
+                 <div className="text-center mb-16 mt-20 relative z-10" ref={headerRef} id="header">
+           <h1 className={`text-6xl font-bold text-white mb-6 transition-all duration-1000 ${
+             visibleElements.has('header') 
+               ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
+               : 'opacity-0 translate-y-10 scale-95'
+           }`}>
+             Our Book Portfolio
+           </h1>
+           
+                      {/* Animated Underline */}
+            <div className={`relative inline-block mb-8 transition-all duration-1000 delay-100 ${
+              visibleElements.has('header') 
+                ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-10 scale-95'
+            }`}>
+              <div className="w-32 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto animate-pulse"></div>
+              {/* Animated Glow */}
+              <div className="absolute inset-0 w-32 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full blur-lg opacity-50 animate-pulse"></div>
+              {/* Expanding Line */}
+              <div className="absolute inset-0 w-0 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full mx-auto transition-all duration-1000 ease-out animate-expand-line"></div>
+            </div>
+           
+           <p className={`text-xl text-gray-300 max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
+             visibleElements.has('header') 
+               ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
+               : 'opacity-0 translate-y-10 scale-95'
+           }`}>
+             Discover the diverse range of books we've helped bring to life. Each project represents our commitment to quality and excellence in the publishing world.
+           </p>
+         </div>
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-6 mb-16 relative z-10" ref={categoriesRef} id="categories">
@@ -135,26 +155,26 @@ export default function PortfolioPage() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-8 py-4 rounded-2xl backdrop-blur-sm border-2 shadow-2xl hover:shadow-3xl transition-all duration-500 font-semibold text-lg transform hover:scale-110 relative overflow-hidden group ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white border-purple-400 shadow-purple-500/50 scale-105'
-                  : 'bg-white/10 text-white border-white/30 hover:text-purple-300 hover:bg-white/20 hover:border-purple-400/50'
-              } ${
-                visibleElements.has('categories') 
-                  ? 'animate-fade-in-up opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-10'
-              }`}
+                             className={`px-8 py-4 rounded-2xl backdrop-blur-sm border-2 shadow-2xl hover:shadow-3xl transition-all duration-500 font-semibold text-lg transform hover:scale-110 relative overflow-hidden group ${
+                 selectedCategory === category
+                   ? 'bg-gradient-to-r from-blue-600 to-blue-800 text-white border-blue-400 shadow-blue-500/50 scale-105'
+                   : 'bg-white/10 text-white border-white/30 hover:text-blue-300 hover:bg-white/20 hover:border-blue-400/50'
+               } ${
+                 visibleElements.has('categories') 
+                   ? 'animate-fade-in-up opacity-100 translate-y-0' 
+                   : 'opacity-0 translate-y-10'
+               }`}
               style={{
                 animationDelay: `${index * 75}ms`,
                 transitionDelay: visibleElements.has('categories') ? `${index * 75}ms` : '0ms'
               }}
             >
-              {/* Button Background Glow */}
-              <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-600/20 to-blue-600/20'
-                  : 'bg-gradient-to-r from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/10 group-hover:to-blue-500/10'
-              }`}></div>
+                             {/* Button Background Glow */}
+               <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+                 selectedCategory === category
+                   ? 'bg-gradient-to-r from-blue-600/20 to-blue-800/20'
+                   : 'bg-gradient-to-r from-blue-500/0 to-blue-700/0 group-hover:from-blue-500/10 group-hover:to-blue-700/10'
+               }`}></div>
               
               {/* Button Content */}
               <span className="relative z-10">{category}</span>
@@ -162,9 +182,9 @@ export default function PortfolioPage() {
               {/* Hover Shine Effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl"></div>
               
-              {/* Floating Particles */}
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
-              <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse delay-200"></div>
+                             {/* Floating Particles */}
+               <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+               <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse delay-200"></div>
             </button>
           ))}
         </div>
@@ -240,37 +260,43 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        {/* Book Marketing Section */}
-        <div className="mt-20 relative z-10" ref={ctaRef} id="cta">
+                 {/* Book Marketing Section */}
+         <div className="mt-20 mb-32 relative z-10" ref={ctaRef} id="cta">
           <div className="relative overflow-hidden rounded-3xl border border-white/20 shadow-2xl">
-            {/* Handshake Background Image */}
-            <div className="absolute inset-0">
-              <img 
-                src="/handshake image.jpg" 
-                alt="Professional handshake background" 
-                className="w-full h-full object-cover"
-              />
-              {/* Dark overlay for better text readability */}
-              <div className="absolute inset-0 bg-black/50"></div>
-            </div>
+                         {/* Neon Background Image */}
+             <div className="absolute inset-0">
+               <img 
+                 src="/neon.png" 
+                 alt="Neon background" 
+                 className="w-full h-full object-cover"
+               />
+                               {/* Light blue overlay for better text readability */}
+                <div className="absolute inset-0 bg-blue-200/40"></div>
+             </div>
 
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0">
-              <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse animation-delay-4000"></div>
-            </div>
+                         {/* Animated Background Elements */}
+             <div className="absolute inset-0">
+               <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
+               <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/30 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-400/30 rounded-full blur-3xl animate-pulse animation-delay-4000"></div>
+             </div>
 
             <div className="relative p-16 text-center">
               {/* Main Content */}
               <div className="mb-12">
-                <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
-                  visibleElements.has('cta') 
-                    ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
-                    : 'opacity-0 translate-y-10 scale-95'
-                } bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent drop-shadow-2xl`}>
-                  Striving To Sell More Of Your Books?
-                </h2>
+                                                  <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
+                    visibleElements.has('cta') 
+                      ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
+                      : 'opacity-0 translate-y-10 scale-95'
+                  } drop-shadow-2xl relative group`}>
+                    <span className="relative z-10">Striving To Sell More Of Your Books?</span>
+                    {/* Shining White Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white via-blue-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                    {/* Animated Shine Line */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
+                    {/* Text Glow */}
+                    <div className="absolute inset-0 text-white blur-sm opacity-70"></div>
+                  </h2>
                 <p className={`text-2xl md:text-3xl text-gray-200 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
                   visibleElements.has('cta') 
                     ? 'animate-fade-in-up opacity-100 translate-y-0 scale-100' 
@@ -287,74 +313,45 @@ export default function PortfolioPage() {
                   : 'opacity-0 translate-y-10 scale-95'
               }`}>
                 
-                {/* Get Started Button */}
-                <button className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 overflow-hidden animate-pulse">
-                  <span className="relative z-10">Get Started</span>
-                  {/* Button Shine Effect */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                  {/* Button Glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {/* Floating Particles */}
-                  <div className="absolute -top-2 -right-2 w-3 h-3 bg-yellow-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce"></div>
-                  <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
-                </button>
+                                                  {/* Get Started Button */}
+                  <a href="/contact" className="group relative px-10 py-4 bg-gradient-to-r from-blue-300 to-blue-500 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-blue-400/50 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 overflow-hidden animate-pulse inline-block">
+                    <span className="relative z-10">Get Started</span>
+                    {/* Button Shine Effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    {/* Button Glow */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-300 to-blue-500 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {/* Floating Particles */}
+                    <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-200 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce"></div>
+                    <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
+                  </a>
                 
-                {/* Live Chat Button */}
-                <button className="group relative px-10 py-4 border-2 border-white/30 text-white font-bold text-lg rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:border-white/50 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 overflow-hidden animate-pulse animation-delay-200">
-                  <span className="relative z-10">Live Chat</span>
-                  {/* Floating Particles */}
-                  <div className="absolute -top-2 -right-2 w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce"></div>
-                  <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
-                  {/* Glow Effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500/0 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </button>
+                                 
                 
-                {/* Toll Free Button */}
-                <button className="group relative px-10 py-4 border-2 border-white/30 text-white font-bold text-lg rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:border-white/50 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 overflow-hidden animate-pulse animation-delay-400">
-                  <span className="relative z-10">Toll Free 855-718-5581</span>
-                  {/* Phone Icon Glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500/0 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {/* Floating Particles */}
-                  <div className="absolute -top-2 -right-2 w-2 h-2 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce"></div>
-                  <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
-                </button>
+                                                  {/* View Our Services Button */}
+                  <a href="/services" className="group relative px-10 py-4 border-2 border-blue-200/60 text-white font-bold text-lg rounded-2xl backdrop-blur-sm hover:bg-blue-200/20 hover:border-blue-300/80 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 overflow-hidden animate-pulse animation-delay-400 inline-block">
+                    <span className="relative z-10">View Our Services</span>
+                    {/* Phone Icon Glow */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-200/0 to-blue-200/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {/* Floating Particles */}
+                    <div className="absolute -top-2 -right-2 w-2 h-2 bg-blue-200 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce"></div>
+                    <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
+                  </a>
               </div>
               
-              {/* Decorative Elements */}
-              <div className="absolute top-4 left-4 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
-              <div className="absolute top-4 right-4 w-2 h-2 bg-pink-400 rounded-full animate-ping animation-delay-1000"></div>
-              <div className="absolute bottom-4 left-4 w-2 h-2 bg-cyan-400 rounded-full animate-ping animation-delay-2000"></div>
-              <div className="absolute bottom-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-ping animation-delay-3000"></div>
+                             {/* Decorative Elements */}
+               <div className="absolute top-4 left-4 w-2 h-2 bg-blue-200 rounded-full animate-ping"></div>
+               <div className="absolute top-4 right-4 w-2 h-2 bg-blue-300 rounded-full animate-ping animation-delay-1000"></div>
+               <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-100 rounded-full animate-ping animation-delay-2000"></div>
+               <div className="absolute bottom-4 right-4 w-2 h-2 bg-blue-200 rounded-full animate-ping animation-delay-3000"></div>
             </div>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16 relative z-10">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-2xl p-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-1000">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Start Your Book Project?
-            </h3>
-            <p className="text-gray-300 mb-6">
-              Let's discuss how we can help bring your book idea to life and join our portfolio of successful publications.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Get Started
-              </a>
-              <a 
-                href="/services" 
-                className="border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
-              >
-                View Services
-              </a>
-            </div>
-          </div>
-        </div>
+        
       </div>
+      
+      {/* Footer */}
+      <Footer />
     </main>
   )
 }
