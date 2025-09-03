@@ -301,7 +301,7 @@ export default function BookPublishingServices() {
     {
       name: "Prof. Robert Stewart",
       role: "Professional, responsive, and genuinely invested",
-      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Bytes Press. Every detail was handled with care, and the final product exceeded my expectations.",
+      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Book Publishing Point. Every detail was handled with care, and the final product exceeded my expectations.",
       rating: 5,
       date: "June 21, 2024",
       reviewCount: 6
@@ -317,34 +317,34 @@ export default function BookPublishingServices() {
     {
       name: "Cortez Ellis",
       role: "A company that actually follows through",
-      quote: "Most promises in publishing fall flat. Not here. The team at Bytes Press didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
+      quote: "Most promises in publishing fall flat. Not here. The team at Book Publishing Point didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
       rating: 5,
       date: "May 13, 2024",
       reviewCount: 2
     },
     {
-      name: "Melanie Rogers",
-      role: "Outstanding attention to detail",
-      quote: "From the first draft to the final print, every correction and suggestion made my manuscript stronger. I'm thrilled with the professional polish.",
+      name: "Linda Ray",
+      role: "Top-notch ghostwriting and editing support",
+      quote: "I had an idea, but no time to write. Their ghostwriting team stepped in and created something that sounded just like me. Editing was tight, and communication was constant.",
       rating: 5,
-      date: "April 18, 2024",
-      reviewCount: 3
-    },
-    {
-      name: "Dr. Lisa Chen",
-      role: "Made publishing simple",
-      quote: "The team walked me through each stage with clarity and patience. Publishing my first research book felt effortless.",
-      rating: 5,
-      date: "March 12, 2024",
+      date: "May 12, 2024",
       reviewCount: 1
     },
     {
-      name: "Jamal Thompson",
-      role: "Exceptional marketing support",
-      quote: "BytePress didn't stop at publishing; their marketing strategies put my book in front of the right readers and sales followed.",
+      name: "Nikhil Arora",
+      role: "Global reach, local feel",
+      quote: "Even though I'm based outside the U.S., the process felt close and collaborative. They helped publish my book globally without a single hiccup. Professional, helpful, and totally reliable.",
       rating: 5,
-      date: "February 3, 2024",
-      reviewCount: 5
+      date: "May 3, 2024",
+      reviewCount: 2
+    },
+    {
+      name: "Claire Morrison",
+      role: "A standout partner for self-publishing",
+      quote: "This team knows what they're doing. They walked me through the whole publishing journey, helped me market my book, and made sure every version was spot on. Couldn't have asked for a better experience.",
+      rating: 5,
+      date: "May 7, 2024",
+      reviewCount: 1
     }
   ];
 
@@ -808,76 +808,88 @@ export default function BookPublishingServices() {
             
             {/* Bottom Section - 4 Flipable Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl">
-            {/* Card 1 - Professional Formatting */}
+            {/* Card 1 - Real Formatting Expertise */}
             <div className="flip-card group">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                    <span className="text-4xl font-bold">01</span>
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                    01
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center">Professional Formatting</h3>
+                  <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Real Formatting Expertise</h3>
                 </div>
                 {/* Back Side */}
-                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <p className="text-white text-sm leading-relaxed text-center">
-                    Our expert team delivers professional book formatting that meets industry standards and platform requirements for both print and digital publishing.
+                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                    01
+                  </div>
+                  <p className="text-white text-sm leading-relaxed text-left">
+                    Our team isn't guessing. Each project is handled by seasoned professionals who understand layout structure, reader flow, and what makes a book look ready for print or digital shelves.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 2 - Custom Layout Design */}
+            {/* Card 2 - Built Around Your Book */}
             <div className="flip-card group">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                    <span className="text-4xl font-bold">02</span>
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                    02
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center">Custom Layout Design</h3>
+                  <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Built Around Your Book</h3>
                 </div>
                 {/* Back Side */}
-                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <p className="text-white text-sm leading-relaxed text-center">
-                    We create custom layouts tailored to your genre and audience, ensuring your book looks professional and reads beautifully on every platform.
+                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                    02
+                  </div>
+                  <p className="text-white text-sm leading-relaxed text-left">
+                    Every manuscript has its own rhythm. We shape the format to match your genre, voice, and audience, not just a set of templates. No generic layouts, only custom-fit results.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 3 - Multi-Platform Compatibility */}
+            {/* Card 3 - Speed Without the Stress */}
             <div className="flip-card group">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                    <span className="text-4xl font-bold">03</span>
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                    03
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center">Multi-Platform Compatibility</h3>
+                  <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Speed Without the Stress</h3>
                 </div>
                 {/* Back Side */}
-                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <p className="text-white text-sm leading-relaxed text-center">
-                    Your book will be formatted for all major platforms including Amazon, Apple Books, Kobo, and print-on-demand services.
+                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                    03
+                  </div>
+                  <p className="text-white text-sm leading-relaxed text-left">
+                    Deadlines don't scare us. With fast-turn formatting and smooth review cycles, we keep your book moving forward without slowing you down.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Card 4 - Fast Turnaround */}
+            {/* Card 4 - Support That Actually Supports */}
             <div className="flip-card group">
               <div className="flip-card-inner">
-                <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                    <span className="text-4xl font-bold">04</span>
+                <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                    04
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center">Fast Turnaround</h3>
+                  <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Support That Actually Supports</h3>
                 </div>
                 {/* Back Side */}
-                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                  <p className="text-white text-sm leading-relaxed text-center">
-                    We deliver professional formatting within 5-10 business days, ensuring your book gets to market quickly without compromising quality.
+                <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                  <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                    04
+                  </div>
+                  <p className="text-white text-sm leading-relaxed text-left">
+                    Questions? Edits? Requests? You get responsive formatting support from people who know the process inside out. From upload to approval, we've got your back.
                   </p>
                 </div>
               </div>
@@ -885,61 +897,6 @@ export default function BookPublishingServices() {
           </div>
         </div>
       </div>
-      </section>
-
-      {/* Section 8 - What our client's say - Same Size as Section 2 */}
-      <section id="section-8" className="h-screen bg-white flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16">
-            What our client's <span className="text-[#0B3C74]">say</span>
-          </h2>
-
-          {/* Train Effect Layout */}
-          <div className="train-container mb-8">
-            <div className="train-track">
-              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
-                <TestimonialCard key={index} testimonial={testimonial} />
-              ))}
-            </div>
-          </div>
-
-          <style jsx>{`
-            .train-container {
-              width: 100%;
-              overflow: hidden;
-              position: relative;
-            }
-
-            .train-track {
-              display: flex;
-              gap: 1.5rem;
-              animation: trainMove 45s linear infinite;
-              width: fit-content;
-              will-change: transform;
-            }
-
-            @keyframes trainMove {
-              0% {
-                transform: translateX(0);
-              }
-              100% {
-                transform: translateX(-50%);
-              }
-            }
-
-            @media (max-width: 768px) {
-              .train-track {
-                gap: 1rem;
-                animation-duration: 35s;
-              }
-            }
-
-            .train-card:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 8px 24px rgba(11, 60, 116, 0.15);
-            }
-          `}</style>
-        </div>
       </section>
 
       {/* FAQ Section */}
@@ -1117,6 +1074,61 @@ export default function BookPublishingServices() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section 8 - What our client's say - Same Size as Section 2 */}
+      <section id="section-8" className="h-screen bg-white flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16">
+            What our client's <span className="text-[#0B3C74]">say</span>
+          </h2>
+
+          {/* Train Effect Layout */}
+          <div className="train-container mb-8">
+            <div className="train-track">
+              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
+                <TestimonialCard key={index} testimonial={testimonial} />
+              ))}
+            </div>
+          </div>
+
+          <style jsx>{`
+            .train-container {
+              width: 100%;
+              overflow: hidden;
+              position: relative;
+            }
+
+            .train-track {
+              display: flex;
+              gap: 1.5rem;
+              animation: trainMove 45s linear infinite;
+              width: fit-content;
+              will-change: transform;
+            }
+
+            @keyframes trainMove {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+
+            @media (max-width: 768px) {
+              .train-track {
+                gap: 1rem;
+                animation-duration: 35s;
+              }
+            }
+
+            .train-card:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 8px 24px rgba(11, 60, 116, 0.15);
+            }
+          `}</style>
         </div>
       </section>
 
