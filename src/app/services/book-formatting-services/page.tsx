@@ -4,6 +4,8 @@ import './page.css';
 import { useState, useEffect } from 'react';
 import GetStartedForm from '../../../components/ui/GetStartedForm';
 import Footer from '../../../components/Footer';
+import { FAQAccordion } from '../../../components/FAQAccordion';
+import { formattingFAQData } from '../../../data/faqData-formatting';
 
 export default function BookPublishingServices() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -301,7 +303,7 @@ export default function BookPublishingServices() {
     {
       name: "Prof. Robert Stewart",
       role: "Professional, responsive, and genuinely invested",
-      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Book Publishing Point. Every detail was handled with care, and the final product exceeded my expectations.",
+      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at BytePress. Every detail was handled with care, and the final product exceeded my expectations.",
       rating: 5,
       date: "June 21, 2024",
       reviewCount: 6
@@ -317,7 +319,7 @@ export default function BookPublishingServices() {
     {
       name: "Cortez Ellis",
       role: "A company that actually follows through",
-      quote: "Most promises in publishing fall flat. Not here. The team at Book Publishing Point didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
+      quote: "Most promises in publishing fall flat. Not here. The team at BytePress didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
       rating: 5,
       date: "May 13, 2024",
       reviewCount: 2
@@ -413,7 +415,7 @@ export default function BookPublishingServices() {
             <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              At Book Publishing Point, we turn raw manuscripts into clean, professional layouts that read as good as they look. Our Book Formatting Services focus on the details that shape the reader experience — spacing, margins, typography, and flow. As a trusted book formatting company, we align your content with publishing standards and visual polish, setting the tone from the first page to the last.
+              At BytePress, we turn raw manuscripts into clean, professional layouts that read as good as they look. Our Book Formatting Services focus on the details that shape the reader experience — spacing, margins, typography, and flow. As a trusted book formatting company, we align your content with publishing standards and visual polish, setting the tone from the first page to the last.
             </p>
             <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[200ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -614,7 +616,7 @@ export default function BookPublishingServices() {
                   section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
-                    In the realm of Your words deserve a layout that holds attention. At Book Publishing Point, we deliver a book formatting solution that makes your manuscript print-ready, digital-friendly, and easy to read on every platform. From paperback interiors to precise Kindle book format alignment, we cover every technical detail.
+                    In the realm of Your words deserve a layout that holds attention. At BytePress, we deliver a book formatting solution that makes your manuscript print-ready, digital-friendly, and easy to read on every platform. From paperback interiors to precise Kindle book format alignment, we cover every technical detail.
                   </p>
                   
                   <p>
@@ -708,7 +710,7 @@ export default function BookPublishingServices() {
                   section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
-                    At Book Publishing Point, manuscript layout isn't an afterthought — it's a craft. Our manuscript formatting process brings structure, clarity, and polish to your draft so it reads cleanly and looks publication-ready from the first page.
+                    At BytePress, manuscript layout isn't an afterthought — it's a craft. Our manuscript formatting process brings structure, clarity, and polish to your draft so it reads cleanly and looks publication-ready from the first page.
                   </p>
                   
                   <p>
@@ -796,7 +798,7 @@ export default function BookPublishingServices() {
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 ${
                 section7Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                <span className="text-black">Why Choose Book Publishing Point </span>
+                <span className="text-black">Why Choose BytePress </span>
                 <span className="text-[#0B3C74]">for Formatting Your Book?</span>
               </h2>
               <p className={`text-gray-700 text-base leading-relaxed max-w-3xl mx-auto transition-all duration-1000 delay-[100ms] ${
@@ -899,7 +901,8 @@ export default function BookPublishingServices() {
       </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - OLD VERSION (COMMENTED OUT) */}
+      {/* 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -911,7 +914,6 @@ export default function BookPublishingServices() {
             </p>
 
             <div className="space-y-4">
-              {/* FAQ 1 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -937,8 +939,6 @@ export default function BookPublishingServices() {
                   </div>
                 )}
               </div>
-
-              {/* FAQ 2 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -964,8 +964,6 @@ export default function BookPublishingServices() {
                   </div>
                 )}
               </div>
-
-              {/* FAQ 3 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -991,8 +989,6 @@ export default function BookPublishingServices() {
                   </div>
                 )}
               </div>
-
-              {/* FAQ 4 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -1018,8 +1014,6 @@ export default function BookPublishingServices() {
                   </div>
                 )}
               </div>
-
-              {/* FAQ 5 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -1045,8 +1039,6 @@ export default function BookPublishingServices() {
                   </div>
                 )}
               </div>
-
-              {/* FAQ 6 */}
               <div className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
@@ -1076,6 +1068,14 @@ export default function BookPublishingServices() {
           </div>
         </div>
       </section>
+      */}
+
+      {/* NEW FAQ ACCORDION COMPONENT */}
+      <FAQAccordion 
+        faqData={formattingFAQData}
+        title="Got Formatting Questions? We've Got Straight Answers"
+        subtitle="Before contacting us you might want to check whether your question is one of our FAQs."
+      />
 
       {/* Section 8 - What our client's say - Same Size as Section 2 */}
       <section id="section-8" className="h-screen bg-white flex items-center">
@@ -1293,7 +1293,7 @@ export default function BookPublishingServices() {
       </section>
 
       {/* Logos Carousel Section */}
-      <section className="py-16 bg-white">
+      {/*<section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="logos-carousel-container">
             <div className="logos-carousel-track">
@@ -1304,7 +1304,7 @@ export default function BookPublishingServices() {
               <img src="/services/f-logo5.webp" alt="Logo 5" className="logo-item" />
               <img src="/services/award1.webp" alt="Award" className="logo-item" />
               {/* Duplicate for seamless loop */}
-              <img src="/services/f-logo1.webp" alt="Logo 1" className="logo-item" />
+{/*              <img src="/services/f-logo1.webp" alt="Logo 1" className="logo-item" />
               <img src="/services/f-logo2.webp" alt="Logo 2" className="logo-item" />
               <img src="/services/f-logo3.webp" alt="Logo 3" className="logo-item" />
               <img src="/services/f-logo4.webp" alt="Logo 4" className="logo-item" />
@@ -1364,7 +1364,7 @@ export default function BookPublishingServices() {
           `}</style>
         </div>
       </section>
-
+*/}
       {/* Footer */}
       <Footer />
     </div>
