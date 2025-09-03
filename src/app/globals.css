@@ -822,3 +822,40 @@ a {
 .chain-animate {
   background-color: transparent !important;
 }
+
+/* Dropdown animation for pricing sections */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 1000px;
+  }
+}
+
+/* Button pulse animation */
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 139, 139, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(46, 139, 139, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 139, 139, 0);
+  }
+}
+
+/* Smooth hover transitions for pricing cards */
+.pricing-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}

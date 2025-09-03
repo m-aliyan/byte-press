@@ -1,316 +1,789 @@
+'use client';
+
+import { useState } from 'react';
 import Footer from '@/components/Footer';
+import TestimonialsChain from '@/components/TestimonialsChain';
 
 export default function PricingPage() {
-  const packages = [
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
+  const ebookCategories = [
     {
-      name: "Starter",
-      price: "$500",
-      description: "Perfect for authors who need basic editing and formatting",
+      id: 'ghostwriting',
+      category: 'GHOSTWRITING',
+      title: 'Creative Ghost Writing At Book Writing Lane',
+      description: 'Our wide range of ghostwriting services at reasonable rates offer you a certified group of expert writers, editors, publishing mavericks who work cooperatively to compose a book that hits the tracks superbly.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'Creative content with a range of 200-300 pages.',
+          priceRange: '$2,500 - $3,500',
+          note: '(Approx. $120/page)'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Professionally designed content with a range of 350 pages & beyond.',
+          priceRange: '$4,500 - $6,000',
+          note: '(Approx. $100/page)'
+        }
+      },
       features: [
-        "Manuscript review & feedback",
-        "Basic copy editing (up to 50,000 words)",
-        "Formatting for self-publishing",
-        "Basic cover design template",
-        "Publishing checklist",
-        "Email support",
-        "Basic author bio template",
-        "Formatting guidelines",
-        "Publishing platform guidance",
-        "Basic marketing tips",
-        "Copyright information"
-      ],
-      popular: false,
-      color: "blue"
+        'Professional ghostwriters with industry experience',
+        'Comprehensive research and fact-checking',
+        'Multiple revision rounds included',
+        'Confidentiality agreement protection',
+        'Genre-specific expertise available',
+        'Collaborative writing process',
+        'Manuscript development consultation',
+        'Style guide adherence'
+      ]
     },
     {
-      name: "Professional",
-      price: "$2,500",
-      description: "Comprehensive package for serious authors",
+      id: 'cover-design',
+      category: 'COVER DESIGNING',
+      title: 'Professional Cover Designing',
+      description: 'The presentation of the book plays a pivotal role in publishing. Our professional and expert designers create striking book designs that are creative and leave the readers stunned.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'Team of 2 creative designers’ research and provide 4 different concepts.',
+          priceRange: '$599.00',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Team of 3 creative designers’ conceptually design 6 unique concepts.',
+          priceRange: '$999.00',
+          note: 'Premium Package'
+        }
+      },
       features: [
-        "Everything in Starter, plus:",
-        "Professional line editing",
-        "Content development consultation",
-        "Custom cover design (3 concepts)",
-        "Interior layout design",
-        "ISBN registration assistance",
-        "Basic marketing strategy",
-        "Priority support",
-        "2 rounds of revisions",
-        "Author bio and back cover copy",
-        "Book metadata optimization",
-        "E-book formatting (EPUB & PDF)"
-      ],
-      popular: true,
-      color: "purple"
+        'Custom artwork and typography',
+        'Market research and genre analysis',
+        'Multiple design concepts',
+        'High-resolution files for print and digital',
+        'Spine and back cover design',
+        'Unlimited revisions until satisfied',
+        'Print-ready specifications',
+        'Commercial usage rights'
+      ]
     },
     {
-      name: "Premium",
-      price: "$5,000",
-      description: "Full-service package for bestseller potential",
+      id: 'book-trailer',
+      category: 'BOOK TRAILER',
+      title: 'Alluring Book Trailer',
+      description: 'Book Trailer videos work as a fire in the jungle in order to promote your book and expand the reach of your audience worldwide and amplify the sales',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'Trailer is shot completely in HD. We collaboratively work with clients to deliver the message.',
+          priceRange: '$7,500.00',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Trailer is shot completely in HD. We collaboratively work with clients to deliver the message..',
+          priceRange: '$10,000.00',
+          note: 'Premium Package'
+        }
+      },
       features: [
-        "Everything in Professional, plus:",
-        "Ghostwriting (up to 80,000 words)",
-        "Advanced content strategy",
-        "Professional proofreading",
-        "Advanced cover design with illustrations",
-        "Complete interior design",
-        "Marketing campaign development",
-        "Social media setup",
-        "Amazon optimization",
-        "Unlimited revisions",
-        "Dedicated project manager"
-      ],
-      popular: false,
-      color: "green"
+        'Professional scriptwriting',
+        'Custom animations and graphics',
+        'Professional voiceover talent',
+        'Background music and sound effects',
+        'Multiple format delivery',
+        'Social media optimization',
+        'Revision rounds included',
+        'Commercial usage rights'
+      ]
     },
     {
-      name: "Enterprise",
-      price: "$15,000+",
-      description: "Custom solution for complex projects",
+      id: 'author-website',
+      category: 'AUTHOR WEBSITE',
+      title: 'Interactive Author Website',
+      description: 'E-stores have become the top destinations for bookselling. The internet has totally transformed the traditional book marketplaces into user-friendly online stores.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'A fully responsive website consisting of 3 to 5 pages. Adequate for a blooming author.',
+          priceRange: '$2,499.00',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'E-stores have become the top destinations for bookselling. The internet has totally transformed the traditional book marketplaces into user-friendly online stores.',
+          priceRange: '$4,999.00',
+          note: 'Premium Package'
+        }
+      },
       features: [
-        "Everything in Premium, plus:",
-        "Custom ghostwriting (any length)",
-        "Research and fact-checking",
-        "Professional illustrations",
-        "Audiobook production",
-        "International distribution setup",
-        "Advanced marketing campaigns",
-        "PR and media outreach",
-        "Sales funnel optimization",
-        "Ongoing support (6 months)",
-        "Quarterly strategy sessions"
-      ],
-      popular: false,
-      color: "indigo"
+        'Responsive mobile-friendly design',
+        'Author bio and book showcase',
+        'Contact forms and social integration',
+        'Blog functionality',
+        'SEO optimization',
+        'E-commerce integration',
+        'Analytics setup',
+        '6 months free hosting'
+      ]
+    },
+    {
+      id: 'audiobook',
+      category: 'AUDIOBOOK',
+      title: 'High Quality Audio Book',
+      description: 'There has been a drastic demand for audiobooks for several years. The prime reason is that it is convenient to download and acquire information easily for the readers.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'Note: Prices are subject to change depending on the duration and use of sound effects.',
+          priceRange: '$4,999 - $10.000',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Note: Premium package includes professional narration, background music, and advanced sound design for a more engaging listening experience.',
+          priceRange: '$12,000 - $20,000',
+          note: 'Premium Package'
+        }
+      },
+      features: [
+        'Professional voice talent selection',
+        'Studio-quality recording',
+        'Audio editing and mastering',
+        'Chapter markers and metadata',
+        'Multiple format delivery',
+        'Distribution platform setup',
+        'Quality assurance testing',
+        'Revision rounds included'
+      ]
+    },
+    {
+      id: 'publishing',
+      category: 'PUBLISHING',
+      title: 'Online Book Publishing',
+      description: 'Let our experts publish your book that is a cumbersome task for many publishers. We ensure your book must be accessible to a huge audience globally.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'We provide publishing services to ensure your book isn’t just another manuscript but rather a book by potential bestselling author. We guarantee to publish your book on well-known platforms including Amazon.com, CreateSpace and Amazon Kindle.',
+          priceRange: '$2,999.00',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Comprehensive publishing with global distribution and marketing.',
+          priceRange: '$1,500 - $2,500',
+          note: 'Premium Package'
+        }
+      },
+      features: [
+        'Professional manuscript formatting',
+        'ISBN registration and assignment',
+        'Copyright registration assistance',
+        'Multi-platform distribution',
+        'Print-on-demand setup',
+        'E-book conversion and optimization',
+        'Metadata optimization',
+        'Launch strategy consultation'
+      ]
+    },
+    {
+      id: 'marketing',
+      category: 'MARKETING',
+      title: 'Persuasive Book Marketing',
+      description: 'Our digital marketing experts devise unique digital marketing strategies with a blend of multiple social media channels to reach your prospective audience across the globe.',
+      pricing: {
+        standard: {
+          name: 'STANDARD',
+          description: 'BBasic marketing including promoting your book on various social media platforms.',
+          priceRange: '$5,000 - $25,000',
+          note: 'Standard Package'
+        },
+        premium: {
+          name: 'PREMIUM',
+          description: 'Strategic marketing ensuring your book has sufficient digital exposure as well as social media promotion and SEO service.',
+          priceRange: '$25,000 - $75,000',
+          note: 'Premium Package'
+        }
+      },
+      features: [
+        'Social media campaign management',
+        'Email marketing sequences',
+        'Press release writing and distribution',
+        'Book review outreach',
+        'Amazon advertising campaigns',
+        'Influencer collaboration',
+        'Analytics and reporting',
+        'Ongoing campaign optimization'
+      ]
     }
   ];
 
-  const addOns = [
-    {
-      name: "Cover Design",
-      price: "$300",
-      description: "Professional cover design with 3 concept options",
-      features: ["Custom illustration", "Typography design", "Market research", "3 revisions"]
-    },
-    {
-      name: "Marketing Package",
-      price: "$800",
-      description: "Comprehensive marketing strategy and execution",
-      features: ["Social media setup", "Email marketing", "Amazon ads", "PR outreach"]
-    },
-    {
-      name: "Audiobook Production",
-      price: "$1,200",
-      description: "Professional audiobook recording and production",
-      features: ["Professional narrator", "Audio editing", "Distribution setup", "Quality assurance"]
-    },
-    {
-      name: "Illustration Package",
-      price: "$500",
-      description: "Custom illustrations for your book",
-      features: ["5-10 illustrations", "Style consultation", "2 revision rounds", "Commercial rights"]
-    }
-  ];
-
-           return (
-        <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
-          <div className="container mx-auto px-4 pt-24 pb-16">
-            <div className="text-center mb-24">
-              <h1 className="text-5xl font-bold text-gray-900 mb-8">
-                Transparent Pricing
-              </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Choose the perfect package for your book project. All prices are transparent with no hidden fees. Need something custom? Let's discuss your specific requirements.
-              </p>
-            </div>
-
-        {/* Main Packages */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-20">
-          {packages.map((pkg, index) => (
-            <div
-              key={index}
-              className={`relative bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${
-                pkg.popular ? 'ring-2 ring-purple-500' : ''
-              }`}
-            >
-              {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{pkg.price}</div>
-                <p className="text-gray-600">{pkg.description}</p>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                {pkg.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start">
-                    <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/contact"
-                className={`w-full block text-center py-3 px-6 rounded-lg font-medium transition-colors ${
-                  pkg.popular
-                    ? 'bg-purple-600 text-white hover:bg-purple-700'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                }`}
-              >
-                Get Started
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Add-on Services */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Additional Services
-          </h2>
-          <p className="text-lg text-gray-600">
-            Need specific services? Add these to any package or purchase separately.
+  return (
+    <main className="min-h-screen" style={{ backgroundColor: '#FFFFFF' }}>
+      {/* Hero Section */}
+      <section style={{ 
+        backgroundColor: '#FFFFFF', 
+        padding: '64px 32px',
+        textAlign: 'center' as const
+      }}>
+        <div className="container mx-auto max-w-6xl">
+          <h1 style={{
+            fontSize: '48px',
+            fontWeight: '700',
+            lineHeight: '1.2',
+            fontFamily: 'Arial, sans-serif',
+            color: '#2C2C54',
+            marginBottom: '24px',
+            animation: 'fadeInUp 1s ease-out',
+            opacity: '1'
+          }}>
+            Discover Our Competitive Pricing Packages
+          </h1>
+          <p style={{
+            fontSize: '16px',
+            color: '#6C6C6C',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.6',
+            fontFamily: 'Arial, sans-serif',
+            animation: 'fadeInUp 1s ease-out 0.3s both',
+            opacity: '0'
+          }}>
+            Do you want to see your published content ranked among the spotlighted work across social media platforms as a published writer? Dream of owning a well-written book to your name?
           </p>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {addOns.map((addon, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900">{addon.name}</h3>
-                  <p className="text-gray-600">{addon.description}</p>
-                </div>
-                <div className="text-2xl font-bold text-blue-600">{addon.price}</div>
-              </div>
-              
-              <ul className="space-y-2 mb-6">
-                {addon.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <svg className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/contact"
-                className="w-full block text-center bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+      {/* Service Categories */}
+      <section style={{ padding: '32px' }}>
+        <div className="container mx-auto max-w-6xl">
+          {ebookCategories.map((category) => (
+            <div key={category.id} style={{
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #E0E0E0',
+              borderRadius: '8px',
+              marginBottom: '12px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              animation: `fadeInUp 0.6s ease-out ${0.1 * ebookCategories.indexOf(category)}s both`,
+              opacity: '0',
+              transition: 'all 0.3s ease'
+            }}>
+              {/* Service Card Header - Clickable to expand */}
+              <div 
+                onClick={() => toggleCategory(category.id)}
+                style={{
+                  padding: '16px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  const parent = e.currentTarget.parentElement as HTMLElement;
+                  if (parent) {
+                    parent.style.transform = 'translateY(-2px)';
+                    parent.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)';
+                  }
+                }}
+                onMouseOut={(e) => {
+                  const parent = e.currentTarget.parentElement as HTMLElement;
+                  if (parent) {
+                    parent.style.transform = 'translateY(0px)';
+                    parent.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                  }
+                }}
               >
-                Add to Package
-              </a>
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    color: '#2E8B8B',
+                    textTransform: 'uppercase' as const,
+                    marginBottom: '12px',
+                    fontFamily: 'Arial, sans-serif'
+                  }}>
+                    {category.category}
+                  </div>
+                  <h2 style={{
+                    fontSize: '24px',
+                    fontWeight: '600',
+                    color: '#2C2C54',
+                    marginBottom: '12px',
+                    fontFamily: 'Arial, sans-serif'
+                  }}>
+                    {category.title}
+                  </h2>
+                  <p style={{
+                    fontSize: '16px',
+                    color: '#6C6C6C',
+                    marginBottom: '16px',
+                    lineHeight: '1.6',
+                    fontFamily: 'Arial, sans-serif'
+                  }}>
+                    {category.description}
+                  </p>
+                </div>
+                
+                {/* Plus/Minus Icon */}
+                <div style={{
+                  fontSize: '24px',
+                  fontWeight: '700',
+                  color: '#2E8B8B',
+                  marginLeft: '24px',
+                  transition: 'transform 0.3s ease'
+                }}>
+                  {expandedCategory === category.id ? '−' : '+'}
+                </div>
+              </div>
+
+              {/* Expandable Pricing Section */}
+              <div
+                style={{
+                  borderTop: '1px solid #2A4A6B',
+                  padding: expandedCategory === category.id ? '16px' : '0px',
+                  backgroundColor: '#E8E9EA',
+                  maxHeight: expandedCategory === category.id ? '1200px' : '0px',
+                  overflow: 'hidden',
+                  transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
+                  opacity: expandedCategory === category.id ? 1 : 0,
+                }}
+              >
+                  {/* Pricing Table */}
+                  <div style={{
+                    backgroundColor: '#FFFFFF',
+                    padding: '24px',
+                    borderRadius: '8px',
+                    marginBottom: '24px',
+                    border: '1px solid #E0E0E0'
+                  }}>
+                    <h3 style={{
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      color: '#2C2C54',
+                      marginBottom: '20px',
+                      fontFamily: 'Arial, sans-serif'
+                    }}>
+                      Pricing Options
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Standard Tier */}
+                      <div style={{
+                        backgroundColor: '#F8F9FA',
+                        padding: '20px',
+                        borderRadius: '8px',
+                        border: '1px solid #E0E0E0'
+                      }}>
+                        <h4 style={{
+                          fontSize: '18px',
+                          fontWeight: '600',
+                          color: '#2C2C54',
+                          marginBottom: '8px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.standard.name}
+                        </h4>
+                        <p style={{
+                          fontSize: '14px',
+                          color: '#6C6C6C',
+                          marginBottom: '12px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.standard.description}
+                        </p>
+                        <div style={{
+                          fontSize: '20px',
+                          fontWeight: '700',
+                          color: '#2E8B8B',
+                          marginBottom: '8px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.standard.priceRange}
+                        </div>
+                        <span style={{
+                          fontSize: '12px',
+                          color: '#000000',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.standard.note}
+                        </span>
+                      </div>
+
+                                        {/* Premium Tier */}
+                  <div style={{
+                    backgroundColor: '#FFFFFF',
+                    padding: '20px',
+                    borderRadius: '8px',
+                    border: '1px solid #E0E0E0'
+                  }}>
+                        <h4 style={{
+                          fontSize: '18px',
+                          fontWeight: '600',
+                          color: '#2C2C54',
+                          marginBottom: '8px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.premium.name}
+                        </h4>
+                        <p style={{
+                          fontSize: '14px',
+                          color: '#6C6C6C',
+                          marginBottom: '12px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.premium.description}
+                        </p>
+                        <div style={{
+                          fontSize: '20px',
+                          fontWeight: '700',
+                          color: '#2E8B8B',
+                          marginBottom: '8px',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.premium.priceRange}
+                        </div>
+                        <span style={{
+                          fontSize: '12px',
+                          color: '#000000',
+                          fontFamily: 'Arial, sans-serif'
+                        }}>
+                          {category.pricing.premium.note}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Features List */}
+                  <div style={{
+                    backgroundColor: '#1E3A5F',
+                    padding: '24px',
+                    borderRadius: '8px',
+                    border: '1px solid #2A4A6B'
+                  }}>
+                    <h3 style={{
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      color: '#FFFFFF',
+                      marginBottom: '16px',
+                      fontFamily: 'Arial, sans-serif'
+                    }}>
+                      What's Included:
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {category.features.map((feature, index) => (
+                        <div key={index} className="flex items-start">
+                          <svg 
+                            className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" 
+                            style={{ color: '#7ED321' }}
+                            fill="currentColor" 
+                            viewBox="0 0 20 20"
+                          >
+                            <path 
+                              fillRule="evenodd" 
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                              clipRule="evenodd" 
+                            />
+                          </svg>
+                          <span style={{
+                            fontSize: '16px',
+                            color: '#B8D4F0',
+                            fontFamily: 'Arial, sans-serif'
+                          }}>
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Button */}
+                  <div style={{ textAlign: 'center', marginTop: '24px' }}>
+                    <a
+                      href="/contact"
+                      style={{
+                        backgroundColor: '#2E8B8B',
+                        color: '#FFFFFF',
+                        padding: '12px 24px',
+                        borderRadius: '4px',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        textTransform: 'uppercase' as const,
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontFamily: 'Arial, sans-serif',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        textDecoration: 'none',
+                        display: 'inline-block',
+                        boxShadow: '0 4px 8px rgba(46, 139, 139, 0.3)',
+                        transform: 'translateY(0px)'
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.backgroundColor = '#1F5F5F';
+                        e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
+                        e.currentTarget.style.boxShadow = '0 8px 16px rgba(46, 139, 139, 0.4)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.backgroundColor = '#2E8B8B';
+                        e.currentTarget.style.transform = 'translateY(0px) scale(1)';
+                        e.currentTarget.style.boxShadow = '0 4px 8px rgba(46, 139, 139, 0.3)';
+                      }}
+                    >
+                      ACTIVATE NOW
+                    </a>
+                  </div>
+              </div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Payment Plans */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-20">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Flexible Payment Options
-            </h2>
-            <p className="text-lg text-gray-600">
-              We understand that publishing a book is an investment. We offer flexible payment plans to make it easier.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Pay in Full</h3>
-              <p className="text-gray-600">Get a 10% discount when you pay the full amount upfront.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Monthly Payments</h3>
-              <p className="text-gray-600">Spread the cost over 3-12 months with 0% interest.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Milestone Payments</h3>
-              <p className="text-gray-600">Pay at key project milestones as work is completed.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-20">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      {/* FAQ Section */}
+      <section style={{
+        backgroundColor: '#FFFFFF',
+        padding: '64px 32px'
+      }}>
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 style={{
+              fontSize: '36px',
+              fontWeight: '700',
+              color: '#2C2C54',
+              marginBottom: '16px',
+              fontFamily: 'Arial, sans-serif',
+              animation: 'fadeInUp 0.8s ease-out',
+              opacity: '1'
+            }}>
               Pricing Questions
             </h2>
           </div>
-
+          
           <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">What's included in the price?</h3>
-              <p className="text-gray-600">All packages include the services listed, plus email support and project management. Additional services can be added à la carte.</p>
+            <div style={{
+              backgroundColor: '#1E3A5F',
+              border: '1px solid #2A4A6B',
+              borderRadius: '8px',
+              padding: '24px',
+              boxShadow: '0 4px 12px rgba(30, 58, 95, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(30, 58, 95, 0.4)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 95, 0.3)';
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#FFFFFF',
+                marginBottom: '8px',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                What's included in the price?
+              </h3>
+              <p style={{
+                fontSize: '16px',
+                color: '#B8D4F0',
+                lineHeight: '1.6',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                All packages include the services listed, plus email support and project management. Additional services can be added à la carte.
+              </p>
             </div>
 
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Do you offer refunds?</h3>
-              <p className="text-gray-600">We offer a satisfaction guarantee. If you're not happy with our work, we'll revise until you're satisfied or provide a partial refund.</p>
+            <div style={{
+              backgroundColor: '#1E3A5F',
+              border: '1px solid #2A4A6B',
+              borderRadius: '8px',
+              padding: '24px',
+              boxShadow: '0 4px 12px rgba(30, 58, 95, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(30, 58, 95, 0.4)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 95, 0.3)';
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#FFFFFF',
+                marginBottom: '8px',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                Do you offer refunds?
+              </h3>
+              <p style={{
+                fontSize: '16px',
+                color: '#B8D4F0',
+                lineHeight: '1.6',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                We offer a satisfaction guarantee. If you're not happy with our work, we'll revise until you're satisfied or provide a partial refund.
+              </p>
             </div>
 
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I upgrade my package?</h3>
-              <p className="text-gray-600">Yes! You can upgrade to a higher package at any time. We'll credit what you've already paid toward the new package.</p>
+            <div style={{
+              backgroundColor: '#1E3A5F',
+              border: '1px solid #2A4A6B',
+              borderRadius: '8px',
+              padding: '24px',
+              boxShadow: '0 4px 12px rgba(30, 58, 95, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(30, 58, 95, 0.4)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 95, 0.3)';
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#FFFFFF',
+                marginBottom: '8px',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                Can I upgrade my package?
+              </h3>
+              <p style={{
+                fontSize: '16px',
+                color: '#B8D4F0',
+                lineHeight: '1.6',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                Yes! You can upgrade to a higher package at any time. We'll credit what you've already paid toward the new package.
+              </p>
             </div>
 
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">What about ongoing costs?</h3>
-              <p className="text-gray-600">Our packages are one-time fees. The only ongoing costs are optional services like continued marketing support or new editions.</p>
+            <div style={{
+              backgroundColor: '#1E3A5F',
+              border: '1px solid #2A4A6B',
+              borderRadius: '8px',
+              padding: '24px',
+              boxShadow: '0 4px 12px rgba(30, 58, 95, 0.3)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(30, 58, 95, 0.4)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 95, 0.3)';
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#FFFFFF',
+                marginBottom: '8px',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                What about ongoing costs?
+              </h3>
+              <p style={{
+                fontSize: '16px',
+                color: '#B8D4F0',
+                lineHeight: '1.6',
+                fontFamily: 'Arial, sans-serif'
+              }}>
+                Our packages are one-time fees. The only ongoing costs are optional services like continued marketing support or new editions.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Call to Action */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-20">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Ready to Start Your Book Project?
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Schedule a free consultation to discuss your project and get a personalized quote based on your specific needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors">
-                Get Free Quote
-              </a>
-              <a href="/faqs" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors">
-                View FAQs
-              </a>
-            </div>
+      {/* CTA Section */}
+      <section style={{
+        backgroundColor: '#2C2C54',
+        color: '#FFFFFF',
+        padding: '64px 32px',
+        textAlign: 'center' as const,
+        backgroundImage: 'url("/handshake image.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        position: 'relative'
+      }}>
+        {/* Dark overlay for better text readability */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(44, 44, 84, 0.3)',
+          zIndex: 1
+        }}></div>
+        <div className="container mx-auto max-w-4xl" style={{ position: 'relative', zIndex: 2 }}>
+          <p style={{
+            fontSize: '16px',
+            marginBottom: '16px',
+            fontFamily: 'Arial, sans-serif'
+          }}>
+            Struggling To Sell More Books?
+          </p>
+          <h2 style={{
+            fontSize: '36px',
+            fontWeight: '700',
+            marginBottom: '32px',
+            fontFamily: 'Arial, sans-serif'
+          }}>
+            Why Not Hire Expert Book Marketing Professionals To Promote Your Book!
+          </h2>
+          <div className="flex justify-center">
+            <a
+              href="/contact"
+              style={{
+                backgroundColor: '#2E8B8B',
+                color: '#FFFFFF',
+                padding: '16px 32px',
+                borderRadius: '4px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: '600',
+                fontFamily: 'Arial, sans-serif',
+                textDecoration: 'none',
+                display: 'inline-block',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 6px 12px rgba(46, 139, 139, 0.3)',
+                transform: 'translateY(0px)'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#1F5F5F';
+                e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 10px 20px rgba(46, 139, 139, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#2E8B8B';
+                e.currentTarget.style.transform = 'translateY(0px) scale(1)';
+                e.currentTarget.style.boxShadow = '0 6px 12px rgba(46, 139, 139, 0.3)';
+              }}
+            >
+              Get Started
+            </a>
           </div>
         </div>
-      </div>
-      
+      </section>
+
+      <TestimonialsChain />
+
       <Footer />
     </main>
-  )
+  );
 }
