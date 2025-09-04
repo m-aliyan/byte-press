@@ -274,7 +274,7 @@ export default function AudiobookServices() {
     };
   }, []);
 
-  // Intersection Observer for Section 10 animations (Reason to choose Book Publishing Point)
+  // Intersection Observer for Section 10 animations (Reason to choose BytePress)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -333,7 +333,7 @@ export default function AudiobookServices() {
     {
       name: "Prof. Robert Stewart",
       role: "Professional, responsive, and genuinely invested",
-      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Book Publishing Point. Every detail was handled with care, and the final product exceeded my expectations.",
+      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at BytePress. Every detail was handled with care, and the final product exceeded my expectations.",
       rating: 5,
       date: "June 21, 2024",
       reviewCount: 6
@@ -349,7 +349,7 @@ export default function AudiobookServices() {
     {
       name: "Cortez Ellis",
       role: "A company that actually follows through",
-      quote: "Most promises in publishing fall flat. Not here. The team at Book Publishing Point didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
+      quote: "Most promises in publishing fall flat. Not here. The team at BytePress didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
       rating: 5,
       date: "May 13, 2024",
       reviewCount: 2
@@ -444,7 +444,7 @@ export default function AudiobookServices() {
             <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              At Book Publishing Point, we offer professional Audiobook Publishing designed to bring your written words into a powerful audio experience. As an experienced Audiobook Publishing company, we support authors with everything needed to transform their books into compelling audiobooks.
+              At BytePress, we offer professional Audiobook Publishing designed to bring your written words into a powerful audio experience. As an experienced Audiobook Publishing company, we support authors with everything needed to transform their books into compelling audiobooks.
             </p>
             <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[200ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1188,7 +1188,7 @@ export default function AudiobookServices() {
         </div>
       </section>
 
-      {/* Section 10 - Reason to choose Book Publishing Point - Same Size as Section 2 */}
+      {/* Section 10 - Reason to choose BytePress - Same Size as Section 2 */}
       <section id="section-10" className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
@@ -1196,7 +1196,7 @@ export default function AudiobookServices() {
               section10Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               <span className="text-black">Reason to choose</span>{' '}
-              <span className="text-[#0B3C74]">Book Publishing Point</span>
+              <span className="text-[#0B3C74]">BytePress</span>
             </h2>
             <p className={`text-lg text-[#111827] max-w-3xl mx-auto mb-6 transition-all duration-1000 delay-[100ms] ${
               section10Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -1231,7 +1231,7 @@ export default function AudiobookServices() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#111827] mb-2 group-hover:text-white transition-colors duration-300">0% Sales Royalty</h3>
                 <p className="text-[#0B3C74] text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
-                  At Book Publishing Point, we take 0% sales royalty, which means that our clients retain full control over their audiobook's profits. Our clients can maximize their earnings and use their profits as they see fit.
+                  At BytePress, we take 0% sales royalty, which means that our clients retain full control over their audiobook's profits. Our clients can maximize their earnings and use their profits as they see fit.
                 </p>
               </div>
             </div>
@@ -1285,7 +1285,7 @@ export default function AudiobookServices() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#111827] mb-2 group-hover:text-white transition-colors duration-300">Personalized Services</h3>
                 <p className="text-[#0B3C74] text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
-                  At Book Publishing Point, we understand that each client has unique needs and goals. That's why we offer personalized audiobook services that are tailored to our clients' individual requirements.
+                  At BytePress, we understand that each client has unique needs and goals. That's why we offer personalized audiobook services that are tailored to our clients' individual requirements.
                 </p>
               </div>
             </div>

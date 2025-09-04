@@ -17,8 +17,6 @@ export default function ChildrensBookServices() {
   const [section6Visible, setSection6Visible] = useState(false);
   const [section7Visible, setSection7Visible] = useState(false);
   const [section8Visible, setSection8Visible] = useState(false);
-  const [section9Visible, setSection9Visible] = useState(false);
-  const [section10Visible, setSection10Visible] = useState(false);
 
   const toggleFAQ = (index: number) => {
     if (openFAQ === index) {
@@ -192,7 +190,8 @@ export default function ChildrensBookServices() {
 
 
 
-  // Intersection Observer for Section 7 animations (Final Call to Action)
+
+  // Intersection Observer for Section 7 animations (Reasons to choose BytePress)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -219,7 +218,7 @@ export default function ChildrensBookServices() {
     };
   }, []);
 
-  // Intersection Observer for Section 8 animations (Testimonials)
+  // Intersection Observer for Section 8 animations (Final CTA)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -246,66 +245,12 @@ export default function ChildrensBookServices() {
     };
   }, []);
 
-  // Intersection Observer for Section 9 animations (Reasons to choose BytePress)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setSection9Visible(true);
-          } else {
-            setSection9Visible(false);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    const section9Element = document.getElementById('section-9');
-    if (section9Element) {
-      observer.observe(section9Element);
-    }
-
-    return () => {
-      if (section9Element) {
-        observer.unobserve(section9Element);
-      }
-    };
-  }, []);
-
-  // Intersection Observer for Section 10 animations (Final CTA)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setSection10Visible(true);
-          } else {
-            setSection10Visible(false);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    const section10Element = document.getElementById('section-10');
-    if (section10Element) {
-      observer.observe(section10Element);
-    }
-
-    return () => {
-      if (section10Element) {
-        observer.unobserve(section10Element);
-      }
-    };
-  }, []);
-
   // Testimonials data
   const TESTIMONIALS = [
     {
       name: "Prof. Robert Stewart",
       role: "Professional, responsive, and genuinely invested",
-      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at Book Publishing Point. Every detail was handled with care, and the final product exceeded my expectations.",
+      quote: "I've worked with other publishing companies before, but none matched the level of communication and precision I experienced at BytePress. Every detail was handled with care, and the final product exceeded my expectations.",
       rating: 5,
       date: "June 21, 2024",
       reviewCount: 6
@@ -321,7 +266,7 @@ export default function ChildrensBookServices() {
     {
       name: "Cortez Ellis",
       role: "A company that actually follows through",
-      quote: "Most promises in publishing fall flat. Not here. The team at Book Publishing Point didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
+      quote: "Most promises in publishing fall flat. Not here. The team at BytePress didn't just talk a good game — they delivered my book to market on time and exactly how I envisioned it.",
       rating: 5,
       date: "May 13, 2024",
       reviewCount: 2
@@ -411,7 +356,7 @@ export default function ChildrensBookServices() {
             <h1 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-4 leading-tight transition-all duration-1000 ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              <span className="text-[#0B3C74]">Are you a visionary storyteller seeking inspiration?</span> <span className="text-black">Look no further than Book Publishing Point</span>
+              <span className="text-[#0B3C74]">Are you a visionary storyteller seeking inspiration?</span> <span className="text-black">Look no further than BytePress</span>
             </h1>
             <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -484,18 +429,18 @@ export default function ChildrensBookServices() {
                   section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <span className="text-[#0B3C74]">Create Timeless Children's Stories</span><br />
-                  <span className="text-[#0B3C74]">with Book Publishing Point</span>
+                  <span className="text-[#0B3C74]">with BytePress</span>
                 </h2>
                 
-                <div className={`space-y-3 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[120ms] ${
+                <div className={`space-y-3 text-gray-700 text-base leading-relaxed transition-all duration-1000 delay-[120ms] ${
                   section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
-                    Are you an aspiring children's book author? At Book Publishing Point, we understand the importance of captivating young readers with memorable stories. Our Children's Book Service offers the guidance and support you need to bring your book to life. With our experienced team, we'll help you develop a unique and engaging plot, characters, and storyline across various age groups.
+                    Are you an aspiring children's book author? At BytePress, we understand the importance of captivating young readers with memorable stories. Our Children's Book Service offers the guidance and support you need to bring your book to life. With our experienced team, we'll help you develop a unique and engaging plot, characters, and storyline across various age groups.
                   </p>
                   
                   <p>
-                    Our comprehensive service covers editing, proofreading, formatting, illustrating, and designing to ensure a polished and professional book. We also provide marketing and distribution assistance to help your book reach eager readers. Our commitment to quality literature ensures that every child can enjoy your timeless creation. Join us at Book Publishing Point and let's make your dream of creating a cherished children's book a reality.
+                    Our comprehensive service covers editing, proofreading, formatting, illustrating, and designing to ensure a polished and professional book. We also provide marketing and distribution assistance to help your book reach eager readers. Our commitment to quality literature ensures that every child can enjoy your timeless creation. Join us at BytePress and let's make your dream of creating a cherished children's book a reality.
                   </p>
                 </div>
                 
@@ -603,59 +548,137 @@ export default function ChildrensBookServices() {
         </div>
       </section>
 
-      {/* Section 3 - Developmental Editing with Image Left */}
+      {/* Section 3 - 4 Cards with New Heading */}
       <section id="section-3" className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
-            {/* Left Side - Illustration Image */}
-            <div className={`flex items-center justify-start transition-all duration-1000 ${
-              section3Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}>
-              <img 
-                src="/services/child-story.webp" 
-                alt="Custom Book Illustrations Design" 
-                className="max-w-lg h-auto object-contain ml-8 reveal-img"
-              />
+          <div className="flex flex-col items-center h-full">
+            {/* Top Section - Heading */}
+            <div className="text-center mb-12 pt-8">
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 ${
+                section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <span className="text-black">How Our Children's Book Service Process Works</span>
+              </h2>
+              <p className={`text-gray-700 text-base leading-relaxed max-w-3xl mx-auto transition-all duration-1000 delay-[100ms] ${
+                section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                We turn ideas into visuals that speak louder than words. Our illustration process is designed to guide your story from concept to completion with clarity, care, and creative precision. Whether you're looking for illustrations for your book, children's tales, or custom art styles, this is how it all comes together.
+              </p>
             </div>
             
-            {/* Right Side - Custom Book Illustrations Text */}
-            <div className="flex items-center">
-              <div className="max-w-2xl">
-                <h2 className={`text-3xl md:text-4xl font-bold mb-6 leading-tight transition-all duration-1000 ${
-                  section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <span className="text-[#0B3C74]">How Our Children's Book Service</span>
-                  <span className="text-gray-900"> Process Works</span>
-                </h2>
-                <div className={`space-y-4 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[100ms] ${
-                  section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}>
-                  <p>
-                    Our comprehensive children's book service process is designed to guide you from initial concept to published masterpiece. We work closely with authors to develop engaging stories that captivate young readers while ensuring professional quality throughout every step.
-                  </p>
-                  
-                  <p>
-                    From manuscript development and character creation to illustration and final publication, our experienced team provides the expertise and support needed to bring your children's book vision to life. Let us help you create stories that will be cherished by children and families for generations to come.
-                  </p>
+            {/* Bottom Section - 5 Flipable Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full max-w-7xl">
+              {/* Card 1 - Book Consultation */}
+              <div className="flip-card group">
+                <div className="flip-card-inner">
+                  {/* Front Side */}
+                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                      01
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Book Consultation</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                      01
+                    </div>
+                    <p className="text-white text-sm leading-relaxed text-left">
+                      Let's discuss your book ideas, target audience, and budget. Our experts will create a personalized plan tailored to your needs.
+                    </p>
+                  </div>
                 </div>
-                
-                {/* START PROJECT Button */}
-                <div className={`mt-6 transition-all duration-1000 delay-[180ms] ${
-                  section3Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
-                }`}>
-                  <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline select-none">
-                    <span className="text-white">START PROJECT</span>
-                    <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
+              </div>
+
+              {/* Card 2 - Manuscript Development */}
+              <div className="flip-card group">
+                <div className="flip-card-inner">
+                  {/* Front Side */}
+                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                      02
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Manuscript Development</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                      02
+                    </div>
+                    <p className="text-white text-sm leading-relaxed text-left">
+                      Work with our experienced editors to develop captivating storylines, memorable characters, and age-appropriate language. We also provide illustration guidance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 - Editing & Proofreading */}
+              <div className="flip-card group">
+                <div className="flip-card-inner">
+                  {/* Front Side */}
+                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                      03
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Editing & Proofreading</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                      03
+                    </div>
+                    <p className="text-white text-sm leading-relaxed text-left">
+                      Already have a manuscript? Our skilled editors will ensure smooth story flow, well-developed characters, and engaging writing style. We also provide thorough proofreading.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4 - Illustration and Design */}
+              <div className="flip-card group">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                      04
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Illustration and Design</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                      04
+                    </div>
+                    <p className="text-white text-sm leading-relaxed text-left">
+                      Our professional illustrators bring your story to life with captivating artwork. We design eye-catching covers that reflect your book's tone and theme.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Card 5 - Publishing and Distribution */}
+              <div className="flip-card group">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
+                      05
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Publishing and Distribution</h3>
+                  </div>
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
+                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
+                      05
+                    </div>
+                    <p className="text-white text-sm leading-relaxed text-left">
+                      We handle publishing and distribution for you. Your book will be available on major retailers like Amazon and Barnes & Noble, plus we provide marketing support.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       {/* Section 4 - Call to Action Banner */}
       <section id="section-4" className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -689,143 +712,8 @@ export default function ChildrensBookServices() {
           </div>
         </div>
       </section>
-
-
-
-      {/* Section 5 - 4 Cards with New Heading */}
-      <section id="section-5" className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center h-full">
-            {/* Top Section - Heading */}
-            <div className="text-center mb-12 pt-8">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 ${
-                section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-                <span className="text-black">How Our Children's Book Service Process Works</span>
-              </h2>
-              <p className={`text-gray-700 text-base leading-relaxed max-w-3xl mx-auto transition-all duration-1000 delay-[100ms] ${
-                section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-                We turn ideas into visuals that speak louder than words. Our illustration process is designed to guide your story from concept to completion with clarity, care, and creative precision. Whether you're looking for illustrations for your book, children's tales, or custom art styles, this is how it all comes together.
-              </p>
-            </div>
-            
-            {/* Bottom Section - 5 Flipable Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 w-full max-w-7xl">
-              {/* Card 1 - Book Consultation */}
-              <div className="flip-card group">
-                <div className="flip-card-inner">
-                  {/* Front Side */}
-                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
-                      01
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Book Consultation</h3>
-                  </div>
-                  {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-                      01
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">
-                      Let's have a chat about your book ideas, target audience, and budget. Our children's book experts will personalize our services to meet your needs and create a tailored plan for your project.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2 - Manuscript Development */}
-              <div className="flip-card group">
-                <div className="flip-card-inner">
-                  {/* Front Side */}
-                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
-                      02
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Manuscript Development</h3>
-                  </div>
-                  {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-                      02
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">
-                      Work with our experienced editors and writers to develop a captivating storyline, memorable characters, and age-appropriate language. We can also provide guidance on illustrations if desired.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 - Editing & Proofreading */}
-              <div className="flip-card group">
-                <div className="flip-card-inner">
-                  {/* Front Side */}
-                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
-                      03
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Editing & Proofreading</h3>
-                  </div>
-                  {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-                      03
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">
-                      Already have a manuscript? Our skilled editors will ensure your story flows smoothly, the characters are well-developed, and your writing style engages readers. We'll also perform thorough proofreading to catch any errors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 4 - Illustration and Design */}
-              <div className="flip-card group">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
-                      04
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Illustration and Design</h3>
-                  </div>
-                  {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-                      04
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">
-                      Let our professional illustrators bring your story to life with captivating illustrations. We'll design an eye-catching cover that reflects your book's tone and theme.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Card 5 - Publishing and Distribution */}
-              <div className="flip-card group">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front bg-white rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-[#0B3C74] text-4xl font-bold mb-4 border-2 border-[#0B3C74] rounded-full w-12 h-12 flex items-center justify-center">
-                      05
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0B3C74] text-left leading-tight">Publishing and Distribution</h3>
-                  </div>
-                  {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-start justify-start h-80">
-                    <div className="text-white text-4xl font-bold mb-4 border-2 border-white rounded-full w-12 h-12 flex items-center justify-center">
-                      05
-                    </div>
-                    <p className="text-white text-sm leading-relaxed text-left">
-                      Leave the publishing and distribution process to us. Your book will be available for purchase on major online retailers like Amazon and Barnes & Noble. We'll also help with marketing and promotion to reach a wider audience.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6 - Full-Service Illustration */}
-      <section id="section-6" className="py-20 bg-white">
+      {/* Section 5 - Full-Service Illustration */}
+      <section id="section-5" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           {/* Center-aligned main heading */}
           <div className="text-center mb-12">
@@ -847,15 +735,19 @@ export default function ChildrensBookServices() {
             <div className="space-y-8">
               {/* Subheading moved to right side */}
               <h3 className={`text-2xl md:text-3xl font-bold text-center text-[#0B3C74] mb-6 transition-all duration-1000 ${
-              section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               FULL-SERVICE ILLUSTRATION
             </h3>
-              <h3 className="text-xl md:text-2xl font-bold text-black text-center mb-6">
+              <h3 className={`text-xl md:text-2xl font-bold text-black text-center mb-6 transition-all duration-1000 delay-[100ms] ${
+                section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 Elevate Your Book's Visual Appeal with Stunning Illustrations!
               </h3>
               {/* Dark Blue Box with Service List */}
-              <div className="bg-[#0B3C74] rounded-2xl p-8">
+              <div className={`bg-[#0B3C74] rounded-2xl p-8 transition-all duration-1000 delay-[200ms] ${
+                section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
@@ -884,7 +776,9 @@ export default function ChildrensBookServices() {
               </div>
               
               {/* Call to Action */}
-              <div className="text-center">
+              <div className={`text-center transition-all duration-1000 delay-[300ms] ${
+                section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 <p className="text-sm text-black mb-3 leading-relaxed">
                   There is no limit to what you can achieve with a book under your Name
                 </p>
@@ -1082,38 +976,6 @@ export default function ChildrensBookServices() {
       </section>
       */}
 
-      {/* Section 7 - Final Call to Action */}
-      <section id="section-7" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-blue-200 rounded-2xl p-12 text-center">
-              <h2 className={`text-4xl md:text-5xl font-bold text-black mb-6 transition-all duration-1000 ${
-                section7Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-                Let's turn your ideas into reality.
-              </h2>
-              
-              <p className={`text-xl text-black mb-8 leading-relaxed transition-all duration-1000 delay-[100ms] ${
-                section7Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-                Contact us today to discuss your project and how we can assist you in bringing your vision to life.
-              </p>
-              
-              {/* Call to Action Button */}
-              <div className={`flex justify-center transition-all duration-1000 delay-[180ms] ${
-                section7Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
-              }`}>
-                <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline select-none">
-                  <span className="text-white">Let's Get Started</span>
-                  <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* NEW FAQ ACCORDION COMPONENT */}
       <FAQAccordion 
@@ -1122,23 +984,23 @@ export default function ChildrensBookServices() {
         subtitle="Before contacting us you might want to check whether your question is one of our FAQs."
       />
 
-      {/* Section 8 - What our client's say - Same Size as Section 2 */}
-      <section id="section-8" className="h-screen bg-white flex items-center">
+      {/* Section 6 - What our client's say - Same Size as Section 2 */}
+      <section id="section-6" className="h-screen bg-white flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className={`text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16 transition-all duration-1000 ${
-            section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             What our client's <span className="text-[#0B3C74]">say</span>
           </h2>
           <p className={`text-center text-lg text-gray-600 mb-12 transition-all duration-1000 delay-[100ms] ${
-            section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             In today's Cut-throat competition it's not easy to make your clientele fall in love with you.
           </p>
 
           {/* Train Effect Layout */}
           <div className={`train-container mb-8 transition-all duration-1000 delay-[200ms] ${
-            section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <div className="train-track">
               {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
@@ -1186,25 +1048,25 @@ export default function ChildrensBookServices() {
         </div>
       </section>
 
-      {/* Section 9 - Reason to choose Bytes Press - Same Size as Section 2 */}
-      <section id="section-9" className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
+      {/* Section 7 - Reason to choose BytePress - Same Size as Section 2 */}
+      <section id="section-7" className="h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-2 transition-all duration-1000 ${
-              section9Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              section7Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               <span className="text-black">Reason to choose</span>{' '}
-              <span className="text-[#0B3C74]">Book Publishing Point</span>
+              <span className="text-[#0B3C74]">BytePress</span>
             </h2>
             <p className={`text-lg text-[#111827] max-w-3xl mx-auto mb-6 transition-all duration-1000 delay-[100ms] ${
-              section9Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              section7Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
             </p>
             
             {/* CTA Button */}
             <div className={`text-center transition-all duration-1000 delay-[180ms] ${
-              section9Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+              section7Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
             }`}>
               <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-6 py-3 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline select-none">
                 <span className="text-white">START PROJECT</span>
@@ -1229,7 +1091,7 @@ export default function ChildrensBookServices() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#111827] mb-2 group-hover:text-white transition-colors duration-300">0% Sales Royalty</h3>
                 <p className="text-[#0B3C74] text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
-                  At Book Publishing Point, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
+                  At BytePress, we take 0% sales royalty, which means that our clients retain full control over their book's profits. Our clients can maximize their earnings and use their profits as they see fit.
                 </p>
               </div>
             </div>
@@ -1283,7 +1145,7 @@ export default function ChildrensBookServices() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#111827] mb-2 group-hover:text-white transition-colors duration-300">Personalized Services</h3>
                 <p className="text-[#0B3C74] text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
-                  At Book Publishing Point, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
+                  At BytePress, we understand that each client has unique needs and goals. That's why we offer personalized services that are tailored to our clients' individual requirements.
                 </p>
               </div>
             </div>
@@ -1291,8 +1153,8 @@ export default function ChildrensBookServices() {
         </div>
       </section>
 
-      {/* Section 10 - Get your book written and published in Less than a month! */}
-      <section id="section-10" className="py-20 bg-white relative overflow-hidden">
+      {/* Section 8 - Get your book written and published in Less than a month! */}
+      <section id="section-8" className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -1303,7 +1165,7 @@ export default function ChildrensBookServices() {
               </div>
               
               <h2 className={`text-3xl lg:text-4xl font-light leading-tight transition-all duration-1000 ${
-                section10Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 <span className="font-thin text-gray-600">Get your book written and published in</span>
                 <br />
@@ -1313,19 +1175,19 @@ export default function ChildrensBookServices() {
               </h2>
               
               <p className={`text-base text-gray-600 leading-relaxed max-w-lg font-light transition-all duration-1000 delay-[100ms] ${
-                section10Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Challenge us. We want to work with you to create the really cool stuff.
               </p>
               
               <p className={`text-base text-gray-600 leading-relaxed max-w-lg font-light transition-all duration-1000 delay-[150ms] ${
-                section10Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Call Us at +1 323 982 3156
               </p>
               
               <div className={`flex gap-4 pt-4 transition-all duration-1000 delay-[180ms] ${
-                section10Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+                section8Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
               }`}>
                 <a href="/contact" className="fancy">
                   <span className="top-key"></span>
@@ -1344,7 +1206,7 @@ export default function ChildrensBookServices() {
 
             {/* Right Side - GetStartedForm */}
             <div className={`flex justify-center lg:justify-end transition-all duration-1000 ${
-              section10Visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              section8Visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
               <GetStartedForm />
             </div>
