@@ -23,22 +23,22 @@ const FAQAccordionItem = ({ item, isActive, onMouseEnter, onClick }: { item: FAQ
   return (
     <div
       className={`
-        relative h-[450px] rounded-2xl overflow-hidden cursor-pointer
+        relative h-[550px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out
-        ${isActive ? 'w-[400px]' : 'w-[60px]'}
+        ${isActive ? 'w-[420px]' : 'w-[60px]'}
       `}
       onMouseEnter={onMouseEnter}
       onClick={onClick}
     >
       {/* Background Image - Dynamic based on state */}
       <img
-        src={isActive ? '/faq_images/faq_img2.png' : item.imageUrl}
+        src={isActive ? '/faq_images/faq_3.png' : item.imageUrl}
         alt={item.question}
         className="absolute inset-0 w-full h-full object-cover"
         onError={(e) => { 
           const target = e.target as HTMLImageElement;
           target.onerror = null; 
-          target.src = '/faq_images/faq_img2.png'; // Using custom fallback image
+          target.src = '/faq_images/faq3.png'; // Using custom fallback image
         }}
       />
       {/* Dark overlay for better text readability */}
@@ -52,7 +52,7 @@ const FAQAccordionItem = ({ item, isActive, onMouseEnter, onClick }: { item: FAQ
            ${
              isActive
                ? 'bottom-6 left-6 rotate-0' // Active state: horizontal, bottom-left
-               : 'bottom-24 left-1/2 -translate-x-1/2 rotate-90' // Inactive state: vertical, centered
+               : 'bottom-32 left-1/2 -translate-x-1/2 rotate-90' // Inactive state: vertical, centered
            }
          `}
        >
@@ -63,10 +63,10 @@ const FAQAccordionItem = ({ item, isActive, onMouseEnter, onClick }: { item: FAQ
        <div className={`absolute inset-0 p-6 flex flex-col transition-opacity duration-400 ease-in-out ${
          isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
        }`}>
-         {/* Fixed-size Question and Answer Container - Left aligned */}
-         <div className="flex-1 flex flex-col justify-center min-h-[280px]">
-           {/* Question - Fixed height container, left aligned */}
-           <div className={`bg-black bg-opacity-80 p-4 rounded-lg mb-3 min-h-[80px] flex items-center justify-start transition-opacity duration-300 ease-in-out ${
+         {/* Question and Answer Container - Direct display without backgrounds */}
+         <div className="flex-1 flex flex-col justify-center min-h-[380px]">
+           {/* Question - Direct display */}
+           <div className={`mb-6 transition-opacity duration-300 ease-in-out ${
              isActive ? 'opacity-100' : 'opacity-0'
            }`} style={{ transitionDelay: isActive ? '800ms' : '0ms' }}>
              <h3 className="text-white text-lg font-bold leading-tight text-left">
@@ -74,8 +74,8 @@ const FAQAccordionItem = ({ item, isActive, onMouseEnter, onClick }: { item: FAQ
              </h3>
            </div>
            
-           {/* Answer - Fixed height container, left aligned */}
-           <div className={`bg-black bg-opacity-80 p-4 rounded-lg min-h-[120px] flex items-center justify-start transition-opacity duration-300 ease-in-out ${
+           {/* Answer - Direct display */}
+           <div className={`transition-opacity duration-300 ease-in-out ${
              isActive ? 'opacity-100' : 'opacity-0'
            }`} style={{ transitionDelay: isActive ? '800ms' : '0ms' }}>
              <p className="text-white text-sm leading-relaxed text-left">
@@ -85,7 +85,7 @@ const FAQAccordionItem = ({ item, isActive, onMouseEnter, onClick }: { item: FAQ
          </div>
          
          {/* Fixed height space for keyword */}
-         <div className="h-16 flex items-center justify-center">
+         <div className="h-20 flex items-center justify-center">
            {/* Keyword will be positioned here by the absolute positioned span above */}
          </div>
        </div>
