@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
-import TestimonialsChain from '@/components/TestimonialsChain';
+import './page.css';
 
 export default function PricingPage() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
@@ -10,6 +10,117 @@ export default function PricingPage() {
   const toggleCategory = (categoryId: string) => {
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
   };
+
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Animate elements when section enters viewport
+            if (entry.target.id === 'pricing-questions') {
+              console.log('Pricing Questions section entered viewport - triggering animations');
+              
+              const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+              const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+              const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+              const fadeRightElements = entry.target.querySelectorAll('.fade-right');
+              const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+              
+              console.log('Found elements:', {
+                fadeUp: fadeUpElements.length,
+                fadeScale: fadeScaleElements.length,
+                fadeLeft: fadeLeftElements.length,
+                fadeRight: fadeRightElements.length,
+                revealImg: revealImgElements.length
+              });
+              
+              // Add animation classes with a small delay to ensure smooth triggering
+              setTimeout(() => {
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+                fadeLeftElements.forEach(el => el.classList.add('animate'));
+                fadeRightElements.forEach(el => el.classList.add('animate'));
+                revealImgElements.forEach(el => el.classList.add('animate'));
+              }, 100);
+            } else if (entry.target.id === 'cta-section') {
+              console.log('CTA section entered viewport - triggering animations');
+              
+              const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+              const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+              
+              console.log('Found CTA elements:', {
+                fadeUp: fadeUpElements.length,
+                fadeScale: fadeScaleElements.length
+              });
+              
+              // Add animation classes with a small delay to ensure smooth triggering
+              setTimeout(() => {
+                fadeUpElements.forEach(el => el.classList.add('animate'));
+                fadeScaleElements.forEach(el => el.classList.add('animate'));
+              }, 100);
+            }
+          } else {
+            // Reset animations when section leaves viewport
+            if (entry.target.id === 'pricing-questions') {
+              console.log('Pricing Questions section left viewport - resetting animations');
+              
+              const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+              const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+              const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+              const fadeRightElements = entry.target.querySelectorAll('.fade-right');
+              const revealImgElements = entry.target.querySelectorAll('.reveal-img');
+              
+              fadeUpElements.forEach(el => el.classList.remove('animate'));
+              fadeScaleElements.forEach(el => el.classList.remove('animate'));
+              fadeLeftElements.forEach(el => el.classList.remove('animate'));
+              fadeRightElements.forEach(el => el.classList.remove('animate'));
+              revealImgElements.forEach(el => el.classList.remove('animate'));
+            } else if (entry.target.id === 'cta-section') {
+              console.log('CTA section left viewport - resetting animations');
+              
+              const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+              const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+              
+              fadeUpElements.forEach(el => el.classList.remove('animate'));
+              fadeScaleElements.forEach(el => el.classList.remove('animate'));
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.2, // Trigger when 20% of the section is visible
+        rootMargin: '0px 0px -50px 0px' // Start animation slightly before section is fully visible
+      }
+    );
+
+    // Observe the pricing questions section
+    const pricingQuestionsSection = document.getElementById('pricing-questions');
+    if (pricingQuestionsSection) {
+      console.log('Observing pricing questions section');
+      observer.observe(pricingQuestionsSection);
+    } else {
+      console.error('Pricing questions section not found!');
+    }
+
+    // Observe the CTA section
+    const ctaSection = document.getElementById('cta-section');
+    if (ctaSection) {
+      console.log('Observing CTA section');
+      observer.observe(ctaSection);
+    } else {
+      console.error('CTA section not found!');
+    }
+
+    return () => {
+      if (pricingQuestionsSection) {
+        observer.unobserve(pricingQuestionsSection);
+      }
+      if (ctaSection) {
+        observer.unobserve(ctaSection);
+      }
+    };
+  }, []);
 
   const ebookCategories = [
     {
@@ -544,27 +655,25 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section style={{
+      <section id="pricing-questions" style={{
         backgroundColor: '#FFFFFF',
         padding: '64px 32px'
       }}>
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 style={{
+            <h2 className="fade-up" style={{
               fontSize: '36px',
               fontWeight: '700',
               color: '#2C2C54',
               marginBottom: '16px',
-              fontFamily: 'Arial, sans-serif',
-              animation: 'fadeInUp 0.8s ease-out',
-              opacity: '1'
+              fontFamily: 'Arial, sans-serif'
             }}>
               Pricing Questions
             </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div style={{
+            <div className="fade-left" style={{
               backgroundColor: '#1E3A5F',
               border: '1px solid #2A4A6B',
               borderRadius: '8px',
@@ -599,7 +708,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div style={{
+            <div className="fade-right" style={{
               backgroundColor: '#1E3A5F',
               border: '1px solid #2A4A6B',
               borderRadius: '8px',
@@ -634,7 +743,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div style={{
+            <div className="fade-left" style={{
               backgroundColor: '#1E3A5F',
               border: '1px solid #2A4A6B',
               borderRadius: '8px',
@@ -669,7 +778,7 @@ export default function PricingPage() {
               </p>
             </div>
 
-            <div style={{
+            <div className="fade-right" style={{
               backgroundColor: '#1E3A5F',
               border: '1px solid #2A4A6B',
               borderRadius: '8px',
@@ -704,16 +813,28 @@ export default function PricingPage() {
               </p>
             </div>
           </div>
+          
+          {/* CTA Button */}
+          <div className="text-center mt-12">
+            <div className="fade-scale" style={{ transitionDelay: '200ms' }}>
+              <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline">
+                <span className="text-white">GET STARTED NOW</span>
+                <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section style={{
+      <section id="cta-section" style={{
         backgroundColor: '#2C2C54',
         color: '#FFFFFF',
         padding: '64px 32px',
         textAlign: 'center' as const,
-        backgroundImage: 'url("/handshake image.jpg")',
+        backgroundImage: 'url("/neon.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -730,14 +851,15 @@ export default function PricingPage() {
           zIndex: 1
         }}></div>
         <div className="container mx-auto max-w-4xl" style={{ position: 'relative', zIndex: 2 }}>
-          <p style={{
+          <p className="fade-up" style={{
             fontSize: '16px',
             marginBottom: '16px',
-            fontFamily: 'Arial, sans-serif'
+            fontFamily: 'Arial, sans-serif',
+            transitionDelay: '120ms'
           }}>
             Struggling To Sell More Books?
           </p>
-          <h2 style={{
+          <h2 className="fade-up" style={{
             fontSize: '36px',
             fontWeight: '700',
             marginBottom: '32px',
@@ -745,11 +867,11 @@ export default function PricingPage() {
           }}>
             Why Not Hire Expert Book Marketing Professionals To Promote Your Book!
           </h2>
-          <div className="flex justify-center">
+          <div className="flex justify-center fade-scale" style={{ transitionDelay: '200ms' }}>
             <a
               href="/contact"
               style={{
-                backgroundColor: '#2E8B8B',
+                backgroundColor: '#0B3C74',
                 color: '#FFFFFF',
                 padding: '16px 32px',
                 borderRadius: '4px',
@@ -761,18 +883,18 @@ export default function PricingPage() {
                 textDecoration: 'none',
                 display: 'inline-block',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 6px 12px rgba(46, 139, 139, 0.3)',
+                boxShadow: '0 6px 12px rgba(11, 60, 116, 0.3)',
                 transform: 'translateY(0px)'
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = '#1F5F5F';
+                e.currentTarget.style.backgroundColor = '#0A2E5C';
                 e.currentTarget.style.transform = 'translateY(-3px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 10px 20px rgba(46, 139, 139, 0.4)';
+                e.currentTarget.style.boxShadow = '0 10px 20px rgba(11, 60, 116, 0.4)';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = '#2E8B8B';
+                e.currentTarget.style.backgroundColor = '#0B3C74';
                 e.currentTarget.style.transform = 'translateY(0px) scale(1)';
-                e.currentTarget.style.boxShadow = '0 6px 12px rgba(46, 139, 139, 0.3)';
+                e.currentTarget.style.boxShadow = '0 6px 12px rgba(11, 60, 116, 0.3)';
               }}
             >
               Get Started
@@ -781,7 +903,8 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <TestimonialsChain />
+      {/* Spacer between CTA and Footer */}
+      <div style={{ height: '80px' }}></div>
 
       <Footer />
     </main>

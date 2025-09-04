@@ -1,0 +1,87 @@
+/* Pricing Page Specific Styles */
+
+/* Animation Classes */
+.fade-up {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-up.animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.fade-scale {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-scale.animate {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.fade-left {
+  opacity: 0 !important;
+  transform: translateX(-30px) !important;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-left.animate {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.fade-right {
+  opacity: 0 !important;
+  transform: translateX(30px) !important;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-right.animate {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-img {
+  opacity: 0 !important;
+  transform: scale(0.95) !important;
+  transition: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), transform 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-img.animate {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Pricing Questions Section Specific Styles */
+#pricing-questions .fade-up {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pricing-questions .fade-scale {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pricing-questions .fade-left {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pricing-questions .fade-right {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pricing-questions .reveal-img {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CTA Section Specific Styles */
+#cta-section .fade-up {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#cta-section .fade-scale {
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
