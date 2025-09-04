@@ -137,14 +137,32 @@
   margin-top: 0.125rem;
   width: 1rem;
   height: 1rem;
-  border: 1px solid rgba(209, 213, 219, 0.6);
-  border-radius: 0.5rem;
+  border: 3px solid #000000;
+  border-radius: 0.25rem;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .checkbox-input:checked {
   background-color: #0B3C74;
   border-color: #0B3C74;
+}
+
+.checkbox-input:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .checkbox-text {

@@ -1,10 +1,62 @@
 /* Home Page Specific Styles */
 
+/* Remove focus outline from all links */
+a:focus {
+  outline: none;
+}
+
+/* Train Animation for Book Publishing Images */
+.train-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.train-track {
+  display: flex;
+  gap: 0;
+  animation: trainMove 50s linear infinite;
+  width: fit-content;
+  will-change: transform;
+  transform: translateX(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  animation-fill-mode: both;
+}
+
+@keyframes trainMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.train-track:hover {
+  animation-play-state: paused;
+}
+
+/* Ensure smooth animation on all devices */
+@media (prefers-reduced-motion: no-preference) {
+  .train-track {
+    animation: trainMove 50s linear infinite;
+  }
+}
+
+/* Fallback for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .train-track {
+    animation: none;
+  }
+}
+
 /* Hero Section Animations - Same as Accordion Section */
 .hero-fade-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-fade-up.animate {
@@ -15,7 +67,7 @@
 .hero-fade-scale {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-fade-scale.animate {
@@ -404,7 +456,7 @@
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-up.animate {
@@ -415,7 +467,7 @@
 .fade-scale {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-scale.animate {
@@ -423,10 +475,55 @@
   transform: scale(1);
 }
 
+/* Slower Animations for Self Publishing Services Section */
+.services-section .fade-up {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.services-section .fade-scale {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slower Animations for Why Authors Trust Section */
+#why-authors-trust .fade-up {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#why-authors-trust .fade-scale {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slower Animations for What Our Clients Say Section */
+#what-our-clients-say .fade-up {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slower Animations for Reason to Choose Section */
+#reason-to-choose .fade-up {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#reason-to-choose .fade-scale {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Slower Animations for Fast Publishing Section */
+#fast-publishing .fade-up {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fast-publishing .fade-scale {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#fast-publishing .fade-left {
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .fade-left {
   opacity: 0;
   transform: translateX(-30px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-left.animate {
@@ -438,7 +535,7 @@
 .accordion-fade-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .accordion-fade-up.animate {
@@ -449,7 +546,7 @@
 .accordion-fade-scale {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .accordion-fade-scale.animate {
@@ -460,7 +557,7 @@
 .accordion-fade-left {
   opacity: 0;
   transform: translateX(-30px);
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .accordion-fade-left.animate {

@@ -15,10 +15,81 @@ declare global {
 
 export default function Home() {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const [counts, setCounts] = useState({
+    authors: 0,
+    books: 0,
+    bestsellers: 0,
+    satisfaction: 0
+  });
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
 
   const toggleAccordion = (index: number) => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
+
+  // Stats counting animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsStatsVisible(true);
+        } else {
+          // Reset animation when section leaves viewport
+          setIsStatsVisible(false);
+          setCounts({
+            authors: 0,
+            books: 0,
+            bestsellers: 0,
+            satisfaction: 0
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isStatsVisible) return;
+
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    const targetCounts = {
+      authors: 500,
+      books: 750,
+      bestsellers: 50,
+      satisfaction: 98
+    };
+
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+
+      setCounts({
+        authors: Math.floor(targetCounts.authors * progress),
+        books: Math.floor(targetCounts.books * progress),
+        bestsellers: Math.floor(targetCounts.bestsellers * progress),
+        satisfaction: Math.floor(targetCounts.satisfaction * progress)
+      });
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setCounts(targetCounts);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isStatsVisible]);
 
   // Intersection Observer for fade-in animations
   useEffect(() => {
@@ -112,7 +183,70 @@ export default function Home() {
                 fadeScaleElements.forEach(el => el.classList.add('animate'));
                 fadeLeftElements.forEach(el => el.classList.add('animate'));
                 revealImgElements.forEach(el => el.classList.add('animate'));
-              }
+               } else if (entry.target.classList.contains('book-publishing-integration')) {
+                 // Animate all elements in the book publishing integration section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'self-publishing-services') {
+                 // Animate all elements in the self publishing services section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'self-publishing-services-actual') {
+                 // Animate all elements in the self publishing services actual section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'get-started-cta') {
+                 // Animate all elements in the get started CTA section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'self-publishing-process') {
+                 // Animate all elements in the self publishing process section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'why-authors-trust') {
+                 // Animate all elements in the why authors trust section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'what-our-clients-say') {
+                 // Animate all elements in the what our clients say section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'reason-to-choose') {
+                 // Animate all elements in the reason to choose section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+               } else if (entry.target.id === 'fast-publishing') {
+                 // Animate all elements in the fast publishing section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                 
+                 fadeUpElements.forEach(el => el.classList.add('animate'));
+                 fadeScaleElements.forEach(el => el.classList.add('animate'));
+                 fadeLeftElements.forEach(el => el.classList.add('animate'));
+               }
             } else {
               // Remove animation classes when leaving viewport
               if (entry.target.getAttribute('data-section') === 'hero') {
@@ -178,7 +312,70 @@ export default function Home() {
                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
                 fadeLeftElements.forEach(el => el.classList.remove('animate'));
                 revealImgElements.forEach(el => el.classList.remove('animate'));
-              }
+               } else if (entry.target.classList.contains('book-publishing-integration')) {
+                 // Remove animation classes from all elements
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'self-publishing-services') {
+                 // Remove animation classes from all elements in the self publishing services section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'self-publishing-services-actual') {
+                 // Remove animation classes from all elements in the self publishing services actual section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'get-started-cta') {
+                 // Remove animation classes from all elements in the get started CTA section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'self-publishing-process') {
+                 // Remove animation classes from all elements in the self publishing process section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'why-authors-trust') {
+                 // Remove animation classes from all elements in the why authors trust section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'what-our-clients-say') {
+                 // Remove animation classes from all elements in the what our clients say section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'reason-to-choose') {
+                 // Remove animation classes from all elements in the reason to choose section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+               } else if (entry.target.id === 'fast-publishing') {
+                 // Remove animation classes from all elements in the fast publishing section
+                 const fadeUpElements = entry.target.querySelectorAll('.fade-up');
+                 const fadeScaleElements = entry.target.querySelectorAll('.fade-scale');
+                 const fadeLeftElements = entry.target.querySelectorAll('.fade-left');
+                 
+                 fadeUpElements.forEach(el => el.classList.remove('animate'));
+                 fadeScaleElements.forEach(el => el.classList.remove('animate'));
+                 fadeLeftElements.forEach(el => el.classList.remove('animate'));
+               }
             }
           });
         },
@@ -195,6 +392,7 @@ export default function Home() {
       const bookMarketingSection = document.getElementById('book-marketing');
       const childrenStoriesSection = document.getElementById('children-stories');
       const ctaSection = document.getElementById('cta-section');
+       const bookPublishingIntegrationSection = document.querySelector('.book-publishing-integration');
       
       if (heroSection) {
         observer.observe(heroSection);
@@ -216,6 +414,49 @@ export default function Home() {
       }
       if (ctaSection) {
         observer.observe(ctaSection);
+      }
+       if (bookPublishingIntegrationSection) {
+         observer.observe(bookPublishingIntegrationSection);
+      }
+      
+      const selfPublishingServicesSection = document.getElementById('self-publishing-services');
+      if (selfPublishingServicesSection) {
+        observer.observe(selfPublishingServicesSection);
+      }
+      
+      const selfPublishingServicesActualSection = document.getElementById('self-publishing-services-actual');
+      if (selfPublishingServicesActualSection) {
+        observer.observe(selfPublishingServicesActualSection);
+      }
+      
+      const getStartedCtaSection = document.getElementById('get-started-cta');
+      if (getStartedCtaSection) {
+        observer.observe(getStartedCtaSection);
+      }
+      
+      const selfPublishingProcessSection = document.getElementById('self-publishing-process');
+      if (selfPublishingProcessSection) {
+        observer.observe(selfPublishingProcessSection);
+      }
+      
+      const whyAuthorsTrustSection = document.getElementById('why-authors-trust');
+      if (whyAuthorsTrustSection) {
+        observer.observe(whyAuthorsTrustSection);
+      }
+      
+      const whatOurClientsSaySection = document.getElementById('what-our-clients-say');
+      if (whatOurClientsSaySection) {
+        observer.observe(whatOurClientsSaySection);
+      }
+      
+      const reasonToChooseSection = document.getElementById('reason-to-choose');
+      if (reasonToChooseSection) {
+        observer.observe(reasonToChooseSection);
+      }
+      
+      const fastPublishingSection = document.getElementById('fast-publishing');
+      if (fastPublishingSection) {
+        observer.observe(fastPublishingSection);
       }
 
       return observer;
@@ -242,16 +483,16 @@ export default function Home() {
       <Header />
 
       {/* Self Publishing Services Section */}
-      <section className="services-section">
+      <section id="self-publishing-services" className="services-section">
         <div className="container">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
             {/* Left Column - Content */}
             <div className="lg:col-span-3">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 fade-up">
                 Self Publishing Services That Start Strong and Finish Loud
               </h2>
               
-              <div className="text-gray-600 text-base leading-relaxed mb-8 space-y-4">
+              <div className="text-gray-600 text-base leading-relaxed mb-8 space-y-4 fade-up" style={{ transitionDelay: '120ms' }}>
                 <p>
                   We don't hand you a template and wish you luck. We build with you from the ground up, turning your ideas into a finished book that looks sharp, reads well, and holds its own in a crowded market. Our self publishing services cover every stage, from writing and editing to layout, design, and publishing logistics.
                 </p>
@@ -263,7 +504,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <a href="/contact" className="btn btn-primary">
                   START MY PROJECT
                 </a>
@@ -273,41 +514,138 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Column - Images with Chain Carousel Animation */}
+                         {/* Right Column - Images with Train Animation */}
             <div className="lg:col-span-2 hidden lg:block">
-              <div className="flex justify-center items-center h-full relative overflow-hidden">
-                <div className="flex items-center justify-center space-x-8 relative mt-20">
+               <div className="flex justify-center items-center h-full relative overflow-hidden mt-20">
+                                 <div className="train-container">
+                   <div className="train-track">
+                     {/* First set of images */}
                   <img
                     src="/images/bookpublishingpoint_images/5.png"
                     alt="Self Publishing Service 1"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/6.png"
                     alt="Self Publishing Service 2"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/7.png"
                     alt="Self Publishing Service 3"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/2.png"
                     alt="Self Publishing Service 4"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/3.png"
                     alt="Self Publishing Service 5"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                   <img
                     src="/images/bookpublishingpoint_images/4.png"
                     alt="Self Publishing Service 6"
-                    className="w-64 h-64 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 chain-animate chain-delay-6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     {/* Second set for seamless loop */}
+                     <img
+                       src="/images/bookpublishingpoint_images/5.png"
+                       alt="Self Publishing Service 1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/6.png"
+                       alt="Self Publishing Service 2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/7.png"
+                       alt="Self Publishing Service 3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/2.png"
+                       alt="Self Publishing Service 4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/3.png"
+                       alt="Self Publishing Service 5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/4.png"
+                       alt="Self Publishing Service 6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     {/* Third set for extra smoothness */}
+                     <img
+                       src="/images/bookpublishingpoint_images/5.png"
+                       alt="Self Publishing Service 1"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/6.png"
+                       alt="Self Publishing Service 2"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/7.png"
+                       alt="Self Publishing Service 3"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/2.png"
+                       alt="Self Publishing Service 4"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/3.png"
+                       alt="Self Publishing Service 5"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                     />
+                     <img
+                       src="/images/bookpublishingpoint_images/4.png"
+                       alt="Self Publishing Service 6"
+                       className="w-80 h-80 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                   />
                 </div>
+                </div>
+                                 <style jsx>{`
+                   .train-container {
+                     width: 100%;
+                     overflow: hidden;
+                     position: relative;
+                     background: transparent;
+                   }
+
+                   .train-track {
+                     display: flex;
+                     gap: 0;
+                     animation: trainMove 20s linear infinite;
+                     width: fit-content;
+                     will-change: transform;
+                     transform: translateX(0);
+                     backface-visibility: hidden;
+                     perspective: 1000px;
+                   }
+
+                   @keyframes trainMove {
+                     0% {
+                       transform: translateX(0);
+                     }
+                     100% {
+                       transform: translateX(-50%);
+                     }
+                   }
+
+                   .train-track:hover {
+                     animation-play-state: paused;
+                   }
+                 `}</style>
               </div>
             </div>
           </div>
@@ -494,18 +832,18 @@ export default function Home() {
       </section>
 
       {/* Self Publishing Services Section */}
-      <section className="py-20 bg-white">
+      <section id="self-publishing-services-actual" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-up">
               Self Publishing Services That Actually Get the Job Done
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto fade-up" style={{ transitionDelay: '120ms' }}>
               Bytes Press is a results-driven book publishing company built for authors who want more than promises. We offer a complete, professional book publishing solution — writing, editing, design, publishing — all under one roof, all done right.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-scale" style={{ transitionDelay: '200ms' }}>
             {/* Book Publishing Service */}
             <div className="service-card-scrollable testimonial-card group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-xl hover:border-[#0B3C74] transition-all duration-300 transform hover:-translate-y-2">
               <div className="service-card-header">
@@ -527,7 +865,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="service-card-footer">
-                <a href="/services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
+                <a href="/services/book-publishing-services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
                   Learn More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -557,7 +895,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="service-card-footer">
-                <a href="/services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
+                <a href="/services/ghostwriting-services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
                   Learn More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -587,7 +925,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="service-card-footer">
-                <a href="/services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
+                <a href="/services/book-formatting-services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
                   Learn More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -617,7 +955,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="service-card-footer">
-                <a href="/services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
+                <a href="/services/editing-and-proofreading-services" className="inline-flex items-center text-[#0B3C74] font-medium hover:text-[#0A2E5C] transition-colors duration-300">
                   Learn More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -630,12 +968,12 @@ export default function Home() {
       </section>
 
       {/* Get Started CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#f8fafc] to-[#e2e8f0]">
+      <section id="get-started-cta" className="py-20 bg-gradient-to-r from-[#f8fafc] to-[#e2e8f0]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                            Get your project off the ground today
+          <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
+            Get your project off the ground today
           </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center fade-scale" style={{ transitionDelay: '160ms' }}>
             <a href="/contact" className="get-started-btn">
               Get Started Now
             </a>
@@ -644,19 +982,19 @@ export default function Home() {
       </section>
 
       {/* Self Publishing Process Section */}
-      <section className="pt-20 pb-2 bg-white">
+      <section id="self-publishing-process" className="pt-20 pb-2 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 fade-up">
               A Self Publishing Process That Keeps You in Control
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto fade-up" style={{ transitionDelay: '120ms' }}>
               At Bytes Press, we've mapped out a smooth, transparent process designed for authors who want more than just printing. As a trusted self publishing company, we provide a professional book publishing solution that keeps you in the loop from first draft to final launch, without the confusion.
             </p>
           </div>
 
           {/* Process Steps Around Image */}
-          <div className="relative max-w-7xl mx-auto px-16">
+          <div className="relative max-w-7xl mx-auto px-16 fade-scale" style={{ transitionDelay: '200ms' }}>
             {/* Central Image */}
             <div className="text-center mb-48">
               <img 
@@ -920,14 +1258,14 @@ export default function Home() {
       </section>
 
       {/* Book Publishing Integration Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+       <section id="book-publishing-integration" className="book-publishing-integration py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center flex flex-col items-center">
-                          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+                          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900 fade-up">
                 Where <span className="text-indigo-900">Book Publishing</span>, <span className="text-indigo-900">Writing</span>, <span className="text-indigo-900">Editing</span>, and <span className="text-indigo-900">Design</span> Actually Work Together
               </h2>
             
-            <div className="text-base sm:text-lg text-gray-700 max-w-prose mt-6 space-y-4">
+            <div className="text-base sm:text-lg text-gray-700 max-w-prose mt-6 space-y-4 fade-up" style={{ transitionDelay: '120ms' }}>
               <p>
                 From concept to bookshelf, we align strategy, storytelling, and production so your book looks great and sells better.
               </p>
@@ -937,9 +1275,110 @@ export default function Home() {
             </div>
             
             {/* Space for Books Picture */}
-            <div className="mt-12 mb-12 h-48"></div>
+              <div className="mt-12 mb-12 fade-scale" style={{ transitionDelay: '200ms' }}>
+                <div className="flex justify-center items-center relative overflow-hidden">
+                  <div className="train-container">
+                                         <div className="train-track">
+                       {/* First set of images */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       {/* Second set for seamless loop */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       {/* Third set for extra smoothness */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                     </div>
+                  </div>
+
+                </div>
+              </div>
             
-            <div className="mt-6">
+            <div className="mt-6 fade-scale" style={{ transitionDelay: '280ms' }}>
               <a 
                 href="/contact" 
                 className="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300 no-underline"
@@ -957,15 +1396,15 @@ export default function Home() {
 
 
       {/* Why Authors Trust CTA Section */}
-      <section className="bg-white">
+      <section id="why-authors-trust" className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-gray-900">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-gray-900 fade-up">
             Why Authors Trust <span className="text-indigo-900">Bytes Press</span> to Get It Done Right
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-4xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-gray-700 max-w-4xl mx-auto fade-up" style={{ transitionDelay: '120ms' }}>
             No fluff, no drag. At Bytes Press, we work with writers who are serious about getting published — whether it's their first shot or their fifth. Our team handles the production while you stay focused on the story. Fast communication, sharp execution, and real results. That's what we bring to the table.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 fade-scale" style={{ transitionDelay: '200ms' }}>
             <a href="#contact" aria-label="Get started now"
                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-indigo-900 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
               GET STARTED NOW <span aria-hidden="true">→</span>
@@ -980,23 +1419,39 @@ export default function Home() {
 
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="stats-section" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
+            <div className={`transition-all duration-500 ease-out transform ${
+              isStatsVisible 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-8 scale-95'
+            }`} style={{ transitionDelay: '0ms' }}>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{counts.authors}+</div>
               <div className="text-gray-600">Happy Authors</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-green-600 mb-2">750+</div>
+            <div className={`transition-all duration-500 ease-out transform ${
+              isStatsVisible 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-8 scale-95'
+            }`} style={{ transitionDelay: '200ms' }}>
+              <div className="text-4xl font-bold text-green-600 mb-2">{counts.books}+</div>
               <div className="text-gray-600">Books Published</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">50+</div>
+            <div className={`transition-all duration-500 ease-out transform ${
+              isStatsVisible 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-8 scale-95'
+            }`} style={{ transitionDelay: '400ms' }}>
+              <div className="text-4xl font-bold text-purple-600 mb-2">{counts.bestsellers}+</div>
               <div className="text-gray-600">Bestsellers</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-orange-600 mb-2">98%</div>
+            <div className={`transition-all duration-500 ease-out transform ${
+              isStatsVisible 
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-0 scale-95'
+            }`} style={{ transitionDelay: '600ms' }}>
+              <div className="text-4xl font-bold text-orange-600 mb-2">{counts.satisfaction}%</div>
               <div className="text-gray-600">Satisfaction Rate</div>
             </div>
           </div>
