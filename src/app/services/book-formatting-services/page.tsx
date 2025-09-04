@@ -409,8 +409,8 @@ export default function BookPublishingServices() {
             <h1 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-4 leading-tight transition-all duration-1000 ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              <span className="text-[#0B3C74]">Book Formatting Services That Let the Layout</span><br />
-              <span className="text-black">Speak for You</span>
+              <span className="text-[#0B3C74]">Book Formatting Services That Let</span><br />
+              <span className="text-[#0B3C74]">the Layout</span> <span className="text-black">Speak for You</span>
             </h1>
             <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
