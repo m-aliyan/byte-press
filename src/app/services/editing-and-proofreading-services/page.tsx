@@ -448,7 +448,7 @@ export default function EditingAndProofreadingServices() {
       </section>
 
       {/* Section 2 - Fits in Viewport with Form */}
-      <section id="section-2" className="h-screen bg-white flex items-center">
+      <section id="section-2" className="min-h-screen py-20 bg-white flex items-center">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
             {/* Left Side - Partner With the Best Text */}
@@ -479,19 +479,16 @@ export default function EditingAndProofreadingServices() {
                   <p>
                     As the best book editing and proofreading company, we don't just clean up your manuscript. We help it shine. Because when your story is ready for the world, it should speak loud and clear—without distractions.
                   </p>
-                  
-                  <p>
-                    So if you're looking for editors who understand storytelling, know the industry inside out, and treat your words with the attention they deserve, you're in the right place.
-                  </p>
+
                 </div>
                 
                 {/* Start Project Button */}
                 <div className={`mt-6 transition-all duration-1000 delay-[180ms] ${
                   section2Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                 }`}>
-                  <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline select-none">
+                  <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-6 py-3 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline select-none">
                     <span className="text-white">Start Project</span>
-                    <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
@@ -572,7 +569,7 @@ export default function EditingAndProofreadingServices() {
                       className="mt-1 w-4 h-4 text-[#0B3C74] border-gray-300 rounded focus:ring-[#0B3C74]"
                     />
                     <label htmlFor="sms-consent" className="text-xs text-gray-600 leading-relaxed">
-                      Please CHECK THE BOX to COMMUNICATE VIA SMS OR EMAIL ( PRIVACY POLICY & TERM & CONDITIONS ) - Carrier charges may apply for SMS. Reply STOP or UNSUBSCRIBE to STOP to unsubscribe anytime.
+                      Please CHECK THE BOX to COMMUNICATE VIA SMS OR EMAIL ( PRIVACY POLICY & TERM & CONDITIONS )
                     </label>
                   </div>
                   

@@ -413,17 +413,17 @@ export default function BookIllustrationServices() {
             }`}>
               <span className="text-[#0B3C74]">Illustrations Services</span> <span className="text-black">That Turn Imagination into Impact</span>
             </h1>
-            <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
+            <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[100ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               Bringing your characters to life is more than color and composition — it's storytelling through imagery. Our Book Illustration Services are built for authors who want visuals that match the heart of their narrative. Whether you're working on a children's book or a fantasy saga, we pair your vision with visual clarity that resonates.
             </p>
-            <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[200ms] ${
+            <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[200ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               At Book Publishing Point, we understand that strong design makes a lasting first impression. That's why our team approaches each Story Book Illustration with originality, precision, and style. From concept sketches to polished artwork, we deliver illustrations that feel as intentional as your words.
             </p>
-            <p className={`text-base md:text-lg text-black mb-6 leading-relaxed transition-all duration-1000 delay-[300ms] ${
+            <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[300ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               Let's turn your story into something readers can see and remember.
@@ -572,7 +572,7 @@ export default function BookIllustrationServices() {
                       className="mt-1 w-4 h-4 text-[#0B3C74] border-gray-300 rounded focus:ring-[#0B3C74]"
                     />
                     <label htmlFor="sms-consent" className="text-xs text-gray-600 leading-relaxed">
-                      Please CHECK THE BOX to COMMUNICATE VIA SMS OR EMAIL ( PRIVACY POLICY & TERM & CONDITIONS ) - Carrier charges may apply for SMS. Reply STOP or UNSUBSCRIBE to STOP to unsubscribe anytime.
+                      Please CHECK THE BOX to COMMUNICATE VIA SMS OR EMAIL ( PRIVACY POLICY & TERM & CONDITIONS )
                     </label>
                   </div>
                   
@@ -794,11 +794,6 @@ export default function BookIllustrationServices() {
         <div className="container mx-auto px-4">
           {/* Center-aligned main heading */}
           <div className="text-center mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold text-[#0B3C74] mb-6 transition-all duration-1000 ${
-              section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              FULL-SERVICE ILLUSTRATION
-            </h2>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -816,7 +811,12 @@ export default function BookIllustrationServices() {
             {/* Right Side - Dark Blue Box with White Text and Call to Action */}
             <div className="space-y-8">
               {/* Subheading moved to right side */}
-              <h3 className="text-2xl md:text-3xl font-bold text-black text-center">
+              <h3 className={`text-2xl md:text-3xl font-bold text-center text-[#0B3C74] mb-6 transition-all duration-1000 ${
+              section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
+              FULL-SERVICE ILLUSTRATION
+            </h3>
+              <h3 className="text-xl md:text-2xl font-bold text-black text-center mb-6">
                 Elevate Your Book's Visual Appeal with Stunning Illustrations!
               </h3>
               {/* Dark Blue Box with Service List */}
@@ -825,7 +825,7 @@ export default function BookIllustrationServices() {
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-bold text-xl text-white mb-2">Book Cover Illustration</h4>
+                      <h4 className="font-bold text-lg text-white mb-2">Book Cover Illustration</h4>
                       <p className="text-white">Make Your Book Stand Out with Striking Cover Illustrations!</p>
                     </div>
                   </div>
@@ -833,7 +833,7 @@ export default function BookIllustrationServices() {
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-bold text-xl text-white mb-2">Illustrations for Children Book</h4>
+                      <h4 className="font-bold text-lg text-white mb-2">Illustrations for Children Book</h4>
                       <p className="text-white">Spark Your Child's Imagination with Vibrant Book Illustrations!</p>
                     </div>
                   </div>
@@ -841,7 +841,7 @@ export default function BookIllustrationServices() {
                   <div className="flex items-start gap-4">
                     <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-bold text-xl text-white mb-2">Illustrations Service</h4>
+                      <h4 className="font-bold text-lg text-white mb-2">Illustrations Service</h4>
                       <p className="text-white">Bring Your Ideas to Life with Our Expert Illustration Services!</p>
                     </div>
                   </div>
@@ -850,7 +850,7 @@ export default function BookIllustrationServices() {
               
               {/* Call to Action */}
               <div className="text-center">
-                <p className="text-base text-black mb-3 leading-relaxed">
+                <p className="text-sm text-black mb-3 leading-relaxed">
                   There is no limit to what you can achieve with a book under your Name
                 </p>
                 <p className="text-sm text-[#0B3C74] font-semibold mb-6">
@@ -858,14 +858,14 @@ export default function BookIllustrationServices() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline">
+                  <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] text-white px-4 py-2 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline">
                     <span className="text-white">START PROJECT</span>
                     <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
                   
-                  <a href="/contact" className="inline-flex items-center gap-3 bg-transparent border-2 border-[#0B3C74] text-[#0B3C74] hover:bg-[#0B3C74] hover:text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline">
+                  <a href="/contact" className="inline-flex items-center gap-3 bg-transparent border-2 border-[#0B3C74] text-[#0B3C74] hover:bg-[#0B3C74] hover:text-white px-4 py-2 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline">
                     <span>CALL NOW</span>
                     <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
