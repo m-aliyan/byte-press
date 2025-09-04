@@ -113,9 +113,9 @@ export default function TestimonialsChain() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] py-16" aria-labelledby="testimonials-heading">
+    <section id="what-our-clients-say" className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] py-16" aria-labelledby="testimonials-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="testimonials-heading" className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16">
+        <h2 id="testimonials-heading" className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16 fade-up">
           What our client's <span className="text-[#0B3C74]">say</span>
         </h2>
 
@@ -176,19 +176,19 @@ export default function TestimonialsChain() {
       </div>
       
       {/* Reason to choose Bytes Press Section */}
-      <section className="bg-white py-20">
+      <section id="reason-to-choose" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 fade-up">
               <span className="text-[#111827]">Reason to choose</span>{' '}
               <span className="text-[#0B3C74]">Bytes Press</span>
             </h2>
-            <p className="text-lg text-[#111827] max-w-3xl mx-auto">
+            <p className="text-lg text-[#111827] max-w-3xl mx-auto fade-up" style={{ transitionDelay: '120ms' }}>
               Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-scale" style={{ transitionDelay: '200ms' }}>
                          <div className="text-center p-6 bg-gray-50 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl hover:bg-blue-50 hover:scale-105 hover:-translate-y-2 transition-all duration-300">
                <div className="w-16 h-16 bg-[#0B3C74] rounded-full flex items-center justify-center mx-auto mb-4">
                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,18 +241,18 @@ export default function TestimonialsChain() {
       </section>
       
       {/* Get your book written and published in Less than a month! Section */}
-      <section className="py-20 relative overflow-hidden hero-section">
+      <section id="fast-publishing" className="py-20 relative overflow-hidden hero-section">
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6 fade-up">
                 <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#0B3C74]"></div>
                 <span className="text-xs tracking-[0.3em] text-gray-600 uppercase font-light">Fast Publishing</span>
               </div>
               
-              <h2 className="text-3xl lg:text-4xl font-light leading-tight">
+              <h2 className="text-3xl lg:text-4xl font-light leading-tight fade-up">
                 <span className="font-thin text-gray-600">Get your book written and published in</span>
                 <br />
                 <span className="font-bold bg-gradient-to-r from-[#0B3C74] to-blue-600 bg-clip-text text-transparent">
@@ -260,11 +260,11 @@ export default function TestimonialsChain() {
                 </span>
               </h2>
               
-              <p className="text-base text-gray-600 leading-relaxed max-w-lg font-light">
+              <p className="text-base text-gray-600 leading-relaxed max-w-lg font-light fade-up" style={{ transitionDelay: '120ms' }}>
                 Challenge us. We want to work with you to create the really cool stuff. Call Us at 833 323 0371
               </p>
               
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-4 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <a href="/contact" className="fancy">
                   <span className="top-key"></span>
                   <span className="text">Talk to our expert</span>
@@ -281,7 +281,7 @@ export default function TestimonialsChain() {
             </div>
 
             {/* Right Side - GetStartedForm */}
-            <div className="flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:justify-end fade-left">
               <GetStartedForm />
             </div>
           </div>
