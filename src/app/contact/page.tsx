@@ -16,7 +16,7 @@ export default function ContactPage() {
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
             {/* Hero Content */}
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left lg:ml-12">
               {/* Contact Information */}
               <div className="mb-8">
                                   <h2 className="text-4xl lg:text-6xl font-bold text-black mb-4 leading-loose">
@@ -54,7 +54,7 @@ export default function ContactPage() {
             </div>
             
             {/* Free Quote Form */}
-            <div className="flex justify-center lg:justify-end">
+            <div className="flex justify-center lg:justify-end lg:ml-24 -mt-4">
               <FreeQuoteForm />
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                       id="firstName"
                       name="firstName"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                       placeholder="Your first name"
                     />
                   </div>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                       id="lastName"
                       name="lastName"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                       placeholder="Your last name"
                     />
                   </div>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                     id="projectType"
                     name="projectType"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                   >
                     <option value="">Select a project type</option>
                     <option value="ghostwriting">Ghostwriting</option>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   <select
                     id="budget"
                     name="budget"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white text-black"
                   >
                     <option value="">Select budget range</option>
                     <option value="under-1000">Under $1,000</option>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                     name="message"
                     rows={5}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none bg-white text-black"
                     placeholder="Tell us about your book project, goals, timeline, and any specific requirements..."
                   ></textarea>
                 </div>
