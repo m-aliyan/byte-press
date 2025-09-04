@@ -970,13 +970,38 @@ export default function Home() {
       {/* Get Started CTA Section */}
       <section id="get-started-cta" className="py-20 bg-gradient-to-r from-[#f8fafc] to-[#e2e8f0]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
-            Get your project off the ground today
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center fade-scale" style={{ transitionDelay: '160ms' }}>
-            <a href="/contact" className="get-started-btn">
-              Get Started Now
-            </a>
+          <div className="flex items-center justify-start gap-16">
+            {/* Left Side - Image */}
+            <div className="hidden lg:block">
+              <img 
+                src="/services/formatting-3.png" 
+                alt="Book Formatting Services" 
+                className="w-48 h-48 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                style={{ width: '192px', height: '192px' }}
+              />
+            </div>
+            
+            {/* Left - Content */}
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
+                Get your project off the ground today
+              </h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center fade-scale" style={{ transitionDelay: '160ms' }}>
+                <a href="/contact" className="get-started-btn">
+                  Get Started Now
+                </a>
+              </div>
+            </div>
+            
+            {/* Right Side - Background Image */}
+            <div className="hidden lg:block -mr-9">
+              <img 
+                src="/services/formatting-main.png" 
+                alt="Book Formatting Main" 
+                className="w-48 h-48 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                style={{ width: '192px', height: '192px' }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -1067,13 +1092,13 @@ export default function Home() {
       <section id="global-publishing" className="pt-0 pb-0 -mt-24 h-[90vh] bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Reserved for Images (Blank Placeholder) */}
+            {/* Left Column - Image */}
             <div className="hidden lg:block">
-              <div className="flex justify-center items-center h-full">
+              <div className="flex justify-center items-center h-full fade-left reveal-img">
                 <img 
                   src="/images/global.png" 
                   alt="Global Book Publishing" 
-                  className="max-w-full h-auto object-contain fade-left"
+                  className="max-w-full h-auto object-contain"
                   style={{ maxHeight: '400px' }}
                 />
               </div>
@@ -1086,7 +1111,7 @@ export default function Home() {
                 <span className="text-gray-900"> Company</span>
               </h2>
               
-              <div className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4 max-w-3xl fade-up" style={{ transitionDelay: '120ms' }}>
+              <div className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 space-y-4 max-w-3xl fade-up" style={{ transitionDelay: '100ms' }}>
                 <p>
                   We help you go beyond borders. As a leading global book publishing brand, we take your work from draft to distribution across Amazon, online retailers, and digital libraries worldwide.
                 </p>
@@ -1095,7 +1120,7 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '200ms' }}>
+              <div className="flex flex-col sm:flex-row gap-3 fade-scale" style={{ transitionDelay: '180ms' }}>
                 <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline">
                   <span className="text-white">START PROJECT</span>
                   <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1374,6 +1399,39 @@ export default function Home() {
                        />
                      </div>
                   </div>
+                  
+                  <style jsx>{`
+                    .train-container {
+                      width: 100%;
+                      overflow: hidden;
+                      position: relative;
+                      background: transparent;
+                    }
+
+                    .train-track {
+                      display: flex;
+                      gap: 0;
+                      animation: trainMove 30s linear infinite;
+                      width: fit-content;
+                      will-change: transform;
+                      transform: translateX(0);
+                      backface-visibility: hidden;
+                      perspective: 1000px;
+                    }
+
+                    @keyframes trainMove {
+                      0% {
+                        transform: translateX(0);
+                      }
+                      100% {
+                        transform: translateX(-50%);
+                      }
+                    }
+
+                    .train-track:hover {
+                      animation-play-state: paused;
+                    }
+                  `}</style>
 
                 </div>
               </div>
@@ -1381,7 +1439,7 @@ export default function Home() {
             <div className="mt-6 fade-scale" style={{ transitionDelay: '280ms' }}>
               <a 
                 href="/contact" 
-                className="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white px-6 py-3 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300 no-underline"
+                className="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white hover:text-white px-6 py-3 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300 no-underline"
                 aria-label="Get started now"
               >
                 <span>Get started now</span>
@@ -1394,6 +1452,28 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* Reason to Choose Bytes Press Section */}
+      <section id="reason-to-choose" className="py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
+            Reason to choose <span className="text-[#0B3C74]">Bytes Press</span>
+          </h2>
+          <p className="text-lg text-[#111827] max-w-3xl mx-auto mb-6 fade-up" style={{ transitionDelay: '100ms' }}>
+            Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
+          </p>
+          
+          {/* CTA Button */}
+          <div className="fade-scale" style={{ transitionDelay: '180ms' }}>
+            <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-6 py-3 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline">
+              <span className="text-white">START PROJECT</span>
+              <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Why Authors Trust CTA Section */}
       <section id="why-authors-trust" className="bg-white">

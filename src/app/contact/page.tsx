@@ -196,115 +196,145 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className="space-y-8">
               {/* Company Info */}
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Company Information
-                </h2>
+              <div className="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden cursor-pointer group transition-all duration-500 ease-in-out hover:scale-105">
+                {/* Radial fill background */}
+                <div className="absolute inset-0 transition-all duration-500 ease-in-out bg-blue-600 group-hover:scale-100 scale-0" 
+                     style={{
+                       background: 'radial-gradient(circle at 0% 0%, #2563eb 0%, #1d4ed8 100%)',
+                       transformOrigin: '0% 0%'
+                     }}></div>
+                
+                {/* Content wrapper with relative positioning */}
+                <div className="relative z-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-white transition-colors duration-500">
+                    Company Information
+                  </h2>
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-blue-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-blue-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">BytePress Publishing</h3>
-                      <p className="text-gray-600">Professional book publishing services</p>
-                      <p className="text-gray-600">Helping authors bring their stories to life</p>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">BytePress Publishing</h3>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">Professional book publishing services</p>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">Helping authors bring their stories to life</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-green-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-green-600 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">Address</h3>
-                      <p className="text-gray-600">123 Publishing Street</p>
-                      <p className="text-gray-600">New York, NY 10001</p>
-                      <p className="text-gray-600">United States</p>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">Address</h3>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">123 Publishing Street</p>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">New York, NY 10001</p>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">United States</p>
                     </div>
                   </div>
 
                   <div className="flex items-start">
-                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-purple-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-purple-600 group-hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                      <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                      <p className="text-gray-600">Saturday: 10:00 AM - 2:00 PM EST</p>
-                      <p className="text-gray-600">Sunday: Closed</p>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">Business Hours</h3>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">Saturday: 10:00 AM - 2:00 PM EST</p>
+                      <p className="text-gray-600 group-hover:text-blue-100 transition-colors duration-500">Sunday: Closed</p>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
 
               {/* Quick Contact */}
-              <div className="bg-white rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Quick Contact
-                </h2>
+              <div className="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden cursor-pointer group transition-all duration-500 ease-in-out hover:scale-105">
+                {/* Radial fill background */}
+                <div className="absolute inset-0 transition-all duration-500 ease-in-out bg-blue-600 group-hover:scale-100 scale-0" 
+                     style={{
+                       background: 'radial-gradient(circle at 0% 0%, #2563eb 0%, #1d4ed8 100%)',
+                       transformOrigin: '0% 0%'
+                     }}></div>
+                
+                {/* Content wrapper with relative positioning */}
+                <div className="relative z-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-white transition-colors duration-500">
+                    Quick Contact
+                  </h2>
                 
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-blue-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-blue-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">Phone</p>
-                      <a href="tel:8333230371" className="text-blue-600 hover:text-blue-700">833 323 0371</a>
+                      <p className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">Phone</p>
+                      <a href="tel:8333230371" className="text-blue-600 group-hover:text-blue-200 hover:text-blue-700 transition-colors duration-500">833 323 0371</a>
                     </div>
                   </div>
 
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-green-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-green-600 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">WhatsApp</p>
-                      <a href="tel:9407656781" className="text-blue-600 hover:text-blue-700">(940) 765-6781</a>
+                      <p className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">WhatsApp</p>
+                      <a href="tel:9407656781" className="text-blue-600 group-hover:text-blue-200 hover:text-blue-700 transition-colors duration-500">(940) 765-6781</a>
                     </div>
                   </div>
 
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                      <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-green-100 group-hover:bg-white rounded-lg flex items-center justify-center mr-4 transition-colors duration-500">
+                      <svg className="w-5 h-5 text-green-600 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">Email</p>
-                      <a href="mailto:hello@bytepress.com" className="text-blue-600 hover:text-blue-700">hello@bytepress.com</a>
+                      <p className="font-semibold text-gray-900 group-hover:text-white transition-colors duration-500">Email</p>
+                      <a href="mailto:hello@bytepress.com" className="text-blue-600 group-hover:text-blue-200 hover:text-blue-700 transition-colors duration-500">hello@bytepress.com</a>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
 
               {/* Consultation CTA */}
-              <div className="bg-white rounded-2xl text-gray-800 p-8 text-center shadow-xl">
-                <h3 className="text-xl font-bold mb-3 text-[#0B3C74]">
-                  Free Consultation Call
-                </h3>
-                <p className="text-gray-600 mb-4">
+              <div className="bg-white rounded-2xl text-gray-800 p-8 text-center shadow-xl relative overflow-hidden cursor-pointer group transition-all duration-500 ease-in-out hover:scale-105">
+                {/* Radial fill background */}
+                <div className="absolute inset-0 transition-all duration-500 ease-in-out bg-blue-600 group-hover:scale-100 scale-0" 
+                     style={{
+                       background: 'radial-gradient(circle at 0% 0%, #2563eb 0%, #1d4ed8 100%)',
+                       transformOrigin: '0% 0%'
+                     }}></div>
+                
+                {/* Content wrapper with relative positioning */}
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold mb-3 text-[#0B3C74] group-hover:text-white transition-colors duration-500">
+                    Free Consultation Call
+                  </h3>
+                <p className="text-gray-600 mb-4 group-hover:text-blue-100 transition-colors duration-500">
                   Schedule a 30-minute call to discuss your book project and get personalized recommendations.
                 </p>
                 <a
                   href="#"
-                  className="inline-block bg-[#0B3C74] text-white !important px-6 py-3 rounded-lg font-medium hover:bg-[#0A2E5C] hover:text-white !important transition-colors"
+                  className="inline-block bg-[#0B3C74] group-hover:bg-white text-white group-hover:text-[#0B3C74] px-6 py-3 rounded-lg font-medium hover:bg-[#0A2E5C] transition-colors duration-500"
                 >
-                  Schedule Call
+                  Fill the Form Now
                 </a>
+                </div>
               </div>
             </div>
           </div>
