@@ -1080,7 +1080,7 @@ export default function BookFormattingServices() {
       {/* Section 8 - What our client's say - Same Size as Section 2 */}
       <section id="section-8" className="h-screen bg-white flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16">
+          <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-4">
             What our client's <span className="text-[#0B3C74]">say</span>
           </h2>
 
