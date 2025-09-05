@@ -439,7 +439,7 @@ export default function EditingAndProofreadingServices() {
           {/* Design Image on Right Side */}
           <div className="flex-shrink-0 mr-8 md:mr-16 lg:mr-24">
             <img 
-              src="/services/b-design1.webp" 
+              src="/red books.png" 
               alt="Editing & Proofreading Services" 
               className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain animate-float"
             />
@@ -595,7 +595,7 @@ export default function EditingAndProofreadingServices() {
               section3Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}>
               <img 
-                src="/services/editing-1.png" 
+                src="/images/bookpublishingpoint_images/book-cover1.webp" 
                 alt="Developmental Editing Services" 
                 className="max-w-lg h-auto object-contain ml-8 reveal-img"
               />
@@ -734,7 +734,7 @@ export default function EditingAndProofreadingServices() {
               section5Visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
               <img 
-                src="/services/editing-2.png" 
+                src="/services/editing-1.png" 
                 alt="Book Proofreading Services" 
                 className="max-w-lg h-auto object-contain reveal-img"
               />
