@@ -4,6 +4,8 @@ import './page.css';
 import { useState, useEffect } from 'react';
 import GetStartedForm from '../../../components/ui/GetStartedForm';
 import Footer from '../../../components/Footer';
+import { FAQAccordion } from '../../../components/FAQAccordion';
+import { ghostwritingFAQData } from '../../../data/faqData-ghostwriting';
 
 export default function GhostwritingServices() {
   const [section1Visible, setSection1Visible] = useState(false);
@@ -361,7 +363,7 @@ export default function GhostwritingServices() {
   return (
     <div className="min-h-screen bg-white">
       {/* Section 1 - Hero - 90vh Height */}
-      <section id="section-1" className="h-[88vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/bookpublishingpoint_images/main-banner.webp)' }}>
+      <section id="section-1" className="h-[88vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative overflow-hidden" style={{ backgroundImage: 'url(/shelf.png)' }}>
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50/80 to-gray-100/80"></div>
         
@@ -683,7 +685,7 @@ export default function GhostwritingServices() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center h-full">
             {/* Top Section - Text Content */}
-            <div className="text-center mb-8 pt-8">
+            <div className="text-center mb-4 pt-4">
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 ${
                 section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
@@ -702,9 +704,9 @@ export default function GhostwritingServices() {
                 <div className={`mb-2 transition-all duration-1000 delay-[180ms] ${
                   section6Visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                 }`}>
-                  <a href="/contact" className="inline-flex items-center gap-3 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide transition-colors duration-300 no-underline select-none">
+                  <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-4 py-2 rounded-md font-semibold text-sm uppercase tracking-wide transition-colors duration-300 no-underline select-none">
                     <span className="text-white">START PROJECT</span>
-                    <svg className="w-5 h-5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
@@ -718,14 +720,14 @@ export default function GhostwritingServices() {
               <div className="flip-card group">
                 <div className="flip-card-inner">
                   {/* Front Side */}
-                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                    <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                      <span className="text-4xl font-bold">01</span>
+                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
+                    <div className="text-[#0B3C74] text-2xl mb-2 flex justify-center">
+                      <span className="text-xl font-bold">01</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 text-center">Initial Consultation and Planning</h3>
+                    <h3 className="text-sm font-bold text-gray-900 text-center">Initial Consultation and Planning</h3>
                   </div>
                   {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="flip-card-back bg-[#0B3C74] rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
                     <p className="text-white text-sm leading-relaxed text-center">
                       Every project starts with a focused conversation. We ask the right questions to understand your goals, target audience, genre, and the outcome you want. No guesswork — just clarity from the start.
                     </p>
@@ -737,14 +739,14 @@ export default function GhostwritingServices() {
               <div className="flip-card group">
                 <div className="flip-card-inner">
                   {/* Front Side */}
-                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                    <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                      <span className="text-4xl font-bold">02</span>
+                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
+                    <div className="text-[#0B3C74] text-2xl mb-2 flex justify-center">
+                      <span className="text-xl font-bold">02</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 text-center">Research and Outline Development</h3>
+                    <h3 className="text-sm font-bold text-gray-900 text-center">Research and Outline Development</h3>
                   </div>
                   {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="flip-card-back bg-[#0B3C74] rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
                     <p className="text-white text-sm leading-relaxed text-center">
                       Once we're aligned, we dive deep into research. We gather insights, brainstorm direction, and map out your chapters. Writing a book outline becomes easy when every section is built with a purpose.
                     </p>
@@ -756,14 +758,14 @@ export default function GhostwritingServices() {
               <div className="flip-card group">
                 <div className="flip-card-inner">
                   {/* Front Side */}
-                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                    <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                      <span className="text-4xl font-bold">03</span>
+                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
+                    <div className="text-[#0B3C74] text-2xl mb-2 flex justify-center">
+                      <span className="text-xl font-bold">03</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 text-center">Writing and Content Creation</h3>
+                    <h3 className="text-sm font-bold text-gray-900 text-center">Writing and Content Creation</h3>
                   </div>
                   {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="flip-card-back bg-[#0B3C74] rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
                     <p className="text-white text-sm leading-relaxed text-center">
                       With your outline approved, our writers begin crafting the manuscript. We stay aligned with your tone and structure while shaping every chapter to fit your message. You'll get updates and chances to weigh in along the way.
                     </p>
@@ -774,14 +776,14 @@ export default function GhostwritingServices() {
               {/* Card 4 - Strategic Marketing and Distribution */}
               <div className="flip-card group">
                 <div className="flip-card-inner">
-                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
-                    <div className="text-[#0B3C74] text-6xl mb-6 flex justify-center">
-                      <span className="text-4xl font-bold">04</span>
+                  <div className="flip-card-front bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
+                    <div className="text-[#0B3C74] text-2xl mb-2 flex justify-center">
+                      <span className="text-xl font-bold">04</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 text-center">Revisions and Editing</h3>
+                    <h3 className="text-sm font-bold text-gray-900 text-center">Revisions and Editing</h3>
                   </div>
                   {/* Back Side */}
-                  <div className="flip-card-back bg-[#0B3C74] rounded-xl p-6 shadow-lg flex flex-col items-center justify-center h-64">
+                  <div className="flip-card-back bg-[#0B3C74] rounded-lg p-2 shadow-lg flex flex-col items-center justify-center h-28">
                     <p className="text-white text-sm leading-relaxed text-center">
                       Once the draft is complete, our editorial team steps in. We focus on grammar, flow, clarity, and cohesion. Your feedback helps us sharpen the final version so your book is ready to publish with confidence.
                     </p>
@@ -846,6 +848,13 @@ export default function GhostwritingServices() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section - Questions Writers Actually Ask Us */}
+      <FAQAccordion 
+        faqData={ghostwritingFAQData}
+        title="Questions Writers Actually Ask Us"
+        subtitle="Before you dive into your next draft or publishing step, here are some answers that might save you time — and sharpen your final manuscript."
+      />
 
       {/* Section 8 - What our client's say - Same Size as Section 2 */}
       <section className="h-screen bg-white flex items-center">

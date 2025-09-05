@@ -4,6 +4,8 @@ import './page.css';
 import { useState, useEffect } from 'react';
 import GetStartedForm from '../../../components/ui/GetStartedForm';
 import Footer from '../../../components/Footer';
+import { FAQAccordion } from '../../../components/FAQAccordion';
+import { publishingFAQData } from '../../../data/faqData-publishing';
 
 export default function BookPublishingServices() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -855,6 +857,13 @@ export default function BookPublishingServices() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section - Questions Writers Actually Ask Us */}
+      <FAQAccordion 
+        faqData={publishingFAQData}
+        title="Questions Writers Actually Ask Us"
+        subtitle="Before you dive into your next draft or publishing step, here are some answers that might save you time — and sharpen your final manuscript."
+      />
 
       {/* Section 8 - What our client's say - Same Size as Section 2 */}
       <section className="h-screen bg-white flex items-center">
