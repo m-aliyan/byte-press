@@ -466,14 +466,14 @@ export default function BookIllustrationServices() {
             {/* Left Side - Partner With the Best Text */}
             <div className="flex items-center">
               <div className="max-w-2xl">
-                <h2 className={`text-2xl md:text-3xl font-bold mb-4 leading-tight transition-all duration-1000 ${
+                <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight transition-all duration-1000 ${
                   section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <span className="text-[#0B3C74]">Professional Illustrations Design</span><br />
                   <span className="text-[#0B3C74]">Company</span> <span className="text-black">Bringing Vision to the Page</span>
                 </h2>
                 
-                <div className={`space-y-3 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[120ms] ${
+                <div className={`space-y-3 text-gray-700 text-base md:text-base leading-relaxed transition-all duration-1000 delay-[120ms] ${
                   section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
@@ -613,7 +613,7 @@ export default function BookIllustrationServices() {
                   <span className="text-[#0B3C74]">Custom Book Illustrations Design</span>
                   <span className="text-gray-900"> That Capture Imagination</span>
                 </h2>
-                <div className={`space-y-4 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[100ms] ${
+                <div className={`space-y-4 text-gray-700 text-base md:text-base leading-relaxed transition-all duration-1000 delay-[100ms] ${
                   section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
@@ -1090,7 +1090,7 @@ export default function BookIllustrationServices() {
       {/* Section 8 - What our client's say - Same Size as Section 2 */}
       <section id="section-8" className="h-screen bg-white flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={`text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16 transition-all duration-1000 ${
+          <h2 className={`text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-4 transition-all duration-1000 ${
             section8Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             What our client's <span className="text-[#0B3C74]">say</span>

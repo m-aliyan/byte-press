@@ -644,7 +644,7 @@ export default function AudiobookServices() {
                   <span className="text-[#0B3C74]">Audiobook Self Publishing</span>
                   <span className="text-gray-900"> That Puts You in Control</span>
                 </h2>
-                <div className={`space-y-4 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[100ms] ${
+                <div className={`space-y-4 text-gray-700 text-base md:text-base leading-relaxed transition-all duration-1000 delay-[100ms] ${
                   section3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
@@ -719,7 +719,7 @@ export default function AudiobookServices() {
                   <span className="text-[#0B3C74]">Audiobook Publishing Companies</span>
                   <span className="text-gray-900"> That Understand the Power of Storytelling</span>
                 </h2>
-                <div className={`space-y-4 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[100ms] ${
+                <div className={`space-y-4 text-gray-700 text-base leading-relaxed transition-all duration-1000 delay-[100ms] ${
                   section5Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
@@ -783,7 +783,7 @@ export default function AudiobookServices() {
                   <span className="text-[#0B3C74]">Publishers for Audiobook Projects</span>
                   <span className="text-gray-900"> That Deserve to Be Heard</span>
                 </h2>
-                <div className={`space-y-4 text-gray-700 text-sm leading-relaxed transition-all duration-1000 delay-[100ms] ${
+                <div className={`space-y-4 text-gray-700 text-base leading-relaxed transition-all duration-1000 delay-[100ms] ${
                   section6Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
@@ -1127,7 +1127,7 @@ export default function AudiobookServices() {
       {/* Section 9 - What our client's say - Same Size as Section 2 */}
       <section id="section-9" className="h-screen bg-white flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={`text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-16 transition-all duration-1000 ${
+          <h2 className={`text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] mb-4 transition-all duration-1000 ${
             section9Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             What our client's <span className="text-[#0B3C74]">say</span>
