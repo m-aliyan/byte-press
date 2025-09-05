@@ -7,7 +7,7 @@ import Footer from '../../../components/Footer';
 import { FAQAccordion } from '../../../components/FAQAccordion';
 import { formattingFAQData } from '../../../data/faqData-formatting';
 
-export default function BookPublishingServices() {
+export default function BookFormattingServices() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [section1Visible, setSection1Visible] = useState(false);
   const [section2Visible, setSection2Visible] = useState(false);

@@ -421,7 +421,7 @@ export default function BookIllustrationServices() {
             <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[200ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              At Book Publishing Point, we understand that strong design makes a lasting first impression. That's why our team approaches each Story Book Illustration with originality, precision, and style. From concept sketches to polished artwork, we deliver illustrations that feel as intentional as your words.
+              At BytePress, we understand that strong design makes a lasting first impression. That's why our team approaches each Story Book Illustration with originality, precision, and style. From concept sketches to polished artwork, we deliver illustrations that feel as intentional as your words.
             </p>
             <p className={`text-base md:text-base text-black mb-6 leading-relaxed transition-all duration-1000 delay-[300ms] ${
               section1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -477,7 +477,7 @@ export default function BookIllustrationServices() {
                   section2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
                   <p>
-                    Looking for visual storytelling that sticks? Our team at Book Publishing Point offers affordable Illustration Services that bring ideas to life with clarity and creativity. Whether you're publishing a children's book or need custom book illustration clipart for your title, we turn concepts into captivating artwork.
+                    Looking for visual storytelling that sticks? Our team at BytePress offers affordable Illustration Services that bring ideas to life with clarity and creativity. Whether you're publishing a children's book or need custom book illustration clipart for your title, we turn concepts into captivating artwork.
                   </p>
                   
                   <p>
