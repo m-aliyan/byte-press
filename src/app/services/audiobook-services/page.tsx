@@ -750,7 +750,7 @@ export default function AudiobookServices() {
               section5Visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
               <img 
-                src="/services/audio-2.png" 
+                src="/bh.png" 
                 alt="Audiobook Publishing Companies" 
                 className="max-w-lg h-auto object-contain mr-8 reveal-img"
               />

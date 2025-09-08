@@ -22,6 +22,7 @@ export default function Home() {
     satisfaction: 0
   });
   const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const [chainAnimationVisible, setChainAnimationVisible] = useState(false);
 
   const toggleAccordion = (index: number) => {
     setOpenAccordion(openAccordion === index ? null : index);
@@ -476,6 +477,27 @@ export default function Home() {
         window.heroObserver.disconnect();
       }
     };
+  }, []);
+
+  // Chain animation intersection observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setChainAnimationVisible(true);
+        } else {
+          setChainAnimationVisible(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const chainSection = document.getElementById('book-publishing-integration');
+    if (chainSection) {
+      observer.observe(chainSection);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -1303,7 +1325,7 @@ export default function Home() {
               <div className="mt-12 mb-12 fade-scale" style={{ transitionDelay: '200ms' }}>
                 <div className="flex justify-center items-center relative overflow-hidden">
                   <div className="train-container">
-                                         <div className="train-track">
+                                         <div className={`train-track ${chainAnimationVisible ? 'animate' : ''}`}>
                        {/* First set of images */}
                        <img 
                          src="/images/bookpublishingpoint_images/9.png" 
@@ -1397,6 +1419,37 @@ export default function Home() {
                          alt="Book Publishing Service" 
                          className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
                        />
+                       {/* Fourth set for 4-set loop */}
+                       <img 
+                         src="/images/bookpublishingpoint_images/9.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/10.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/11.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/12.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/13.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
+                       <img 
+                         src="/images/bookpublishingpoint_images/8.png" 
+                         alt="Book Publishing Service" 
+                         className="w-48 h-48 object-contain rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex-none"
+                       />
                      </div>
                   </div>
                   
@@ -1411,7 +1464,6 @@ export default function Home() {
                     .train-track {
                       display: flex;
                       gap: 0;
-                      animation: trainMove 30s linear infinite;
                       width: fit-content;
                       will-change: transform;
                       transform: translateX(0);
@@ -1419,12 +1471,16 @@ export default function Home() {
                       perspective: 1000px;
                     }
 
-                    @keyframes trainMove {
+                    .train-track.animate {
+                      animation: trainMove 30s linear infinite;
+                    }
+
+                                                             @keyframes trainMove {
                       0% {
                         transform: translateX(0);
                       }
                       100% {
-                        transform: translateX(-50%);
+                        transform: translateX(calc(-100% / 4));
                       }
                     }
 
@@ -1453,27 +1509,6 @@ export default function Home() {
       </section>
 
 
-      {/* Reason to Choose Bytes Press Section */}
-      <section id="reason-to-choose" className="py-20 bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0]">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6 fade-up">
-            Reason to choose <span className="text-[#0B3C74]">Bytes Press</span>
-          </h2>
-          <p className="text-lg text-[#111827] max-w-3xl mx-auto mb-6 fade-up" style={{ transitionDelay: '100ms' }}>
-            Our team of experienced professionals is dedicated to transforming your book idea into a reality by providing the expertise and support you need every step of the way.
-          </p>
-          
-          {/* CTA Button */}
-          <div className="fade-scale" style={{ transitionDelay: '180ms' }}>
-            <a href="/contact" className="inline-flex items-center gap-2 bg-[#0B3C74] hover:bg-[#0A2E5C] active:bg-[#0A2E5C] text-white px-6 py-3 rounded-lg font-bold text-base uppercase tracking-wide transition-colors duration-300 no-underline">
-              <span className="text-white">START PROJECT</span>
-              <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Why Authors Trust CTA Section */}
       <section id="why-authors-trust" className="bg-white">

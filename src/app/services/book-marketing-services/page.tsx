@@ -436,14 +436,14 @@ At BytePress, we offer comprehensive book marketing services designed to maximiz
             </div>
           </div>
           
-          {/* Design Image on Right Side */}
-          <div className="flex-shrink-0 mr-8 md:mr-16 lg:mr-24">
-            <img 
-              src="/services/b-design1.webp" 
-              alt="Book Marketing Services" 
-              className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain animate-float"
-            />
-          </div>
+                     {/* Design Image on Right Side */}
+           <div className="flex-shrink-0 mr-1 md:mr-2 lg:mr-4">
+             <img 
+               src="/bookie.png" 
+               alt="Book Marketing Services" 
+               className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-contain animate-float"
+             />
+           </div>
         </div>
       </section>
 
@@ -595,7 +595,7 @@ As the best book marketing company, we don't just promote your book. We build yo
               section3Visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}>
               <img 
-                src="/services/editing-1.png" 
+                src="/images/bookpublishingpoint_images/book-mark-ser.webp" 
                 alt="Book Marketing Strategy Services" 
                 className="max-w-lg h-auto object-contain ml-8 reveal-img"
               />
@@ -734,7 +734,7 @@ Let us help you launch with confidence.
               section5Visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
               <img 
-                src="/services/editing-2.png" 
+                src="/images/bookpublishingpoint_images/marketing-2.png" 
                 alt="Book Marketing Campaign Services" 
                 className="max-w-lg h-auto object-contain reveal-img"
               />
